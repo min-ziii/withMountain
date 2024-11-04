@@ -10,6 +10,7 @@
 		<put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp"></put-attribute>
 		<put-attribute name="content"
 					   value="/WEB-INF/views/{1}.jsp"></put-attribute>
+		<put-attribute name="main-footer" value="/WEB-INF/views/inc/main-footer.jsp"></put-attribute>
 	</definition>
 
 	<!-- 그 외 페이지 -->
