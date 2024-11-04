@@ -15,7 +15,10 @@
 <body>
 	<tiles:insertAttribute name="main-menu" />
 
-	<tiles:insertAttribute name="content" />
+	<main id="center">
+		<tiles:insertAttribute name="content" />
+	</main>
+
 	<tiles:insertAttribute name="main-footer" />
 </body>
 </html>
