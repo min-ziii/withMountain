@@ -6,3 +6,5 @@
 <!-- inc > asset.jsp -->
 <link rel="stylesheet" href="${path}/resources/static/css/routes/community.css">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="${path}/resources/static/js/community.js"></script>
+<script src="${path}/resources/static/js/common.js"></script>
