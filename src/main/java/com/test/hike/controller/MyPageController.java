@@ -10,7 +10,7 @@ public class MyPageController {
 
     @GetMapping("")
     public String index() {
-        return "mypage/index";
+        return "mypage.index";
     }
 }
 

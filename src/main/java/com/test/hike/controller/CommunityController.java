@@ -10,7 +10,7 @@ public class CommunityController {
 
     @GetMapping("")
     public String index() {
-        return "community/index";
+        return "community.index";
     }
 }
 

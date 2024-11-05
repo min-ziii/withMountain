@@ -10,7 +10,7 @@ public class ClubController {
 
     @GetMapping("")
     public String index() {
-        return "club/index";
+        return "club.index";
     }
 }
 

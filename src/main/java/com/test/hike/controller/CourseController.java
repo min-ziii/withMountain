@@ -10,6 +10,7 @@ public class CourseController {
 
     @GetMapping("")
     public String index() {
-        return "course/index";
+
+        return "course.index";
     }
 }
