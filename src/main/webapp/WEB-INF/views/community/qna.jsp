@@ -4,6 +4,33 @@
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-<h1>커뮤니티 메인 페이지</h1>
+<!-- <h1>커뮤니티 메인 페이지</h1> -->
 
-<P>views/community/index.jsp</P>
+<!-- <P>views/community/index.jsp</P> -->
+
+<div>QnA 게시판</div>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+

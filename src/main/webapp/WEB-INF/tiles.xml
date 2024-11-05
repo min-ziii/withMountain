@@ -13,11 +13,12 @@
 		<put-attribute name="main-footer" value="/WEB-INF/views/inc/main-footer.jsp"/>
 	</definition>
 
-	<definition name="community.index" template="/WEB-INF/views/layout/index.jsp">
+	<definition name="community.*" template="/WEB-INF/views/layout/submenu-layout.jsp">
 		<put-attribute name="main-menu" value="/WEB-INF/views/inc/main-menu.jsp"/>
+		<put-attribute name="sub-menu" value="/WEB-INF/views/inc/community-menu.jsp"/>
 		<put-attribute name="asset" value="/WEB-INF/views/community/asset.jsp"/>
 		<put-attribute name="content"
-					   value="/WEB-INF/views/community/index.jsp"/>
+					   value="/WEB-INF/views/community/{1}.jsp"/>
 		<put-attribute name="main-footer" value="/WEB-INF/views/inc/main-footer.jsp"/>
 	</definition>
 

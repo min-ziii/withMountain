@@ -7,10 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/community")
 public class CommunityController {
-
+	
     @GetMapping("")
-    public String index() {
-        return "community.index";
+    public String photo() {
+        return "community.photo";
+    }
+    @GetMapping("/free")
+    public String free() {
+    	return "community.free";
+    }
+    @GetMapping("/qna")
+    public String qna() {
+    	return "community.qna";
     }
 }
 
