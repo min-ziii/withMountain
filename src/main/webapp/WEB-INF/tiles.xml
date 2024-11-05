@@ -5,11 +5,11 @@
 <tiles-definitions>
 
 	<!-- 그 외 페이지 -->
-	<definition name="club.index" template="/WEB-INF/views/layout/index.jsp">
+	<definition name="club.*" template="/WEB-INF/views/layout/index.jsp">
 		<put-attribute name="main-menu" value="/WEB-INF/views/inc/main-menu.jsp"/>
 		<put-attribute name="asset" value="/WEB-INF/views/club/asset.jsp"/>
 		<put-attribute name="content"
-					   value="/WEB-INF/views/club/index.jsp"/>
+					   value="/WEB-INF/views/club/{1}.jsp"/>
 		<put-attribute name="main-footer" value="/WEB-INF/views/inc/main-footer.jsp"/>
 	</definition>
 

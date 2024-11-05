@@ -8,9 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/club")
 public class ClubController {
 
-    @GetMapping("")
-    public String index() {
-        return "club.index";
-    }
-}
+	@GetMapping("")
+	public String index() {
+		return "club.index";
+	}
 
+	
+	@GetMapping("/view") 
+	public String view() {
+		return "club.club-view";
+	}
+
+}
