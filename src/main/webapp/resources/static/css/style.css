@@ -2,7 +2,6 @@
 @import url('constants.css');
 @import url('reset.css');
 @import url('inc.css');
-@import url('routes.css');
 
 body {
     background-color: var(--gray07); /* for test */
