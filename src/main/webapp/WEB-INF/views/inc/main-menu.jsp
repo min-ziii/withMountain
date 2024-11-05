@@ -10,17 +10,14 @@
     </a>
     <nav>
         <ul>
-            <li class="selected"><a href="">홈</a></li>
-            <li><a href="${path}/course">코스</a></li>
-            <li><a href="${path}/community">커뮤니티</a></li>
-            <li><a href="${path}/club">모임</a></li>
-            <li><a href="${path}/mypage">나의 등산</a></li>
+            <li id="nav-home"><a href="${path}/home">홈</a></li>
+            <li id="nav-course"><a href="${path}/course">코스</a></li>
+            <li id="nav-community"><a href="${path}/community">커뮤니티</a></li>
+            <li id="nav-club"><a href="${path}/club">모임</a></li>
+            <li id="nav-mypage"><a href="${path}/mypage">나의 등산</a></li>
             <li class="log-out"><a href="">로그아웃</a></li>
             <%-- <li class="log-in"><a href="">로그인</a></li>--%>
+
         </ul>
     </nav>
 </header>
-
-
-
-
