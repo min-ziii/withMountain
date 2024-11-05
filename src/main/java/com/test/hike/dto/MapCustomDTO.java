@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class MapAPISpotDTO {
+public class MapCustomDTO {
 	
 	private int seq;
 	private int spot_num;

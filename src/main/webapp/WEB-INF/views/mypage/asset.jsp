@@ -6,3 +6,5 @@
 <!-- inc > asset.jsp -->
 <link rel="stylesheet" href="${path}/resources/static/css/routes/club.css">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script type="module" src="${path}/resources/static/js/club.js"></script>
+<script type="module" src="${path}/resources/static/js/common.js"></script>
