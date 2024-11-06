@@ -1,7 +1,7 @@
 import {initMap} from './common.js';
 
-const minZoomLevel = 7;
-const maxZoomLevel = 1;
+const MIN_ZOOM_LEVEL = 7;
+const MAX_ZOOM_LEVEL = 1;
 
 $(document).ready(function () {
     const map = initMap(

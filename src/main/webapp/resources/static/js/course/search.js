@@ -1,15 +1,15 @@
 import {initMap} from './common.js';
 
-const minZoomLevel = 13;
-const maxZoomLevel = 12;
+const MIN_ZOOM_LEVEL = 13;
+const MAX_ZOOM_LEVEL = 12;
 
 $(document).ready(function () {
     const map = initMap(
         '#search-map',
         36.359086,
         127.778270,
-        minZoomLevel,
-        maxZoomLevel);
+        MIN_ZOOM_LEVEL,
+        MAX_ZOOM_LEVEL);
 
     loadMarker(map);
     toggleAutoComplete();
