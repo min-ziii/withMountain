@@ -42,38 +42,32 @@
 </header>
 
 <%-- 등산 기록 --%>
-<div class="club-hike">
+<div class="sub-title">등산 기록</div>
+<div id="club-hike-list">
 
-    <div class="club-hike-list">
-        <img class="course-image" src="${path}/resources/static/images/club-image.jpg" alt="산악회 대표사진">
+    <div class="club-hike">
+        <div class="course-image">
+            <img src="${path}/resources/static/images/map-test.jpg" alt="코스 사진">
+        </div>
+
         <div class="hike-main-content">
-
-            <div class="hike-title">북한산 등산</div>
-            <hr>
+            <div class="hike-title"><span style="color: var(--main)">북한산</span> 등반</div>
             <div class="hike-content">
                 <div class="hike-sub-content">
-                    <div>
-                        <span><img class="title-logo" src="${path}/resources/static/images/title.svg" alt="등산 일정"></span>
-                        <span>열정 가득한 가을 북한산 등산!!</span>
-                    </div>
+                        <img class="title-logo" src="${path}/resources/static/images/title.svg" alt="등산 타이틀">
+                        <span>열정 가득한 가을 북한산 등반!!</span>
                 </div>
                 <div class="hike-sub-content">
-                    <div>
-                        <span><img class="clock-logo" src="${path}/resources/static/images/clock.svg" alt="출발 시간"></span>
+                    <img class="calendar-logo" src="${path}/resources/static/images/calendar.svg" alt="등산 일정">
                         <span>2024-11-21 (일)</span>
-                    </div>
                 </div>
                 <div class="hike-sub-content">
-                    <div>
-                        <span><img class="clock-logo" src="${path}/resources/static/images/clock.svg" alt="출발 시간"></span>
+                        <img class="clock-logo" src="${path}/resources/static/images/clock.svg" alt="출발 시간">
                         <span>10:00 출발</span>
-                    </div>
                 </div>
                 <div class="hike-sub-content">
-                    <div>
-                        <span><img class="clock-logo" src="${path}/resources/static/images/clock.svg" alt="출발 시간"></span>
+                        <img class="clock-logo" src="${path}/resources/static/images/clock-dark.svg" alt="도착 시간">
                         <span>15:00 도착</span>
-                    </div>
                 </div>
             </div>
 
@@ -87,7 +81,123 @@
                     <span>8.4KM</span>
                 </div>
             </div>
+        </div>
+    </div>
 
+    <div class="club-hike">
+        <div class="course-image">
+            <img src="${path}/resources/static/images/map-test.jpg" alt="코스 사진">
+        </div>
+
+        <div class="hike-main-content">
+            <div class="hike-title"><span style="color: var(--main)">북한산</span> 등반</div>
+            <div class="hike-content">
+                <div class="hike-sub-content">
+                    <img class="title-logo" src="${path}/resources/static/images/title.svg" alt="등산 타이틀">
+                    <span>열정 가득한 가을 북한산 등반!!</span>
+                </div>
+                <div class="hike-sub-content">
+                    <img class="calendar-logo" src="${path}/resources/static/images/calendar.svg" alt="등산 일정">
+                    <span>2024-11-21 (일)</span>
+                </div>
+                <div class="hike-sub-content">
+                    <img class="clock-logo" src="${path}/resources/static/images/clock.svg" alt="출발 시간">
+                    <span>10:00 출발</span>
+                </div>
+                <div class="hike-sub-content">
+                    <img class="clock-logo" src="${path}/resources/static/images/clock-dark.svg" alt="도착 시간">
+                    <span>15:00 도착</span>
+                </div>
+            </div>
+
+            <div class="hike-total-record">
+                <div class="hike-total-time">
+                    <span>소요 시간</span>
+                    <span>3시간 12분</span>
+                </div>
+                <div class="hike-total-distance">
+                    <span>등산 거리</span>
+                    <span>8.4KM</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="club-hike">
+        <div class="course-image">
+            <img src="${path}/resources/static/images/map-test.jpg" alt="코스 사진">
+        </div>
+
+        <div class="hike-main-content">
+            <div class="hike-title"><span style="color: var(--main)">북한산</span> 등반</div>
+            <div class="hike-content">
+                <div class="hike-sub-content">
+                    <img class="title-logo" src="${path}/resources/static/images/title.svg" alt="등산 타이틀">
+                    <span>열정 가득한 가을 북한산 등반!!</span>
+                </div>
+                <div class="hike-sub-content">
+                    <img class="calendar-logo" src="${path}/resources/static/images/calendar.svg" alt="등산 일정">
+                    <span>2024-11-21 (일)</span>
+                </div>
+                <div class="hike-sub-content">
+                    <img class="clock-logo" src="${path}/resources/static/images/clock.svg" alt="출발 시간">
+                    <span>10:00 출발</span>
+                </div>
+                <div class="hike-sub-content">
+                    <img class="clock-logo" src="${path}/resources/static/images/clock-dark.svg" alt="도착 시간">
+                    <span>15:00 도착</span>
+                </div>
+            </div>
+
+            <div class="hike-total-record">
+                <div class="hike-total-time">
+                    <span>소요 시간</span>
+                    <span>3시간 12분</span>
+                </div>
+                <div class="hike-total-distance">
+                    <span>등산 거리</span>
+                    <span>8.4KM</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="club-hike">
+        <div class="course-image">
+            <img src="${path}/resources/static/images/map-test.jpg" alt="코스 사진">
+        </div>
+
+        <div class="hike-main-content">
+            <div class="hike-title"><span style="color: var(--main)">북한산</span> 등반</div>
+            <div class="hike-content">
+                <div class="hike-sub-content">
+                    <img class="title-logo" src="${path}/resources/static/images/title.svg" alt="등산 타이틀">
+                    <span>열정 가득한 가을 북한산 등반!!</span>
+                </div>
+                <div class="hike-sub-content">
+                    <img class="calendar-logo" src="${path}/resources/static/images/calendar.svg" alt="등산 일정">
+                    <span>2024-11-21 (일)</span>
+                </div>
+                <div class="hike-sub-content">
+                    <img class="clock-logo" src="${path}/resources/static/images/clock.svg" alt="출발 시간">
+                    <span>10:00 출발</span>
+                </div>
+                <div class="hike-sub-content">
+                    <img class="clock-logo" src="${path}/resources/static/images/clock-dark.svg" alt="도착 시간">
+                    <span>15:00 도착</span>
+                </div>
+            </div>
+
+            <div class="hike-total-record">
+                <div class="hike-total-time">
+                    <span>소요 시간</span>
+                    <span>3시간 12분</span>
+                </div>
+                <div class="hike-total-distance">
+                    <span>등산 거리</span>
+                    <span>8.4KM</span>
+                </div>
+            </div>
         </div>
     </div>
 

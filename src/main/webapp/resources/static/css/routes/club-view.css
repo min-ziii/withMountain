@@ -1,7 +1,7 @@
 @import "../style.css";
 
 /* 1. 모임 정보 -------------------------------------------------- */
-/* 1-1. 프로필 ----------- */
+/* 1-1. 프로필 ------------- */
 #club-profile-background {
 	width: 100%;
 	height: 200px;
@@ -51,7 +51,7 @@
 }
 
 
-/* 1-2. 모임 채팅 + 가입하기 ------ */
+/* 1-2. 모임 채팅 + 가입하기 ------------- */
 #info-btn {
 	display: flex;
 	justify-content: center;
@@ -82,7 +82,7 @@
 }
 
 
-/* 1-3. 모임 서브 메뉴 -------------- */
+/* 1-3. 모임 서브 메뉴 ------------- */
 #sub-menu {	
 	width: 100%;
 	height: var(--main-menu-height);
@@ -150,7 +150,7 @@
 }
 
 
-/* 1-4. 모임 정보 > 소개 --------- */
+/* 1-4. 모임 정보 > 소개 ------------- */
 #intro {
 	padding: 0 40px;
 }
@@ -178,7 +178,7 @@
   	font-weight: 300;
 }
 
-/* 1-5. 모임 정보 > 모임원 수 -------------------*/
+/* 1-5. 모임 정보 > 모임원 수 ------------- */
 
 #club-member {
 	padding: 0 40px;
@@ -220,30 +220,39 @@
 
 }
 
-/* 2. 모임 일정 ----------------------------------------------------------- */
+/* 2. 모임 일정 -------------------------------------------------- */
 
 
-/* 3. 모임 등산 기록 ---------------------------------------------------------*/
-/* 3-1. 등산 기록 */
-.club-hike {
-	padding: 0 70px 70px 70px;
+/* 3. 모임 등산 기록 --------------------------------------------------*/
+.sub-title {
+	padding: 0 80px;
+	font-size: 16px;
+	font-weight: 500;
+	color: var(--black);
+	margin-bottom: 20px;
+}
+
+#club-hike-list {
+	padding: 0 80px 70px 80px;
 	display: flex;
 	flex-flow: wrap;
 	justify-content: space-between;
 	row-gap: 40px;
 }
-.club-hike .club-hike-list {
+
+/* 3-1. 등산 기록 ------------- */
+#club-hike-list .club-hike {
 	width: 480px;
-	height: 285px;
-	border: 1px solid black;
+	height: 300px;
 	border-radius: 10px;
-	padding: 16px;
+	padding: 20px;
 	align-items: center;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 
-.club-hike .club-hike-list .course-image {
-	width: 225px;
-	height: 250px;
+#club-hike-list .club-hike .course-image img {
+	width: 220px;
+	height: 260px;
 	object-fit: cover;
 	float: right;
 	border-radius: 10px;
@@ -251,42 +260,76 @@
 	justify-content: center;
 }
 
-.club-hike .club-hike-list .hike-main-content .hike-title {
-	font-size: 20px;
+/* 3-2. 활동기록 내용 ------------- */
+#club-hike-list .club-hike .hike-main-content {
+	width: 200px;
 }
 
-.club-hike .club-hike-list .hike-mainc-ontent hr {
-	/*width: 230px;*/
+/* 3-3.제목 ------------- */
+#club-hike-list .club-hike .hike-main-content .hike-title {
+	font-size: 18px;
+	letter-spacing: .5px;
+	border-bottom: 1px solid var(--gray06);
+	line-height: 35px;
 }
 
-.club-hike .club-hike-list .hike-main-content .hike-sub-content {
+/* 3-4.컨텐츠 ------------- */
+#club-hike-list .club-hike .hike-main-content .hike-content {
+	margin-bottom: 35px;
+}
+
+#club-hike-list .club-hike .hike-main-content .hike-sub-content {
 	padding-top: 10px;
 	font-size: 14px;
 	line-height: 1.6;
 	color: var(--gray02);
+	align-items: center;
+	letter-spacing: .5px;
 }
 
-.club-hike .club-hike-list .hike-total-record {
+#club-hike-list .club-hike .hike-main-content .hike-sub-content img {
+	margin-right: 5px;
+}
+
+#club-hike-list .club-hike .hike-total-record {
 	display: flex;
 	justify-content: space-between;
-	padding: 0 5px;
-}
-
-.club-hike .club-hike-list .hike-total-record .hike-total-time {
-	background-color: var(--gray06);
-}
-
-.club-hike .club-hike-list .hike-total-record .hike-total {
 	align-items: center;
-	width: 90px;
-	height: 60px;
-	border: 1px solid black;
-	border-radius: 10px;
-	text-align: center;
-	color: var(--gray03);
+	/*padding: 0 5px;*/
 }
 
-.club-hike .club-hike-list .hike-total-record .hike-total .hike-total-time {
-	font-size: 16px;
-	color: var(--dark-gray);
+#club-hike-list .club-hike .hike-total-record .hike-total-time {
+	width: 95px;
+	height: 60px;
+	border: 1px solid var(--gray06);
+	border-radius: 10px;
+	background-color: var(--gray06);
+	align-items: center;
+	text-align: center;
+	color: var(--gray04);
+	font-weight: 300;
+	letter-spacing: .5px;
 }
+
+#club-hike-list .club-hike .hike-total-record .hike-total-distance {
+	width: 95px;
+	height: 60px;
+	border: 1px solid var(--gray06);
+	border-radius: 10px;
+	background-color: var(--white);
+	align-items: center;
+	text-align: center;
+	color: var(--gray04);
+	font-weight: 300;
+	letter-spacing: .5px;
+}
+
+#club-hike-list .club-hike .hike-total-record .hike-total-time span:nth-child(1), .hike-total-distance span:nth-child(1) {
+	display: flex;
+	justify-content: center;
+	font-size: 14px;
+	color: var(--gray01);
+	font-weight: 600;
+	margin: 10px 0;
+}
+

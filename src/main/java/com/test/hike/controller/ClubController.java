@@ -13,7 +13,8 @@ public class ClubController {
 		return "club.index";
 	}
 	
-	@GetMapping("/template") 
+
+	@GetMapping("/template")
 	public String list() {
 		return "club.template";
 	}
