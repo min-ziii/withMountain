@@ -40,7 +40,7 @@ function toggleAutoComplete() {
                                                 }) => name.includes(event.target.value) || address.includes(event.target.value));
 
 
-            filtered.forEach(({name, address}) => {
+            filtered.forEach(({name, address, lat, lng, mt_id}) => {
                 if (list.children().length >= 5) {
                     return;
                 }
@@ -52,9 +52,7 @@ function toggleAutoComplete() {
                     </li>
                 `);
 
-                listItem.on('click', function () {
-                    location.href = 'course/view';
-                });
+                listItem.on('click', () => navigateToView(mt_id, name, lat, lng));
 
                 list.append(listItem);
             });
@@ -86,19 +84,21 @@ function loadMarker(map) {
     const xAnchor = 0.3;
     const yAnchor = -1.2;
 
-    for (let {lat, lng, name, address} of DUMMY_DATA) {
+    for (let {mt_id, lat, lng, name, address} of DUMMY_DATA) {
         const position = new kakao.maps.LatLng(lat, lng);
         const marker = new kakao.maps.Marker({position, image});
         const content = `<div class ="label">${name}</div>`;
         const customOverlay = new kakao.maps.CustomOverlay({position, content, xAnchor, yAnchor});
 
-        kakao.maps.event.addListener(marker, 'click', function () {
-            location.href = 'course/view';
-        });
+        kakao.maps.event.addListener(marker, 'click', () => navigateToView(mt_id, name, lat, lng));
 
         marker.setMap(map);
         customOverlay.setMap(map);
     }
+}
+
+function navigateToView(mt_id, name, lat, lng) {
+    location.href = `course/view?mt_id=${mt_id}&name=${name}&lat=${lat}&lng=${lng}`;
 }
 
 const DUMMY_DATA = [
