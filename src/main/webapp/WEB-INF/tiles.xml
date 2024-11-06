@@ -22,11 +22,19 @@
 		<put-attribute name="main-footer" value="/WEB-INF/views/inc/main-footer.jsp"/>
 	</definition>
 
-	<definition name="course.*" template="/WEB-INF/views/layout/default.jsp">
+	<definition name="course.search" template="/WEB-INF/views/layout/default.jsp">
 		<put-attribute name="main-menu" value="/WEB-INF/views/inc/main-menu.jsp"/>
 		<put-attribute name="asset" value="/WEB-INF/views/course/asset.jsp"/>
 		<put-attribute name="content"
-					   value="/WEB-INF/views/course/index.jsp"/>
+					   value="/WEB-INF/views/course/search.jsp"/>
+		<put-attribute name="main-footer" value="/WEB-INF/views/inc/main-footer.jsp"/>
+	</definition>
+
+	<definition name="course.view" template="/WEB-INF/views/layout/default.jsp">
+		<put-attribute name="main-menu" value="/WEB-INF/views/inc/main-menu.jsp"/>
+		<put-attribute name="asset" value="/WEB-INF/views/course/view-asset.jsp"/>
+		<put-attribute name="content"
+					   value="/WEB-INF/views/course/view.jsp"/>
 		<put-attribute name="main-footer" value="/WEB-INF/views/inc/main-footer.jsp"/>
 	</definition>
 

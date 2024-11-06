@@ -1,10 +1,10 @@
 @import "../style.css";
 
-#search-map {
+.course-map {
     position: relative;
 }
 
-#search-map .input-area {
+.input-area {
     position: absolute;
     z-index: 999;
     top: 30px;
@@ -13,7 +13,7 @@
     width: 320px;
 }
 
-#search-map .input-wrap {
+.input-wrap {
     width: 100%;
     height: 48px;
     background-color: var(--white);
@@ -23,26 +23,26 @@
     padding: 12px 50px 12px 20px;
 }
 
-#search-map .input-wrap input {
+.input-wrap input {
     width: 100%;
     border: none;
     font-size: 16px;
     font-weight: 500;
 }
 
-#search-map .input-wrap input::placeholder {
+.input-wrap input::placeholder {
     font-weight: 400;
     color: var(--gray04);
 }
 
-#search-map .search-icon {
+.search-icon {
     position: absolute;
     width: 18px;
     height: 18px;
     margin-left: 8px;
 }
 
-#search-map .auto-list {
+.auto-list {
     display: none;
     max-height: 375px;
     border-bottom: 1px solid var(--gray04);
@@ -54,7 +54,7 @@
     overflow: hidden;
 }
 
-#search-map .auto-list .list-item {
+.auto-list .list-item {
     height: 75px;
     display: flex;
     flex-direction: column;
@@ -64,28 +64,28 @@
     cursor: pointer;
 }
 
-#search-map .auto-list .list-item:hover {
+.auto-list .list-item:hover {
     background-color: var(--light-green);
 }
 
-#search-map .auto-list .list-item:not(:last-child) {
+.auto-list .list-item:not(:last-child) {
     border-bottom: 1px solid var(--gray04);
 }
 
 
-#search-map .auto-list .list-item h2 {
+.auto-list .list-item h2 {
     font-size: 16px;
     font-weight: 500;
     color: var(--gray01);
 }
 
-#search-map .auto-list .list-item p {
+.auto-list .list-item p {
     font-size: 14px;
     font-weight: 400;
     color: var(--gray04);
 }
 
-#search-map .zoom-button-area {
+.zoom-button-area {
     position: absolute;
     z-index: 999;
     right: 40px;
@@ -101,7 +101,7 @@
     flex-direction: column;
 }
 
-#search-map .zoom-button-area > button {
+.zoom-button-area > button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,26 +109,27 @@
     cursor: pointer;
 }
 
-#search-map .zoom-button-area > button:disabled {
+.zoom-button-area > button:disabled {
     background-color: var(--gray06);
     opacity: .5;
 }
 
-#search-map .zoom-button-area > button > img {
+.zoom-button-area > button > img {
     width: 26px;
     height: 26px;
     cursor: pointer;
     pointer-events: none;
 }
 
-#search-map .zoom-in {
+.zoom-in {
     border-bottom: 1px solid var(--gray04);
 }
 
-#search-map .label {
+.label {
     font-size: 13px;
     text-shadow: -1px -1px 0 var(--white),
     1px -1px 0 var(--white),
     -1px 1px 0 var(--white),
     1px 1px 0 var(--white);
 }
+

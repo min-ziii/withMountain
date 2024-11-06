@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CourseController {
 
     @GetMapping("")
-    public String index() {
+    public String search() {
+        return "course.search";
+    }
 
-        return "course.index";
+    @GetMapping("view")
+    public String view () {
+        return "course.view";
     }
 }

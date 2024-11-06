@@ -4,7 +4,7 @@
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-<div id="search-map">
+<div id="search-map" class="course-map">
 	<div class="input-area">
 		<div class="input-wrap">
 			<input class="mt-search-input" type="text" placeholder="산 이름 또는 행정구역으로 검색">
