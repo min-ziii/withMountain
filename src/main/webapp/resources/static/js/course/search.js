@@ -81,10 +81,10 @@ function toggleAutoComplete() {
 function loadMarker(map) {
     const src = 'resources/static/images/point.svg';
     const size = new kakao.maps.Size(14, 14);
-    const option = {offset: new kakao.maps.Point(27, 69)};
+    const option = {offset: new kakao.maps.Point(0, 0)};
     const image = new kakao.maps.MarkerImage(src, size, option);
-    const xAnchor = 1.2;
-    const yAnchor = 4.2;
+    const xAnchor = 0.3;
+    const yAnchor = -1.2;
 
     for (let {lat, lng, name, address} of DUMMY_DATA) {
         const position = new kakao.maps.LatLng(lat, lng);
@@ -140,7 +140,7 @@ const DUMMY_DATA = [
     {lat: 35.5782, lng: 128.5220, name: "남해", address: "경상남도 남해군 남해로 100", mt_id: "000000036"},
     {lat: 36.6540, lng: 127.3130, name: "대전 계룡산", address: "대전광역시 대덕구 계룡로 100", mt_id: "000000037"},
     {lat: 35.4908, lng: 128.1209, name: "창녕", address: "경상남도 창녕군 창녕읍 창녕로 100", mt_id: "000000038"},
-    {lat: 37.2172, lng: 128.2373, name: "백두산", address: "대전광역시 대덕구 계룡로 100", mt_id: "000000039"},
+    {lat: 37.6594, lng: 126.9822, name: "북한산", address: "경기도 고양시 덕양구 북한동", mt_id: "000000039"},
     {lat: 35.2024, lng: 126.9366, name: "전라북도 모악산", address: "전라북도 익산시 모악산로 100", mt_id: "000000040"},
     {lat: 35.6827, lng: 128.6527, name: "영천", address: "경상북도 영천시 영천로 100", mt_id: "000000041"},
     {lat: 35.7252, lng: 128.6558, name: "경주", address: "경상북도 경주 안강읍 경주로 100", mt_id: "000000042"},
