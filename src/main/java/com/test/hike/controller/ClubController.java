@@ -21,7 +21,7 @@ public class ClubController {
 	
 	@GetMapping("/list") 
 	public String list() {
-		return "club.club-list";
+		return "club.list";
 	}
 
 }

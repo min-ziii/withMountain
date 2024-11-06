@@ -3,12 +3,23 @@
 /* 글자크기 */
 .clublist-title {
 	font-size: 24px;
-	line-height: 1.6;	
+	line-height: 1.6;
+	margin: 10px;
 }
 .clublist-content {
 	font-size: 14px;
 	line-height: 1.6;
+	margin: 10px;
+	color: var(--gray02);
 }
+
+/* 작은 로고 크기 */
+.clock-logo,
+.users-logo,
+.usercheck-logo {
+	margin-left: 2px;
+}
+
 
 /* 가운데 정렬 */
 #clublist-header {
@@ -62,11 +73,12 @@
 	justify-content: space-around;
 	height: 669px;
 }
-.joinlist-header {
+#joinlist-header {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin: 10px;
 }
 
 #clublist-joinlist .joinclub {
@@ -101,7 +113,7 @@
 }
 
 .joinclub .joinclub-content .joinclub-footer {
-	display: felx;
+	display: flex;
 	align-items: center;	
 	justify-content: space-between;
 	padding-top: 10px;
@@ -113,7 +125,7 @@
 
 
 /* 추천하는 모임 */
-.recommendlist-header {
+#recommendlist-header {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -121,6 +133,6 @@
 	text-align: center;
 }
 #clublist-recommendlist {
-
+	
 }	
 
