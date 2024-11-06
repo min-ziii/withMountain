@@ -58,7 +58,7 @@
 	<div class="club-member-profile">
 	
 		<div class="member-profile">
-			<img src="${path}/resources/static/images/memberProfie.jpg" alt="모임원 프로필 사진">
+			<img src="${path}/resources/static/images/club/memberProfie.jpg" alt="모임원 프로필 사진">
 			<div class="member-name">
 				이택조
 			</div>

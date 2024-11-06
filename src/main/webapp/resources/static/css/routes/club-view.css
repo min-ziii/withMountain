@@ -81,11 +81,10 @@
 	border-radius: 10px;
 }
 
-
 /* 1-3. 모임 서브 메뉴 ------------- */
 #sub-menu {	
 	width: 100%;
-	height: var(--main-menu-height);
+	height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -94,7 +93,12 @@
     border-bottom: 1px solid var(--gray05);
     background-color: var(--white);
     margin-bottom: 80px;
+
+	/* 상단 고정 작업*/
+	position: sticky;
+	top: -1px;
 }
+
 #sub-menu > nav {
  	width: 100%;
 	max-width: 1170px;
@@ -103,7 +107,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 20px;
-    background-color: var(--white);
+    /*background-color: var(--white);*/
 }
 
 #sub-menu > nav > ul {
@@ -149,17 +153,16 @@
 	font-weight: 700;
 }
 
-
 /* 1-4. 모임 정보 > 소개 ------------- */
 #intro {
 	padding: 0 40px;
 }
 
 #intro .intro-title {
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: 500;
 	color: var(--black);
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 
 #intro .intro-content {
@@ -179,7 +182,6 @@
 }
 
 /* 1-5. 모임 정보 > 모임원 수 ------------- */
-
 #club-member {
 	padding: 0 40px;
 }
@@ -226,7 +228,7 @@
 /* 3. 모임 등산 기록 --------------------------------------------------*/
 .sub-title {
 	padding: 0 80px;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: 500;
 	color: var(--black);
 	margin-bottom: 20px;
@@ -333,3 +335,54 @@
 	margin: 10px 0;
 }
 
+/* 3. 모임 사진첩 --------------------------------------------------*/
+#gallery-sub-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 80px 15px 80px;
+}
+
+#gallery-sub-head .gallery-title {
+	font-size: 18px;
+	font-weight: 500;
+	color: var(--black);
+	/*margin-bottom: 20px;*/
+}
+
+#gallery-sub-head .image-add-btn {
+	width: 110px;
+	height: 40px;
+	background-color: var(--light-green);
+	border-radius: 10px;
+}
+
+#gallery-sub-head .image-add-btn .plus-logo {
+	width: 15px;
+	height: 15px;
+}
+
+#gallery-sub-head .image-add-btn span {
+	padding-left: 5px;
+	font-size: 16px;
+	color: var(--main);
+}
+
+#club-gallery-list {
+	padding: 0 80px 70px 80px;
+	display: flex;
+	flex-flow: wrap;
+	column-gap: 16px;
+	row-gap: 15px;
+
+}
+
+#club-gallery-list .club-gallery {
+
+}
+
+#club-gallery-list .club-gallery img {
+	width: 155px;
+	height: 155px;
+	border-radius: 30px;
+}

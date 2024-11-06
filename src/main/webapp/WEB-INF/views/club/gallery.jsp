@@ -41,3 +41,23 @@
     </nav>
 </header>
 
+<%-- 사진 --%>
+<div id="gallery-sub-head">
+    <div class="gallery-title">사진첩</div>
+    <button type="button" class="image-add-btn">
+        <img class="plus-logo" src="${path}/resources/static/images/plus.svg" alt="플러스 로고">
+        <span>추가하기</span>
+    </button>
+</div>
+
+<div id="club-gallery-list">
+    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
+    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
+    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
+    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
+    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
+    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
+    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
+    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
+    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
+</div>
