@@ -5,7 +5,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <!-- jsp작업 -->
-<div id="clubProfileColor"></div>
+<div id="club-profile-background"></div>
 
 <!-- 모임 프로필 -->
 <div id="club-profile">
@@ -29,17 +29,19 @@
 
 </div>
 
+<%-- 서브 메뉴 --%>
 <header id="sub-menu">
 	<nav>
         <ul>
             <li class="selected"><a href="${path}/club/view">정보</a></li>
-            <li><a href="${path}/club/schedule">일정</a></li>
+            <li><a href="${path}/club/scheduler">일정</a></li>
             <li><a href="${path}/club/hike">등산 기록</a></li>
             <li><a href="${path}/club/gallery">사진첩</a></li>
         </ul>
     </nav>
 </header>
 
+<%-- 모임 정보 --%>
 <div id="intro">
 	<div class="intro-title">소개</div>
 	<div class="intro-content"><pre>안녕하십니까? ○○○산악회 회원 여러분.
