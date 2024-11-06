@@ -1,0 +1,65 @@
+#main-footer {
+    background-color: var(--dark-gray);
+    height: var(--main-footer-height);
+}
+
+#main-footer .footer-logo {
+    width: 80px;
+    height: auto;
+}
+
+#main-footer .github-logo {
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+}
+
+#main-footer .main-footer-wrap {
+    height: 100%;
+    width: 60%;
+    max-width: 840px;
+    min-width: 576px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+#main-footer .logo-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4px 18px 4px;
+    border-bottom: 1px solid var(--gray02);
+    margin-bottom: 22px;
+}
+
+#main-footer .footer-content {
+    color: var(--gray07);
+    font-size: 14px;
+    padding: 0 4px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#main-footer .footer-content h2 {
+    font-weight: 700;
+}
+
+#main-footer .footer-content li {
+    font-weight: 300;
+
+}
+
+#main-footer address {
+    display: inline;
+}
+
+#main-footer .member-list {
+   display: inline-flex;
+    gap: 4px;
+}

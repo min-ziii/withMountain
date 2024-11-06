@@ -1,0 +1,16 @@
+@import url('font.css');
+@import url('constants.css');
+@import url('reset.css');
+@import url('inc.css');
+
+body {
+    background-color: var(--gray07); /* for test */
+}
+
+#center {
+    width: 1170px;
+    margin: 0 auto;
+    background-color: var(--white);
+    height: fit-content(calc(100% - var(--main-menu-height) - var(--main-footer-height)));
+    min-height: calc(100% - var(--main-menu-height) - var(--main-footer-height));
+}

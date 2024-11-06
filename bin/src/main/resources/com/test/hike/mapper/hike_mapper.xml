@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Doctype가 mapper로 시작하기 때문에 아래 태그도 mapper로 시작한다. -->
+<!-- mapper 파일의 역할? : SQL 작성 -->
+<mapper namespace="com.test.hike.mapper.hike_mapper"> <!-- 파일의 경로와 함께 namespace에 파일명을 적는 것이 개발계의 관습. -->
+	<!--
+	<select id="">SELECT * FROM tblAddress</select>
+	<insert id="">INSERT INTO tblAddress</insert>
+	<update id="">UPDATE tblAddress () SET ()</update>
+	<delete id="">DELETE FROM tblAdress WHERE</delete>
+	-->
+	
+	<!-- 	
+	MapAPIDAO.java의 add()에서 요청하는 query문
+	<insert id="add" parameterType="dto">
+		INSERT INTO tblAddress VALUES (seqMountainspot.nextVal, #{spot_num}, #{mt_code}, #{spot_name}, #{mt_name}, #{geo_x}, #{geo_y})
+	</insert>
+	-->
+	 
+</mapper>

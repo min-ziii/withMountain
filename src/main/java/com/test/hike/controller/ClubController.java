@@ -18,5 +18,10 @@ public class ClubController {
 	public String view() {
 		return "club.club-view";
 	}
+	
+	@GetMapping("/list") 
+	public String list() {
+		return "club.club-list";
+	}
 
 }

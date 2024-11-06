@@ -3,7 +3,7 @@
 /* 프로필 ----------------------------------------------------- */
 #clubProfileColor {
 	width: 100%;
-	height: 150px;
+	height: 200px;
 	background-color: var(--light-green);
 }
 
@@ -12,7 +12,8 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 20px;
+	padding: 0 40px;
+	margin-bottom: 50px;
 }
 
 /* 프로필 전체 */
@@ -80,16 +81,84 @@
 }
 
 
-/* 모임 정보 > 소개 */
+/* 모임 서브 메뉴 -----------------------------------------------*/
+#sub-menu {	
+	width: 100%;
+	height: var(--main-menu-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+	padding: 0 70px;
+	border-top: 1px solid var(--gray05);
+    border-bottom: 1px solid var(--gray05);
+    background-color: var(--white);
+    margin-bottom: 80px;
+}
+#sub-menu > nav {
+ 	width: 100%;
+	max-width: 1170px;
+	margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    background-color: var(--white);
+}
+
+#sub-menu > nav > ul {
+    display: flex;
+    justify-content: space-around;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+
+#sub-menu > nav > ul > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    
+    padding: 0;
+    margin: 0;
+}
+
+#sub-menu >  nav > ul > li > a {
+    width: 60%;
+    height: 60%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 16px;
+    transition: transform 0.3s ease, color 0.3s ease;
+    
+    color: var(--gray03);
+}
+
+#sub-menu > nav > ul > li > a:hover {
+    transform: translateY(-2px);
+}
+
+#sub-menu .selected a {
+	color: var(--main);
+	font-weight: 700;
+}
+
+
+/* 모임 정보 > 소개 ---------------------------------------------------*/
 #intro {
-	padding: 0 20px;
+	padding: 0 40px;
 }
 
 #intro .intro-title {
 	font-size: 16px;
 	font-weight: 500;
 	color: var(--black);
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 }
 
 #intro .intro-content {
@@ -98,29 +167,57 @@
 	background-color: var(--gray07);
 	padding: 20px;
   	display: flex;
+  	margin-bottom: 50px;
   	align-items: center;
+}
+
+#intro .intro-content pre {
   	line-height: 20px;
   	color: var(--gray02);
   	font-weight: 300;
 }
 
+/* 모임 정보 > 모임원 수 */
+
+#club-member {
+	padding: 0 40px;
+}
+
 #club-member .memeber-toggle {
   	display: flex;
   	align-items: center;
+	font-size: 14px;
+	font-weight: 400;
+	color: var(--gray02);
+/* 	padding: 0 10px; */
+	margin-bottom: 5px;
 }
 
 #club-member .memeber-toggle .toggle-icon {
 	width: 30px;
 	height: 30px;
-	font-size: 16px;
-	font-weight: 500;
-	color: var(--black);
 }
 
+#club-member .club-member-profile {
+	padding: 5px 20px 50px 0px;
+}
 
+#club-member .club-member-profile .member-profile {
+	display: inline-block;
+	margin: 0 10px;
+}
 
+#club-member .club-member-profile .member-profile img {
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+}
 
+#club-member .club-member-profile .member-profile .member-name {
+	margin-top: 5px;
+	text-align: center;
 
+}
 
 
 

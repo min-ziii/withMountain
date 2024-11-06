@@ -12,7 +12,7 @@
 	
 	<div id="profile-info">
 		<div class="profile-image">
-			<img src="${path}/resources/static/images/club/profileImage.jpg" alt="모임 프로필 사진">
+			<img src="${path}/resources/static/images/club-image.jpg" alt="모임 프로필 사진">
 		</div>
 		<div class="clubInfo">
 			<h1 class="clubName">한사랑 산악회</h1>
@@ -29,6 +29,16 @@
 
 </div>
 
+<header id="sub-menu">
+	<nav>
+        <ul>
+            <li class="selected"><a href="${path}/club/view">정보</a></li>
+            <li><a href="${path}/club/schedule">일정</a></li>
+            <li><a href="${path}/club/hike">등산 기록</a></li>
+            <li><a href="${path}/club/gallery">사진첩</a></li>
+        </ul>
+    </nav>
+</header>
 
 <div id="intro">
 	<div class="intro-title">소개</div>
@@ -39,10 +49,102 @@
 
 <!-- 모임원 -->
 <div id="club-member">
-	<button type="button" class="memeber-toggle">
+	<div class="memeber-toggle">
 		<img class="toggle-icon" src="${path}/resources/static/images/arrow-down.svg" alt="토글 아이콘">가입 멤버 (6)
-	</button>
+	</div>
+	
+	<div class="club-member-profile">
+	
+		<div class="member-profile">
+			<img src="${path}/resources/static/images/memberProfie.jpg" alt="모임원 프로필 사진">
+			<div class="member-name">
+				이택조
+			</div>
+		</div>
+		<div class="member-profile">
+			<img src="${path}/resources/static/images/default-profile.svg" alt="모임원 프로필 사진">
+			<div class="member-name">
+				이택조
+			</div>
+		</div>
+		<div class="member-profile">
+			<img src="${path}/resources/static/images/default-profile.svg" alt="모임원 프로필 사진">
+			<div class="member-name">
+				이택조
+			</div>
+		</div>
+		<div class="member-profile">
+			<img src="${path}/resources/static/images/default-profile.svg" alt="모임원 프로필 사진">
+			<div class="member-name">
+				이택조
+			</div>
+		</div>
+		<div class="member-profile">
+			<img src="${path}/resources/static/images/default-profile.svg" alt="모임원 프로필 사진">
+			<div class="member-name">
+				이택조
+			</div>
+		</div>
+		<div class="member-profile">
+			<img src="${path}/resources/static/images/default-profile.svg" alt="모임원 프로필 사진">
+			<div class="member-name">
+				이택조
+			</div>
+		</div>
+		
+	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
