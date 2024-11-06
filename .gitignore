@@ -10,6 +10,7 @@ build/
 # 빌드 결과물
 target/
 build/
+bin/
 
 # 로그 파일
 *.log
