@@ -1,10 +1,12 @@
 @import "../style.css";
 
+/* 공통 사항 */
 /* 글자크기 */
 .clublist-title {
 	font-size: 24px;
 	line-height: 1.6;
 	margin: 10px;
+	font-weight: bold;
 }
 .clublist-content {
 	font-size: 14px;
@@ -12,7 +14,6 @@
 	margin: 10px;
 	color: var(--gray02);
 }
-
 /* 작은 로고 크기 */
 .clock-logo,
 .users-logo,
@@ -21,18 +22,18 @@
 }
 
 
-/* 가운데 정렬 */
+/* 1. 헤더문구 & 검색창 */
+/* 1-1. 헤더문구 가운데정렬 */
 #clublist-header {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	padding: 24px 16px 32px;
+	padding: 100px 16px 32px;
 }
 
-
-/* 검색창 */
+/* 1-2. 검색창 */
 #search-box {
 	border-radius: 30px;
 	border: 1px solid var(--gray04);
@@ -46,7 +47,6 @@
 	margin: 24px 0 32px;
 	box-shadow: 0 4px 8px 0 rgb(0 0 0/4%);
 }
-
 #search-text {
 	font-size: 15px;
 	color: var(--gray01);
@@ -65,13 +65,13 @@
 }
 
 
-/* 가입한 모임 */
+/* 2. 가입한 모임리스트 */
 #clublist-joinlist {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	height: 669px;
+	padding: 20px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 10px;
+	place-items: center;
 }
 #joinlist-header {
 	display: flex;
@@ -81,18 +81,15 @@
 	margin: 10px;
 }
 
+/* 2-1. 가입한 모임 카드 */
 #clublist-joinlist .joinclub {
-	float: left;
 	width: 330px;
 	height: 300px;
-	/* margin: auto; */
-	/* box-shadow: 0 4px 8px 0 rgb(0 0 0/4%); */
+	margin-bottom: 20px;
 	box-shadow: 0 1px 5px 0 rgb(0 0 0/8%);
 	border-radius: 10px;
 	border: 1px solid var(--gray07);
 }
-
-
 .joinclub .joinclub-image {
 	width: 330px;
 	height: 185px;
@@ -100,6 +97,7 @@
 	border-radius: 10px 10px 0 0;
 }
 
+/* 2-2. 가입한 모임 정보 */
 .joinclub .joinclub-content {
 	padding: 16px;
 	border-radius: 0 0 10px 10px;
@@ -113,8 +111,8 @@
 	font-size: 16px;
 	line-height: 1.6;
 	color: var(--balck);	
+	font-weight: 500;
 }
-
 .joinclub .joinclub-content .joinclub-footer {
 	display: flex;
 	align-items: center;	
@@ -127,15 +125,153 @@
 
 
 
-/* 추천하는 모임 */
+/* 3. 추천하는 모임리스트 */
 #recommendlist-header {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+	margin: 10px;
 }
 #clublist-recommendlist {
-	
-}	
+	padding: 20px;
+}
 
+/* 3-1. 추천모임 카드 */
+#clublist-recommendlist .recommendclub {
+	width: 1130px;
+	height: auto;
+	padding: 14px;
+	display: flex;
+	border-radius: 10px;
+	border: 1px solid var(--gray07);
+	box-shadow: 0 2px 4px 0 #00000010;
+}
+
+/* 3-2. 추천모임 대표이미지 */
+.recommendclub .joinclub-image {
+	width: 150px;
+	object-fit: cover;
+	border-radius: 10px;
+	margin: 10px; 
+}
+
+/* 3-3. 추천모임 내용 */
+.recommendclub .recommendclub-content {
+	margin: 5px;
+	margin-left: 10px;
+}
+.recommendclub .recommendclub-content .recommendclub-header, .recommendclub-intro, .recommendclub-tag, .recommendclub-footer {
+	margin-top: 5px;
+}
+.recommendclub .recommendclub-content .recommendclub-header {
+	display: flex;
+	align-items: center;	
+	justify-content: space-between;
+	/* margin-top: 0; */
+}
+.recommendclub .recommendclub-content .recommendclub-header div:nth-child(1) {
+	font-size: 16px;
+	line-height: 1.6;
+	color: var(--balck);	
+	font-weight: 500;
+}
+.recommendclub .recommendclub-content .recommendclub-intro {
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--gray01);
+	padding-right: 40px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.recommendclub .recommendclub-content .recommendclub-tag {
+	padding-top: 10px;
+}
+.recommendclub .recommendclub-content .recommendclub-tag .recommendclub-tag-item {
+	display: inline-block;
+	margin: 0 5px 5px 0;
+	padding: 3px 7px;
+	background-color: var(--gray07);
+	color: var(--gray01);
+	border-radius: 30px;
+	font-size: 12px;
+}
+.recommendclub .recommendclub-content .recommendclub-footer {
+	display: flex;
+	align-items: center;	
+	justify-content: space-between;
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--gray02);
+}
+
+
+/* 4. 모임 플러스 버튼  */
+#club-plus-btn {
+	position: fixed;
+	width: 70px;
+	height: 70px;
+	right: 20px;
+	bottom: 20px;
+	border-radius: 50%;
+	background-color: var(--light-green);
+	display: flex;
+	flex-direction: column; /* 요소검사에서 flex 버튼으로 지정/복붙 */
+	align-items: center; /* 요소검사에서 flex 버튼으로 지정/복붙 */
+	justify-content: center; /* 요소검사에서 flex 버튼으로 지정/복붙 */
+}
+#club-plus-btn img {
+	 height: 45%;
+}
+
+#club-close-btn {
+	position: fixed;
+	width: 70px;
+	height: 70px;
+	right: 100px;
+	bottom: 20px;
+	border-radius: 50%;
+	background-color: var(--light-green);
+	display: flex;
+	flex-direction: column; /* 요소검사에서 flex 버튼으로 지정/복붙 */
+	align-items: center; /* 요소검사에서 flex 버튼으로 지정/복붙 */
+	justify-content: center; /* 요소검사에서 flex 버튼으로 지정/복붙 */
+}
+#club-close-btn img {
+	 height: 45%;
+}
+
+#club-add-btn {
+	position: fixed;
+	width: 70px;
+	height: 70px;
+	right: 100px;
+	bottom: 100px;
+	border-radius: 50%;
+	background-color: var(--light-green);
+	display: flex;
+	flex-direction: column; /* 요소검사에서 flex 버튼으로 지정/복붙 */
+	align-items: center; /* 요소검사에서 flex 버튼으로 지정/복붙 */
+	justify-content: center; /* 요소검사에서 flex 버튼으로 지정/복붙 */
+}
+#club-add-btn img {
+	 height: 45%;
+}
+
+#club-otp-btn {
+	position: fixed;
+	width: 70px;
+	height: 70px;
+	right: 100px;
+	bottom: 180px;
+	border-radius: 50%;
+	background-color: var(--light-green);
+	display: flex;
+	flex-direction: column; /* 요소검사에서 flex 버튼으로 지정/복붙 */
+	align-items: center; /* 요소검사에서 flex 버튼으로 지정/복붙 */
+	justify-content: center; /* 요소검사에서 flex 버튼으로 지정/복붙 */
+}
+#club-otp-btn img {
+	 height: 45%;
+}
