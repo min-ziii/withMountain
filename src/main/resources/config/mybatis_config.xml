@@ -3,6 +3,6 @@
 <configuration>
 	<!-- Type의 별칭을 지정할 수 있다. -->
 	<typeAliases>
-		<typeAlias type="com.test.hike.dto.MapCustomDTO" alias="MapCustomDTO"/>
+		<typeAlias type="com.test.hike.dto.HikingRoadSpotDTO" alias="SpotDTO"/>
 	</typeAliases>
 </configuration>

@@ -1,8 +1,10 @@
 package com.test.hike.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
-import com.test.hike.dto.MapCustomDTO;
+import com.test.hike.dto.HikingRoadSpotDTO;
 import com.test.hike.mapper.MapCustomMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -12,12 +14,9 @@ import lombok.RequiredArgsConstructor;
 public class MapCustomDAO {
 	
 	private final MapCustomMapper mapper;
-	
-	/*
-	// 데이터 insert를 위한 add() 정의
-	public int add(MapAPISpotDTO dto) {
+
+	public List<HikingRoadSpotDTO> getHikingRoadSpots() {
 		
-		return mapper.add(dto); // MapAPIMapper.xml에서 insert 구문 작성
+		return mapper.getHikingRoadSpots();
 	}
-	*/
 }

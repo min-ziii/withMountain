@@ -6,13 +6,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
-	<link rel="stylesheet" href="http://bit.ly/3WJ5ilK">
 	<style>
 		#map {
 			width: 770px;
 			height: 400px;
 		}
 	</style>
+	
 </head>
 <body>
 	<!-- map.jsp -->
@@ -22,10 +22,11 @@
 		<div id="map"></div>
 	</div>
 	
+	<div>${list[0].spot_x}</div> <!-- 등산로 지점 첫번째 데이터의 x좌표 -->
+	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.14.0/proj4.js"></script>
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d8de9ed5ee23a0becf5c950f18bbddf4"></script>
 	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-	<script src="https://bit.ly/4cMuheh"></script>
 	<script>
 		
 		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
@@ -37,22 +38,14 @@
 		var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 		
 		// 각 좌표계 정의
-		const epsg4326 = 'EPSG:4326';
-		const itrf2000tm = '+proj=tmerc +lat_0=38.0 +lon_0=127.0 +x_0=200000.0 +y_0=600000.0 +k=1.0 +ellps=GRS80 +units=m +no_defs';
-		
+		const EPSG4326 = 'EPSG:4326'; // proj4js에 기본적으로 등록되어 있다.
+		const ITRF2000TM = '+proj=tmerc +lat_0=38.0 +lon_0=127.0 +x_0=200000.0 +y_0=600000.0 +k=1.0 +ellps=GRS80 +units=m +no_defs';
 		/*
 			할 일
 			산림청 json파일에서 좌표데이터 가져와서 지도에 그리기
 			가장 먼저 할 일 : SPOT 데이터 220개를 Map API에 일단 표기.
 			왜? 시작점/분기점/종료점을 사용자가 선택하게 해야 하니까.
 					
-			JSON 파일을 그대로 쓰기에는 굳이 쓸 필요 없는 데이터가 너무 많다.
-			데이터를 내 임의로 가공해서 Oracle DB에 저장하는 작업이 선행돼야 하나?
-					
-			1. SQL Developer에서 SPOT 저장용 SQL을 만들어서 DB 생성하고
-			2. SPOT 220개 데이터가 담긴 JSON 파일을 임의로 정제해서 넣고(수작업)
-			3. MyBatis Framework를 사용한 SELECT로
-			4. 이름(DETAIL_SPO), 좌표(geometry key의 x, y value) 가져와서?
 			5. 가져온 좌표는 ITRF2000 기반 TM 좌표니까 KAKAO API가 사용하는 WGS84/EPSG:4326(경도lng, 위도lat) 좌표로 변환하고?
 			6. KAKAO API sample '다양한 이미지 마커 생성하기'로 DETAIL_SPO가 "시종점"인지 "분기점"인지 구분해서 마커를 박고?
 			
@@ -62,7 +55,7 @@
 			10. 등산로명(PMNTN_NM), 등산로길이(PMNTN_LT), 등산로난이도(PMNTN_DFFL),
 			    등산로상행시간(PMNTN_UPPL), 등산로하행시간(PMNTN_GODN)을 가져와서?
 			-문제1: 등산로명이 없는 등산로도 있음-
-			11. 당연히 proj4js를 써서 ITRS2000 -> WGS84/EPSG:4326로 좌표계 변환해주고?
+			11. 당연히 proj4js를 써서 ITRF2000 -> WGS84/EPSG:4326로 좌표계 변환해주고?
 			12. KAKAO API sample '원, 선, 사각형, 다각형 표시하기'의 polyline 그리기로 등산로 다 그려주고?
 			-문제2: 그려진 등산로 선(말그대로 그냥 지도 위에 그림임)을 사용자가 클릭하면
 			해당 등산로가 선택된 상태가 되도록 구현한다-를 어떻게?-
@@ -77,6 +70,36 @@
 			
 		*/
 		
+		let coord = [];
+		
+		
+		/*
+		for (var i = 0; i < list.length; i++) {
+			coord.push(proj4(ITRF2000TM, EPSG4326, [list[i].spot_x, list[i].spot_y]));
+		}
+		console.log(coord);
+		
+		// 등산로 지점 SPOT들을 Marker로 표시할 좌표들이 들어갈 객체 배열
+		var spotPositions = [];
+		
+		for (var i = 0; i < list.length; i++) {
+			spotPositions.push({latlng: new kakao.maps.LatLng(list[i].spot_x, list[i].spot_y)});
+		}
+		
+		var imageSrc = '/resources/static/images/spot-startend.svg';
+		
+		for (var i = 0; i < spotPositions.length; i++) {
+			
+			// Marker 이미지의 size 설정
+			var imageSize = new kakao.maps.size(32, 32);
+			
+			// Marker 이미지 생성
+			var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+			
+			// Marker 생성
+
+		}
+		*/
 		
 		/* 
 		let temp = [];

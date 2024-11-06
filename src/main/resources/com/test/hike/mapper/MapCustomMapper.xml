@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Doctype가 mapper로 시작하기 때문에 아래 태그도 mapper로 시작한다. -->
+<!-- mapper 파일의 역할? : SQL query 작성 -->
+<!-- mapper(java)파일의 경로와 함께 namespace에 파일명을 적는 것이 개발계의 관습. -->
+<mapper namespace="com.test.hike.mapper.MapCustomMapper">
+	
+	<!-- MyBatis가 DB의 컬럼명과 DTO의 필드명을 잘 매핑할 수 있게 resultMap 명시. -->
+	<resultMap id="SpotDTOMap" type="SpotDTO">
+	    <result property="spot_id" column="spot_id"/>
+	    <result property="mt_id" column="mt_id"/>
+	    <result property="spot_type" column="spot_type"/>
+	    <result property="mt_name" column="mt_name"/>
+	    <result property="spot_x" column="spot_x"/>
+	    <result property="spot_y" column="spot_y"/>
+	</resultMap>
+	
+	<select id="getHikingRoadSpots" resultMap="SpotDTOMap">
+		SELECT spot_id, mt_id, spot_type, mt_name, spot_x, spot_y FROM HikingRoadSpot
+	</select>
+	 
+</mapper>
