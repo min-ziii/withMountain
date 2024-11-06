@@ -5,7 +5,7 @@
 <tiles-definitions>
 
 	<!-- 그 외 페이지 -->
-	<definition name="club.*" template="/WEB-INF/views/layout/index.jsp">
+	<definition name="club.*" template="/WEB-INF/views/layout/center.jsp">
 		<put-attribute name="main-menu" value="/WEB-INF/views/inc/main-menu.jsp"/>
 		<put-attribute name="asset" value="/WEB-INF/views/club/asset.jsp"/>
 		<put-attribute name="content"
@@ -13,7 +13,7 @@
 		<put-attribute name="main-footer" value="/WEB-INF/views/inc/main-footer.jsp"/>
 	</definition>
 
-	<definition name="community.*" template="/WEB-INF/views/layout/submenu-layout.jsp">
+	<definition name="community.*" template="/WEB-INF/views/layout/sub-menu.jsp">
 		<put-attribute name="main-menu" value="/WEB-INF/views/inc/main-menu.jsp"/>
 		<put-attribute name="sub-menu" value="/WEB-INF/views/inc/community-menu.jsp"/>
 		<put-attribute name="asset" value="/WEB-INF/views/community/asset.jsp"/>
@@ -30,7 +30,7 @@
 		<put-attribute name="main-footer" value="/WEB-INF/views/inc/main-footer.jsp"/>
 	</definition>
 
-	<definition name="mypage.index" template="/WEB-INF/views/layout/index.jsp">
+	<definition name="mypage.index" template="/WEB-INF/views/layout/center.jsp">
 		<put-attribute name="main-menu" value="/WEB-INF/views/inc/main-menu.jsp"/>
 		<put-attribute name="asset" value="/WEB-INF/views/mypage/asset.jsp"/>
 		<put-attribute name="content"
@@ -39,7 +39,7 @@
 	</definition>
 
 	<!-- 홈페이지 -->
-	<definition name="*" template="/WEB-INF/views/layout/index.jsp">
+	<definition name="*" template="/WEB-INF/views/layout/center.jsp">
 		<put-attribute name="main-menu" value="/WEB-INF/views/inc/main-menu.jsp"/>
 		<put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp"/>
 		<put-attribute name="content"
