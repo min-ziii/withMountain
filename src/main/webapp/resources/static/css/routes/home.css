@@ -1,1 +1,69 @@
 @import "../style.css";
+
+/* 글자크기 */
+.header-title {
+	font-size: 24px;
+	line-height: 1.6;
+	margin: 10px;
+	font-weight: bold;
+}
+.header-content {
+	font-size: 14px;
+	line-height: 1.6;
+	margin: 10px;
+	color: var(--gray02);
+}
+/* 작은 로고 크기 */
+.clock-logo,
+.users-logo,
+.usercheck-logo {
+	margin-left: 2px;
+}
+.color-green {
+	color: var(--main);
+}
+
+/* 1. 헤더문구 & 검색창 */
+/* 1-1. 헤더문구 가운데정렬 */
+#home-header,
+#mini-mtlist-header,
+#hike-plan-club-header,
+#community-best-header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding: 100px 16px 32px;
+}
+
+/* 1-2. 검색창 */
+#search-box {
+	border-radius: 30px;
+	border: 1px solid var(--gray04);
+	height: 48px;
+	width: 600px;
+	padding: 10px 20px;
+	display:flex;
+	align-items: center;
+	justify-content: space-between;
+	background: var(--white);
+	margin: 24px 0 32px;
+	box-shadow: 0 4px 8px 0 rgb(0 0 0/4%);
+}
+#search-text {
+	font-size: 15px;
+	color: var(--gray01);
+	opacity: .3;
+	font-weight: 500;
+	width: 500px;
+	border: none;
+}
+#search-btn {
+	border: none;
+	background-color: transparant;
+	outline: none;
+	width: 22px;
+	height: 22px;
+	margin-left: auto;
+}

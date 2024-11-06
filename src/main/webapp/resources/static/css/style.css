@@ -2,6 +2,7 @@
 @import url('constants.css');
 @import url('reset.css');
 @import url('inc.css');
+@import url('tagify.css');
 
 body {
     background-color: var(--gray07); /* for test */

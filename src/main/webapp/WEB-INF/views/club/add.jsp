@@ -4,9 +4,7 @@
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-
-<h1>모임 생성 하기</h1>
-
+<div id="clubadd-title">모임 생성 하기</div>
 
 <form method="POST" action="" enctype="multipart/form-data"
 	id="club-add-form">
@@ -29,7 +27,7 @@
 		<div>
 			<label>대표사진</label>
 		</div>
-		<div>
+		<div class="upload-picture-img">
 			<input id="image" type="file" name="image" accept="image/*"
 				style="display: none;"> <img class="picture-logo"
 				src="${path}/resources/static/images/picture.svg" alt="파일첨부">
@@ -42,10 +40,8 @@
 		<div>
 			<label>모임명</label>
 		</div>
-		<div class="addon_input">
-			<input type="text" name="name" id="name" placeholder="모임명을 입력해 주세요."
+		<input class="addclub_input" type="text" name="name" id="name" placeholder="모임명을 입력해 주세요."
 				required>
-		</div>
 		<span class="error-message" id="name-error"></span>
 	</div>
 
@@ -53,54 +49,44 @@
 		<div>
 			<label>활동지역</label>
 		</div>
-		<div class="addon_input">
-			<select name="location_id" id="location_id" required>
+		<select class="addclub_input" name="location_id" id="location_id" required>
 				<option value="">활동지역을 선택해주세요</option>
 				<c:forEach items="${locations}" var="location">
 					<option value="${location.locationId}">${location.locationName}</option>
 				</c:forEach>
 			</select>
-		</div>
 	</div>
 
 	<div class="form-group">
 		<div>
 			<label>최대 인원수</label>
 		</div>
-		<div class="addon_input">
-			<input type="number" name="max_people" id="max_people" placeholder="모임 최대 인원수를 선택해주세."
+		<input class="addclub_input" type="number" name="max_people" id="max_people" placeholder="모임 최대 인원수를 선택해주세."
 				required>
-		</div>
 	</div>
 
 	<div class="form-group">
 		<div>
 			<label>모임 소개</label>
 		</div>
-		<div class="addon_textarea">
-			<textarea name="intro" maxlength="600"
+		<textarea id="addclub_textarea"  class="addclub_input addclub_full" name="intro" maxlength="600"
 				placeholder="내가 만드는 모임의 소개를 간단하게 작성해 주세요 !"></textarea>
-		</div>
 	</div>
 
 	<div class="form-group">
 		<div>
 			<label>해시 태그</label>
 		</div>
-		<div class="addon_input">
-			<input type="number" name="" id=""
-				placeholder="해시태그 입력(15자), (스페이스 바)를 눌러주세요." required>
-		</div>
+		<input class="addclub_input addclub_full" type="text" name="tag" id="tag"
+				placeholder="해시태그 입력(15자), (스페이스 바)를 눌러주세요.">
 	</div>
 
 	<div class="form-group">
 		<div>
-			<label>해시 태그</label>
+			<label>초대코드</label>
 		</div>
-		<div class="addon_input">
-			<input type="text" name="code" id="code" placeholder="초대코드는 자동으로 생성됩니다."
-				required>
-		</div>
+			<input class="addclub_input" type="text" name="code" id="code" placeholder="초대코드는 자동으로 생성됩니다."
+				required readonly>
 	</div>
 
 

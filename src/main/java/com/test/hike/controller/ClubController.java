@@ -12,18 +12,8 @@ public class ClubController {
 	public String index() {
 		return "club.index";
 	}
-
-<<<<<<< Updated upstream
-	
-	@GetMapping("/view") 
-	public String view() {
-		return "club.club-view";
-	}
 	
 	@GetMapping("/template") 
-=======
-	@GetMapping("/list")
->>>>>>> Stashed changes
 	public String list() {
 		return "club.template";
 	}
