@@ -84,11 +84,14 @@
 #clublist-joinlist .joinclub {
 	float: left;
 	width: 330px;
-	height: 284px;
+	height: 300px;
 	/* margin: auto; */
-	box-shadow: 0 4px 8px 0 rgb(0 0 0/4%);
-	border-radius: 10px 10px 0 0;
+	/* box-shadow: 0 4px 8px 0 rgb(0 0 0/4%); */
+	box-shadow: 0 1px 5px 0 rgb(0 0 0/8%);
+	border-radius: 10px;
+	border: 1px solid var(--gray07);
 }
+
 
 .joinclub .joinclub-image {
 	width: 330px;
@@ -99,7 +102,7 @@
 
 .joinclub .joinclub-content {
 	padding: 16px;
-	background-color: var(--white)
+	border-radius: 0 0 10px 10px;
 }
 .joinclub .joinclub-content .joinclub-header div:nth-child(1) {
 	font-size: 14px;
