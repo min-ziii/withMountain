@@ -12,14 +12,23 @@ export function initMap(selector, centerLat, centerLng, minZoomLevel, maxZoomLev
     const map = new kakao.maps.Map(container[0], options);
 
     $(".zoom-in").click(function () {
-        map.setLevel(maxZoomLevel);
-        disableZoomIn();
+        const currentLevel = map.getLevel();
+        const nextLevel = currentLevel - 1;
+
+        if (currentLevel > maxZoomLevel) {
+            map.setLevel(nextLevel);
+        }
     });
 
     $(".zoom-out").click(function () {
-        map.setLevel(minZoomLevel);
-        disableZoomOut();
+        const currentLevel = map.getLevel();
+        const nextLevel = currentLevel + 1;
+
+        if (currentLevel < minZoomLevel) {
+            map.setLevel(nextLevel);
+        }
     });
+
 
     kakao.maps.event.addListener(map, 'zoom_changed', function () {
         const currentLevel = map.getLevel();
@@ -27,7 +36,6 @@ export function initMap(selector, centerLat, centerLng, minZoomLevel, maxZoomLev
         if (currentLevel <= maxZoomLevel) {
             map.setLevel(maxZoomLevel);
             disableZoomIn();
-
 
         } else if (currentLevel >= minZoomLevel) {
             map.setLevel(minZoomLevel);
