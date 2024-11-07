@@ -4,7 +4,7 @@
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-<div id="clubadd-title">모임 생성 하기</div>
+<div id="clubadd-title">모임 정보 수정 하기</div>
 
 <form method="POST" action="" enctype="multipart/form-data"
 	id="club-add-form">
@@ -41,25 +41,8 @@
 		<div>
 			<label>활동지역</label>
 		</div>
-		<select class="addclub_input" name="location_id" id="location_id" required >
+		<select class="addclub_input" name="location_id" id="location_id" required>
 				<option value="">활동지역을 선택해주세요</option>
-				<option value="">서울특별시</option>
-				<option value="">부산광역시</option>
-				<option value="">대구광역시</option>
-				<option value="">인천광역시</option>
-				<option value="">광주광역시</option>
-				<option value="">대전광역시</option>
-				<option value="">울산광역시</option>
-				<option value="">새종특별자치시</option>
-				<option value="">경기도</option>
-				<option value="">강원도</option>
-				<option value="">충청북도</option>
-				<option value="">충청남도</option>
-				<option value="">전라북도</option>
-				<option value="">전라남도</option>
-				<option value="">경상북도</option>
-				<option value="">경상남도</option>
-				<option value="">제주도</option>
 				<c:forEach items="${locations}" var="location">
 					<option value="${location.locationId}">${location.locationName}</option>
 				</c:forEach>
@@ -68,9 +51,9 @@
 
 	<div class="form-group">
 		<div>
-			<label>최대 인원수 (1~50명)</label>
+			<label>최대 인원수</label>
 		</div>
-		<input class="addclub_input" type="number" name="max_people" id="max_people" min=1 max=50 placeholder="모임 최대 인원수를 선택해주세요."
+		<input class="addclub_input" type="number" name="max_people" id="max_people" placeholder="모임 최대 인원수를 선택해주세."
 				required>
 	</div>
 	</div>
@@ -109,9 +92,9 @@
 		<div>
 			<label>해시 태그</label>
 		</div>
-		<input class="addclub_input" type="text" name="tag" id="tag-input"
-				placeholder="해시태그 입력(15자), (엔터)를 눌러주세요.">
-		<div id="addclub-tagcontent">엔터를 누르면 해시태그가 완성돼요. 최대 5개</div>
+		<input class="addclub_input addclub_full" type="text" name="tag" id="tag"
+				placeholder="해시태그 입력(15자), (스페이스 바)를 눌러주세요.">
+		<div id="addclub-tagcontent">스페이스바를 누르면 해시태그가 완성돼요. 최대 5개</div>
 	</div>
 
 	<div class="form-group" id="addclub-code">
@@ -123,23 +106,19 @@
 	</div>
 	
 	<div class="addclub-btn-area">
-		<button type="submit" id="addclub-btn" onclick="location.href='http://localhost:8090/hike/club';">모임 생성하기</button>
+		<button type="submit" id="editclub-btn" onclick="location.href='http://localhost:8090/hike/club';">모임 수정하기</button>
+		<button type="submit" id="delclub-btn" onclick="location.href='http://localhost:8090/hike/club/del';">모임 삭제하기</button>
 	</div>
 	</div>
-
+	
+	
 </form>
 
 
 
 <script>
-	//태그 생성하기
-	// const input = document.getElementById('tag-input');
-	// const tagify = new Tagify(input);
-	//new Tagify(document.getElementById('tag'));
-
-
-	// 프로필 이미지 첨부
-	document.getElementById('image').addEventListener('change', function(e) {
+// 프로필 이미지 첨부
+document.getElementById('image').addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (file) {
         const reader = new FileReader();
@@ -148,6 +127,11 @@
             document.querySelector('.club-default-image').src = e.target.result;
         }
         reader.readAsDataURL(file);
-		}
-	});
+    }
+});
+
+
 </script>
+
+
+
