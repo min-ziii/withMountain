@@ -21,13 +21,13 @@
     align-items: center;
     width: 100%;
     margin-bottom: 20px;
-    position: relative;  /* 이 부분 유지 */
+    position: relative;  
 }
 
 .header h4 {
-    position: absolute;  /* 이 부분 유지 */
-    left: 50%;          /* 이 부분 유지 */
-    transform: translateX(-50%);  /* 이 부분 유지 */
+    position: absolute;  
+    left: 50%;          
+    transform: translateX(-50%);  
     margin: 0;
     z-index: 1;  /* 필요한 경우 추가 */
     font-weight: bold;

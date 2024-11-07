@@ -101,6 +101,7 @@
 .p-photo-pic {
 	width: 20%;
 	height: auto;
+	border-radius: 10px;
 }
 
 .photo-content a:hover {

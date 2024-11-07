@@ -45,20 +45,20 @@
     </nav>
 </header>
 
-<!-- 나의등산 내용 -->
+<!---------------------------------------- 나의등산 내용 --------------------------------------------->
 <div class="mypage-content">
 
+<div class="mypagetitle">소개</div>
 <div id="intro">
-	<div class="intro-title">소개</div>
 	<div class="intro-content">
 		<pre>중년은 죽지 않아 다 같이 열정 열정 열정!!!!!</pre>
 	</div>
 </div>
 
 <!-- -----------------가입한 모임 부분--------------------- -->
-<div id="myclub-list">
+<div class="mypagetitle">가입한 모임</div>
+<div id="mypage-list">
 
-	<div class="myclubname">가입한 모임</div>
 	<!-- 가입한 모임 리스트 > index.jsp에서 가져옴 -->
 	<div id="clublist-joinlist">
 	
@@ -109,21 +109,28 @@
 	
 	</div> <!-- clublist-joinlist -->
 	
-	</div>
 </div>
+
 
 <!-- -----------------일정--------------------- -->
 
+<div class="myscheduler">
+<div id="scheduler-sub-head">
+<div class="mypagetitle">일정</div>
+    <button type="button" class="scheduler-add-btn" onclick="location.href=''">
+        <img class="plus-logo" src="${path}/resources/static/images/plus.svg" alt="플러스 로고">
+        <span>추가하기</span>
+    </button>
+</div>
 
-
-
-
+<div id="calendar"></div>
+</div>
 <!-- -----------------등산 기록--------------------- -->
-<div id="myclub-list">
-
-<div class="myclubname">등산 기록</div>
-<div id="clubhike-list">
-
+<div class="mypagetitle">등산 기록</div>
+<div id="club-hike-list">
+	
+	
+	<c:forEach begin="1" end="2">
     <div class="club-hike">
         <div class="course-image">
             <img src="${path}/resources/static/images/map-test.jpg" alt="코스 사진">
@@ -162,16 +169,37 @@
             </div>
         </div>
     </div>
-</div>
+    </c:forEach>
 
-</div> <!-- 여기가 끝 -->
+</div>
 
 
 <!-- -----------------활동 기록--------------------- -->
+<div class="mypagetitle">활동 기록</div>
+
+<div class="myactivities"> <!-- 나의 활동기록 내용 -->
+
+<div class="tab-container">
+    <button class="tab-button" data-tab="free">자유 게시판</button>
+    <button class="tab-button" data-tab="photo">사진 게시판</button>
+    <button class="tab-button" data-tab="qna">QnA</button>
+</div>
+
+<div class="tab-content">
+    <div class="tab-pane" id="free"></div>
+    <div class="tab-pane" id="photo"></div>
+    <div class="tab-pane" id="qna"></div>
+</div>
 
 
+</div> <!-- 활동기록 내용 끝~ -->
+
+<!-- 여기가 진짜 끝입니다.ㅎㅎㅎㅎ -->
+
+
+</div> <!-- 나의 등산 끝~ -->
 <script>
-
+	/* mypage-tab.js 에서 확인하세요~ */
 </script>
 
 

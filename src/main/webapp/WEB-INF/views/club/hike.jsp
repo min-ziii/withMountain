@@ -45,7 +45,7 @@
 <div class="sub-title">등산 기록</div>
 <div id="club-hike-list">
 
-    <div class="club-hike">
+    <div class="myhike">
         <div class="course-image">
             <img src="${path}/resources/static/images/map-test.jpg" alt="코스 사진">
         </div>
