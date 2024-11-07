@@ -4,30 +4,37 @@
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-	
-	
-	<!--HikrariCP -->
+
+	<!-- DB 설정 파일 불러오기 -->
+	<bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:application.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- HikariCP -->
 	<bean class="com.zaxxer.hikari.HikariConfig" id="hikariConfig">
-		<!-- Log4j가 필요하면 -->
-		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:xe"></property>
-		
-		<property name="username" value="spring"></property> <!-- 나중에 spring project 서버 이름으로 바꿔야 한다. -->
-		<property name="password" value="java1234"></property>
+		<property name="driverClassName" value="${spring.datasource.driver-class-name}"/>
+		<property name="jdbcUrl" value="${spring.datasource.url}"/>
+		<property name="username" value="${spring.datasource.username}"/>
+		<property name="password" value="${spring.datasource.password}"/>
 	</bean>
-	
+
 	<bean class="com.zaxxer.hikari.HikariDataSource" id="dataSource">
-		<constructor-arg ref="hikariConfig"></constructor-arg>
+		<constructor-arg ref="hikariConfig"/>
 	</bean>
+
 	<!-- Interface Mapper 방식을 사용할거라 <mapper> 태그 삭제 -->
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sessionFactory">
-		<property name="dataSource" ref="dataSource"></property>
+		<property name="dataSource" ref="dataSource"/>
 		<!-- <property name="mapperLocations" value="classpath*:mapper/*.xml"></property> -->
-		<property name="configLocation" value="classpath:config/mybatis_config.xml"></property>
+		<property name="configLocation" value="classpath:config/mybatis_config.xml"/>
 	</bean>
 	
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sessionFactory"></constructor-arg>
+		<constructor-arg ref="sessionFactory"/>
 	</bean>
 	
 	<mybatis-spring:scan base-package="com.test.hike.mapper"/>
