@@ -18,5 +18,17 @@
 	<select id="getHikingRoadSpots" resultMap="SpotDTOMap">
 		SELECT spot_id, mt_id, spot_type, mt_name, spot_x, spot_y FROM HikingRoadSpot
 	</select>
-	 
+
+	<resultMap id="MountainDTOMap" type="MountainDTO">
+		<result property="mtId" column="mt_id"/>
+		<result property="mtName" column="mt_name"/>
+		<result property="mtAddress" column="mt_address"/>
+		<result property="mtX" column="mt_x"/>
+		<result property="mtY" column="mt_y"/>
+	</resultMap>
+
+	<select id="getSearchMountainSpots" resultMap="MountainDTOMap">
+		select * from MountainList
+	</select>
+
 </mapper>
