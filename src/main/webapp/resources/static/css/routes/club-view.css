@@ -1,7 +1,7 @@
 @import "../style.css";
 
-/* 1. 모임 정보 -------------------------------------------------- */
-/* 1-1. 프로필 ------------- */
+/* 공통사항 ------------------------------------------------- */
+/* 상단 모임 프로필 ------------------------ */
 #club-profile-background {
 	width: 100%;
 	height: 200px;
@@ -18,47 +18,120 @@
 }
 
 /* 프로필 전체 */
-#club-profile #profile-info{
+#profile-info{
 	display: flex;
 	align-items: center;
 }
 
 /* 프로필 이미지 */
-#club-profile #profile-info .profile-image img {
-	position: relative;	
+#profile-info .profile-image img {
+	position: relative;
 	top: -50px;
 	width: 180px;
 	height: 180px;
-	border-radius: 100px;	
+	border-radius: 100px;
 	border: 1px solid var(--gray06);
 }
 
 /* 프로필 정보 */
-#club-profile #profile-info .clubInfo {
+#profile-info .clubInfo {
 	margin-left: 10px;
 }
 
-#club-profile #profile-info .clubInfo .clubName {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 10px;
+#profile-info .clubInfo .clubName {
+	font-size: 22px;
+	font-weight: 700;
+	margin-bottom: 10px;
 }
 
-#club-profile #profile-info .clubInfo .clubCreateDate {
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--gray02);
+#profile-info .clubInfo .clubCreateDate {
+	font-size: 13px;
+	font-weight: 400;
+	color: var(--gray02);
 }
 
+/* 모임 서브 메뉴 ------------------------*/
+#sub-menu {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 70px;
+	border-top: 1px solid var(--gray05);
+	border-bottom: 1px solid var(--gray05);
+	background-color: var(--white);
+	margin-bottom: 80px;
 
-/* 1-2. 모임 채팅 + 가입하기 ------------- */
+	/* 상단 고정 작업*/
+	position: sticky;
+	top: -1px;
+	z-index: 99999;
+}
+
+#sub-menu > nav {
+	width: 100%;
+	max-width: 1170px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 20px;
+	/*background-color: var(--white);*/
+}
+
+#sub-menu > nav > ul {
+	display: flex;
+	justify-content: space-around;
+	height: auto;
+	padding: 0;
+	margin: 0;
+}
+
+#sub-menu > nav > ul > li {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 100%;
+	height: 100%;
+
+	padding: 0;
+	margin: 0;
+}
+
+#sub-menu >  nav > ul > li > a {
+	width: 60%;
+	height: 60%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	font-size: 16px;
+	transition: transform 0.3s ease, color 0.3s ease;
+
+	color: var(--gray03);
+}
+
+#sub-menu > nav > ul > li > a:hover {
+	transform: translateY(-2px);
+}
+
+#sub-menu .selected a {
+	color: var(--main);
+	font-weight: 700;
+}
+
+/* 1. 모임 정보 -------------------------------------------------- */
+/* 1-1. 모임 채팅 + 가입하기 ------------- */
 #info-btn {
 	display: flex;
 	justify-content: center;
 	align-itmes: center;
 }
 
-#club-profile #info-btn .chat-btn {
+#info-btn .chat-btn {
 	width: 70px;
 	height: 40px;
 	background-color: var(--gray06);
@@ -66,12 +139,12 @@
 	margin-right: 10px;
 }
 
-#club-profile #info-btn .chat-btn img {
+#info-btn .chat-btn img {
 	width: 35px;
 	height: 20px;
 }
 
-#club-profile #info-btn .register-btn {
+#info-btn .register-btn {
 	width: 100px;
 	height: 40px;
     font-weight: 500;
@@ -81,91 +154,19 @@
 	border-radius: 10px;
 }
 
-/* 1-3. 모임 서브 메뉴 ------------- */
-#sub-menu {	
-	width: 100%;
-	height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-	padding: 0 70px;
-	border-top: 1px solid var(--gray05);
-    border-bottom: 1px solid var(--gray05);
-    background-color: var(--white);
-    margin-bottom: 80px;
-
-	/* 상단 고정 작업*/
-	position: sticky;
-	top: -1px;
-}
-
-#sub-menu > nav {
- 	width: 100%;
-	max-width: 1170px;
-	margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
-    /*background-color: var(--white);*/
-}
-
-#sub-menu > nav > ul {
-    display: flex;
-    justify-content: space-around;
-    height: auto;
-    padding: 0;
-    margin: 0;
-}
-
-#sub-menu > nav > ul > li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 100%;
-    height: 100%;
-    
-    padding: 0;
-    margin: 0;
-}
-
-#sub-menu >  nav > ul > li > a {
-    width: 60%;
-    height: 60%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 16px;
-    transition: transform 0.3s ease, color 0.3s ease;
-    
-    color: var(--gray03);
-}
-
-#sub-menu > nav > ul > li > a:hover {
-    transform: translateY(-2px);
-}
-
-#sub-menu .selected a {
-	color: var(--main);
-	font-weight: 700;
-}
-
-/* 1-4. 모임 정보 > 소개 ------------- */
+/* 1-2. 모임 정보 > 소개 ------------- */
 #intro {
 	padding: 0 40px;
 }
 
-#intro .intro-title {
+.intro-title {
 	font-size: 18px;
 	font-weight: 500;
 	color: var(--black);
 	margin-bottom: 20px;
 }
 
-#intro .intro-content {
+.intro-content {
 	height: auto;
 	border-radius: 10px;
 	background-color: var(--gray07);
@@ -175,18 +176,18 @@
   	align-items: center;
 }
 
-#intro .intro-content pre {
+.intro-content pre {
   	line-height: 20px;
   	color: var(--gray02);
   	font-weight: 300;
 }
 
-/* 1-5. 모임 정보 > 모임원 수 ------------- */
+/* 1-3. 모임 정보 > 모임원 수 ------------- */
 #club-member {
 	padding: 0 40px;
 }
 
-#club-member .memeber-toggle {
+.memeber-toggle {
   	display: flex;
   	align-items: center;
 	font-size: 14px;
@@ -196,33 +197,185 @@
 	margin-bottom: 5px;
 }
 
-#club-member .memeber-toggle .toggle-icon {
+.memeber-toggle .toggle-icon {
 	width: 30px;
 	height: 30px;
 }
 
-#club-member .club-member-profile {
+.club-member-profile {
 	padding: 5px 20px 100px 0px;
 }
 
-#club-member .club-member-profile .member-profile {
+.club-member-profile .member-profile {
 	display: inline-block;
 	margin: 0 10px;
 }
 
-#club-member .club-member-profile .member-profile img {
+.club-member-profile .member-profile img {
 	width: 60px;
 	height: 60px;
 	border-radius: 30px;
 }
 
-#club-member .club-member-profile .member-profile .member-name {
+.club-member-profile .member-profile .member-name {
 	margin-top: 5px;
 	text-align: center;
 
 }
 
 /* 2. 모임 일정 -------------------------------------------------- */
+/* 2-1. 일정 타이틀 + 일정 추가하기_버튼 */
+#scheduler-sub-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 70px 5px 70px;
+}
+
+#scheduler-sub-head .scheduler-title {
+	font-size: 18px;
+	font-weight: 500;
+	color: var(--black);
+	/*margin-bottom: 20px;*/
+}
+
+#scheduler-sub-head .scheduler-add-btn {
+	width: 100px;
+	height: 35px;
+	background-color: var(--light-green);
+	border-radius: 10px;
+}
+
+#scheduler-sub-head .scheduler-add-btn .plus-logo {
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+}
+
+#scheduler-sub-head .scheduler-add-btn span {
+	padding-left: 5px;
+	font-size: 14px;
+	color: var(--main);
+	cursor: pointer;
+}
+
+
+/* 2-2. 달력 커스텀 */
+#calendar {
+	height: auto;
+	margin: 0 70px;
+	padding-bottom: 70px;
+	color: var(--dark-gray);
+}
+
+/* 2-2.a. 일정표 툴 바  */
+.fc .fc-toolbar.fc-header-toolbar {
+	margin: 0;
+	background-color: var(--white);
+	height: 60px;
+
+	font-size: 12px;
+	line-height: 30px;
+	color: var(--dark-gray);
+}
+
+/* 2-2.b. 툴바_버튼------ */
+
+/* 이전, 다음, 오늘 이동_버튼 */
+.fc .fc-button{
+	padding: 5px;
+}
+
+.fc .fc-button .fc-icon {
+	color: var(--gray03);
+}
+
+.fc .fc-toolbar-chunk .fc-button {
+	background-color: var(--white);
+	color: var(--gray02);
+	box-shadow: none;
+	border: none;
+	outline: none;
+	font-size: 14px;
+}
+
+/* 툴바 버튼 hover 시 배경색 변경 */
+.fc .fc-toolbar-chunk .fc-button:hover {
+	background-color: var(--white);
+	box-shadow: none;
+	border: none;
+	outline: none;
+}
+
+/* 툴바 사용 불가 버튼 hover 시 스타일 주지 않기 */
+.fc .fc-toolbar-chunk .fc-button:disabled:hover {
+	background-color: var(--white);
+	box-shadow: none;
+	border: none;
+	outline: none;
+}
+
+ /*날짜변경 화살표 아이콘*/
+.fc .fc-button-primary span {
+	 outline: none;
+	 box-shadow: none;
+ 	 border: none;
+	 background-color: var(--white);
+}
+
+/* 2-2.c. 날짜 수정 작업 ---------*/
+/* 일요일 날짜 : 빨간색 */
+.fc .fc-day-sun a {
+	color: var(--red);
+}
+
+/* 토요일 날짜: 파란색 */
+.fc .fc-day-sat a {
+	color: var(--blue);
+}
+
+.fc .fc-toolbar-title {
+	font-weight: normal;
+	font-size: 14px;
+	color: var(--dark-gray);
+}
+
+.fc-daygrid-day-frame {
+	padding: 5px;
+}
+
+/* 토요일 & 일요일 배경 색상 변경 */
+.fc-day:first-child {
+	background-color: var(--gray07);
+}
+
+.fc-day:last-child {
+	background-color: var(--gray07);
+}
+
+/* 2-2-d. 일정 등록 > 캘린더에 보여지는 일정 ---------- */
+.fc-event {
+	padding: 5px 10px;
+	margin-bottom: 5px;
+	border: none;
+	background-color: var(--white);
+	cursor: pointer;
+}
+
+.fc-event-title {
+	cursor: pointer;
+}
+
+.fc-event-title-container {
+	color: var(--dark-gray);
+	font-weight: 400;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.fc-direction-ltr .fc-daygrid-event.fc-event-end, .fc-direction-rtl .fc-daygrid-event.fc-event-start {
+	margin: 8px;
+}
 
 
 /* 3. 모임 등산 기록 --------------------------------------------------*/
@@ -243,7 +396,7 @@
 }
 
 /* 3-1. 등산 기록 ------------- */
-#club-hike-list .club-hike {
+.club-hike {
 	width: 480px;
 	height: 300px;
 	border-radius: 10px;
@@ -252,7 +405,7 @@
 	box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 
-#club-hike-list .club-hike .course-image img {
+.club-hike .course-image img {
 	width: 220px;
 	height: 260px;
 	object-fit: cover;
@@ -262,25 +415,26 @@
 	justify-content: center;
 }
 
-/* 3-2. 활동기록 내용 ------------- */
-#club-hike-list .club-hike .hike-main-content {
+/* 3-1-a. 활동기록 내용 ------------- */
+.club-hike .hike-main-content {
 	width: 200px;
 }
 
-/* 3-3.제목 ------------- */
-#club-hike-list .club-hike .hike-main-content .hike-title {
+/* 3-1-b.제목 ------------- */
+.club-hike .hike-main-content .hike-title {
 	font-size: 18px;
 	letter-spacing: .5px;
 	border-bottom: 1px solid var(--gray06);
 	line-height: 35px;
+	font-weight: 600;
 }
 
-/* 3-4.컨텐츠 ------------- */
-#club-hike-list .club-hike .hike-main-content .hike-content {
+/* 3-1-c.컨텐츠 ------------- */
+.club-hike .hike-main-content .hike-content {
 	margin-bottom: 35px;
 }
 
-#club-hike-list .club-hike .hike-main-content .hike-sub-content {
+.club-hike .hike-main-content .hike-sub-content {
 	padding-top: 10px;
 	font-size: 14px;
 	line-height: 1.6;
@@ -289,18 +443,18 @@
 	letter-spacing: .5px;
 }
 
-#club-hike-list .club-hike .hike-main-content .hike-sub-content img {
+.club-hike .hike-main-content .hike-sub-content img {
 	margin-right: 5px;
 }
 
-#club-hike-list .club-hike .hike-total-record {
+.club-hike .hike-total-record {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	/*padding: 0 5px;*/
 }
 
-#club-hike-list .club-hike .hike-total-record .hike-total-time {
+.club-hike .hike-total-record .hike-total-time {
 	width: 95px;
 	height: 60px;
 	border: 1px solid var(--gray06);
@@ -313,7 +467,7 @@
 	letter-spacing: .5px;
 }
 
-#club-hike-list .club-hike .hike-total-record .hike-total-distance {
+.club-hike .hike-total-record .hike-total-distance {
 	width: 95px;
 	height: 60px;
 	border: 1px solid var(--gray06);
@@ -326,7 +480,7 @@
 	letter-spacing: .5px;
 }
 
-#club-hike-list .club-hike .hike-total-record .hike-total-time span:nth-child(1), .hike-total-distance span:nth-child(1) {
+.club-hike .hike-total-record .hike-total-time span:nth-child(1), .hike-total-distance span:nth-child(1) {
 	display: flex;
 	justify-content: center;
 	font-size: 14px;
@@ -335,7 +489,9 @@
 	margin: 10px 0;
 }
 
-/* 3. 모임 사진첩 --------------------------------------------------*/
+/* 4. 모임 사진첩 --------------------------------------------------*/
+
+/* 4-1. 사진첩 타이틀 + 사진 추가하기_버튼 ------ */
 #gallery-sub-head {
 	display: flex;
 	justify-content: space-between;
@@ -343,31 +499,34 @@
 	padding: 0 80px 15px 80px;
 }
 
-#gallery-sub-head .gallery-title {
+.gallery-title {
 	font-size: 18px;
 	font-weight: 500;
 	color: var(--black);
 	/*margin-bottom: 20px;*/
 }
 
-#gallery-sub-head .image-add-btn {
-	width: 110px;
-	height: 40px;
+.image-add-btn {
+	width: 100px;
+	height: 35px;
 	background-color: var(--light-green);
 	border-radius: 10px;
 }
 
-#gallery-sub-head .image-add-btn .plus-logo {
+.image-add-btn .plus-logo {
 	width: 15px;
 	height: 15px;
+	cursor: pointer;
 }
 
-#gallery-sub-head .image-add-btn span {
+.image-add-btn span {
 	padding-left: 5px;
-	font-size: 16px;
+	font-size: 14px;
 	color: var(--main);
+	cursor: pointer;
 }
 
+/* 4-2. 사진첩 작업 ------ */
 #club-gallery-list {
 	padding: 0 80px 70px 80px;
 	display: flex;
@@ -377,12 +536,12 @@
 
 }
 
-#club-gallery-list .club-gallery {
+.club-gallery {
 
 }
 
-#club-gallery-list .club-gallery img {
+.club-gallery img {
 	width: 155px;
 	height: 155px;
-	border-radius: 30px;
+	border-radius: 10px;
 }

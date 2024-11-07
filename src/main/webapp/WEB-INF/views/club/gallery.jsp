@@ -24,7 +24,7 @@
         <button type="button" class="chat-btn">
             <img class="chat-logo" src="${path}/resources/static/images/chat-dark.svg" alt="채팅 로고">
         </button>
-        <button type="submit" class="register-btn" name="register-btn">가입하기</button>
+        <button type="submit" class="register-btn" name="register-btn" onclick="location.href='${path}/club/view'">가입하기</button>
     </div>
 
 </div>
@@ -44,7 +44,7 @@
 <%-- 사진 --%>
 <div id="gallery-sub-head">
     <div class="gallery-title">사진첩</div>
-    <button type="button" class="image-add-btn">
+    <button type="button" class="image-add-btn" onclick="location.href=''">
         <img class="plus-logo" src="${path}/resources/static/images/plus.svg" alt="플러스 로고">
         <span>추가하기</span>
     </button>

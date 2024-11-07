@@ -24,7 +24,7 @@
         <button type="button" class="chat-btn">
             <img class="chat-logo" src="${path}/resources/static/images/chat-dark.svg" alt="채팅 로고">
         </button>
-        <button type="submit" class="register-btn" name="register-btn">가입하기</button>
+        <button type="submit" class="register-btn" name="register-btn" onclick="location.href='${path}/club/view'">가입하기</button>
     </div>
 
 </div>
