@@ -6,13 +6,13 @@ const MAX_ZOOM_LEVEL = 1;
 $(document).ready(function () {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const lat = urlParams.get('lat');
-    const lng = urlParams.get('lng');
+    const mtY = urlParams.get('mtY');
+    const mtX = urlParams.get('mtX');
 
     const map = initMap(
         '#view-map',
-        parseFloat(lat),
-        parseFloat(lng),
+        parseFloat(mtY),
+        parseFloat(mtX),
         MIN_ZOOM_LEVEL,
         MAX_ZOOM_LEVEL);
 });
