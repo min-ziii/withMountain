@@ -369,3 +369,11 @@ function loadQnA() {
     
     qnaContent.innerHTML = boardHTML;
 }
+
+
+//여기는 상단바에 id줘서 해당 부분응로 이동하는 기능
+
+
+
+
+

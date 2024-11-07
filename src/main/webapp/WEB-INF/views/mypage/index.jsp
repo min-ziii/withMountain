@@ -37,10 +37,10 @@
 <header id="sub-menu">
 	<nav>
         <ul>
-            <li class="selected"><a href="${path}/club/view">정보</a></li>
-            <li><a href="${path}/club/schedule">일정</a></li>
-            <li><a href="${path}/club/hike">등산 기록</a></li>
-            <li><a href="${path}/club/gallery">활동기록</a></li>
+            <li><a href="#view">정보</a></li>
+            <li><a href="#schedule">일정</a></li>
+            <li><a href="#hike">등산 기록</a></li>
+            <li><a href="#activities">활동기록</a></li>
         </ul>
     </nav>
 </header>
@@ -48,7 +48,7 @@
 <!---------------------------------------- 나의등산 내용 --------------------------------------------->
 <div class="mypage-content">
 
-<div class="mypagetitle">소개</div>
+<div id="view" class="mypagetitle">소개</div>
 <div id="intro">
 	<div class="intro-content">
 		<pre>중년은 죽지 않아 다 같이 열정 열정 열정!!!!!</pre>
@@ -114,7 +114,7 @@
 
 <!-- -----------------일정--------------------- -->
 
-<div class="myscheduler">
+<div id="schedule" class="myscheduler">
 <div id="scheduler-sub-head">
 <div class="mypagetitle">일정</div>
     <button type="button" class="scheduler-add-btn" onclick="location.href=''">
@@ -126,7 +126,7 @@
 <div id="calendar"></div>
 </div>
 <!-- -----------------등산 기록--------------------- -->
-<div class="mypagetitle">등산 기록</div>
+<div id="hike" class="mypagetitle">등산 기록</div>
 <div id="club-hike-list">
 	
 	
@@ -175,7 +175,7 @@
 
 
 <!-- -----------------활동 기록--------------------- -->
-<div class="mypagetitle">활동 기록</div>
+<div id="activities" class="mypagetitle">활동 기록</div>
 
 <div class="myactivities"> <!-- 나의 활동기록 내용 -->
 
