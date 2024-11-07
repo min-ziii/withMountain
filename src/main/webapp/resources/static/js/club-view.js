@@ -1,3 +1,4 @@
+// 달력 띄우기
 document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
 
@@ -26,3 +27,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
     calendar.render();
 })
+
+//팝업창 띄우기
+function showModal() {
+    $('html, body').css({
+        overflow: 'hidden',
+        height: '100%'
+    });
+    $('#popup').css('display', 'flex');
+}
+
+//팝업창 닫기
+function popupClose() {
+    $('html, body').css({
+        overflow: 'visible',
+        height: '100%'
+    });
+    $('#popup').css('display', 'none');
+}
+
+// 모임 사진첩 사진 첨부
+    // 프로필 이미지 첨부
+    document.getElementById('gallery-image').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+    // 기본 프로필 이미지의 src를 새로운 이미지로 변경
+    document.querySelector('.club-default-image').src = e.target.result;
+}
+    reader.readAsDataURL(file);
+}
+});

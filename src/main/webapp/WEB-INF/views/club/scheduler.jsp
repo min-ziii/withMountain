@@ -4,6 +4,53 @@
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
+<%-- 팝업창 띄우기 --%>
+<div id="popup">
+    <div class="window">
+
+        <div class="popup-close">
+            <button type="button" id="popup-close-btn" onclick='popupClose();'>
+                <img class="close-logo" src="${path}/resources/static/images/close.svg" alt="닫기">
+            </button>
+        </div>
+
+        <%-- 팝업 내용 여기 안에서 작업--%>
+        <div class="window-title">등산 일정 생성</div>
+
+        <form method="" action="">
+        <table class="window-content">
+            <tr>
+                <th>제목: </th>
+                <td><input class="content-input" type="text" name="title" id="title" placeholder="일정 제목을 입력해주세요." required></td>
+            </tr>
+            <tr>
+                <th>일자: </th>
+                <td><input class="content-input" type="month" name="hike-date" id="hike-date" placeholder="일정 일자를 선택해주세요." required></td>
+            </tr>
+            <tr>
+                <th>일시: </th>
+                <td><input class="content-input" type="time" name="hike-time" id="hike-time" placeholder="일정 일시를 선택해주세요." required></td>
+            </tr>
+        </table>
+
+        <div class="course-add">
+            <button type="button" class="course-add-btn">즐겨찾기 불러오기</button>
+            <button type="button" class="course-add-btn">커스텀 코스 생성하기</button>
+        </div>
+
+        <%-- 추후 지도로 코스 보여줄 예정 --%>
+        <div class="course-map"></div>
+
+        <div class="window-btn">
+            <button type="button" class="close-btn" onclick="location.href='${path}/club/scheduler'">취소</button>
+            <button type="submit" class="plus-btn" onclick="location.href='${path}/club/scheduler'">등록</button>
+        </div>
+
+        </form>
+
+    </div>
+</div>
+
 <!-- jsp작업 -->
 <div id="club-profile-background"></div>
 
@@ -15,7 +62,14 @@
             <img src="${path}/resources/static/images/club-image.jpg" alt="모임 프로필 사진">
         </div>
         <div class="clubInfo">
-            <h1 class="clubName">한사랑 산악회</h1>
+
+            <div class="club-title">
+                <h1 class="clubName">한사랑 산악회</h1>
+                <button type="button" onclick="location.href='${path}/club/edit'">
+                    <img class="club-setting" src="${path}/resources/static/images/settings.svg" alt="모임 관리">
+                </button>
+            </div>
+
             <h2 class="clubCreateDate">개설 일자: 2024년 11월 01일</h2>
         </div>
     </div>
@@ -43,7 +97,7 @@
 
 <div id="scheduler-sub-head">
     <div class="scheduler-title">일정</div>
-    <button type="button" class="scheduler-add-btn" onclick="location.href=''">
+    <button type="button" class="scheduler-add-btn" onclick="showModal();">
         <img class="plus-logo" src="${path}/resources/static/images/plus.svg" alt="플러스 로고">
         <span>추가하기</span>
     </button>
