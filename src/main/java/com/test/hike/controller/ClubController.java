@@ -12,7 +12,6 @@ public class ClubController {
 	public String index() {
 		return "club.index";
 	}
-	
 
 	@GetMapping("/template")
 	public String list() {
