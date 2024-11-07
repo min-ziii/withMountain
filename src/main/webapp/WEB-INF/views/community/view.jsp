@@ -13,7 +13,7 @@
 	</div>
 	<div class="view-btn">
     	<div class="del-container">
-			<button class="del" onclick="location.href='${path}/community/del'"> 삭제하기</button>
+			<button class="del" onclick="confirmDelete()">삭제하기</button>
 		</div>
 		<div class="edit-container">
         	<button class="edit" onclick="location.href='${path}/community/edit'">수정하기</button>
@@ -37,8 +37,8 @@
         </div>
     </div>
     	<div class="photo-picture">
-    		<img src="${path}/resources/static/images/picture.svg" alt="첨부사진" class="p-photo-pic">
-    		<img src="${path}/resources/static/images/picture.svg" alt="첨부사진" class="p-photo-pic">
+    		<img src="${path}/resources/static/images/club-image.jpg" alt="첨부사진" class="p-photo-pic">
+    		<img src="${path}/resources/static/images/club-image.jpg" alt="첨부사진" class="p-photo-pic">
     	</div>
     	<div class="photo-content">
     		<a href="#">경사가 있는편인데 생각보다 금방 올라가요!
