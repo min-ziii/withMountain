@@ -177,3 +177,20 @@
     margin-top: 0;
 }
 
+
+/* 스크롤 높이 조정 */
+.mypagetitle {
+    scroll-margin-top: 300px; /* 메뉴바 높이에 맞게 조정 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
