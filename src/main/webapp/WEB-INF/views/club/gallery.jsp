@@ -4,6 +4,59 @@
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
+<%-- 팝업창 띄우기 --%>
+<div id="popup">
+    <div class="window">
+
+        <div class="popup-close">
+            <button type="button" id="popup-close-btn" onclick='popupClose();'>
+                <img class="close-logo" src="${path}/resources/static/images/close.svg" alt="닫기">
+            </button>
+        </div>
+
+        <%-- 팝업 내용 여기 안에서 작업--%>
+        <div class="window-title">사진 추가하기</div>
+
+        <form method="" action="">
+        <table class="window-content">
+            <tr>
+                <th>산 이름: </th>
+                <td><input class="mt-name-input" type="text" name="title" id="mt-name-input" placeholder="산 이름을 입력해주세요." required></td>
+            </tr>
+            <tr>
+                <th>파일명: </th>
+                <td>
+                    <input type="file" name="image" id="gallery-image" class="gallery-image" accept="image/*">
+                </td>
+            </tr>
+        </table>
+
+        <div class="form-club-img">
+            <div class="form-group">
+
+                <div class="club-img-upload">
+                    <!-- <div class="inner"> -->
+                    <label for="gallery-image">
+                        <img class="club-default-image" src="${path}/resources/static/images/club-image.jpg" alt="모임기본이미지">
+                    </label>
+                </div>
+
+                <div class="preview-image"></div>
+
+            </div>
+        </div>
+
+        <%-- 취소 + 등록 버튼 --%>
+        <div class="window-btn">
+            <button type="button" class="close-btn" onclick="location.href='${path}/club/gallery'">취소</button>
+            <button type="submit" class="plus-btn" onclick="location.href='${path}/club/gallery'">등록</button>
+        </div>
+
+        </form>
+
+    </div>
+</div>
+
 <!-- jsp작업 -->
 <div id="club-profile-background"></div>
 
@@ -15,9 +68,17 @@
             <img src="${path}/resources/static/images/club-image.jpg" alt="모임 프로필 사진">
         </div>
         <div class="clubInfo">
-            <h1 class="clubName">한사랑 산악회</h1>
+
+            <div class="club-title">
+                <h1 class="clubName">한사랑 산악회</h1>
+                <button type="button" onclick="location.href='${path}/club/edit'">
+                    <img class="club-setting" src="${path}/resources/static/images/settings.svg" alt="모임 관리">
+                </button>
+            </div>
+
             <h2 class="clubCreateDate">개설 일자: 2024년 11월 01일</h2>
         </div>
+
     </div>
 
     <div id="info-btn">
@@ -44,9 +105,9 @@
 <%-- 사진 --%>
 <div id="gallery-sub-head">
     <div class="gallery-title">사진첩</div>
-    <button type="button" class="image-add-btn" onclick="location.href=''">
+    <button type="button" class="image-add-btn" onclick="//location.href=''">
         <img class="plus-logo" src="${path}/resources/static/images/plus.svg" alt="플러스 로고">
-        <span>추가하기</span>
+        <span onclick="showModal();">추가하기</span>
     </button>
 </div>
 
@@ -61,3 +122,18 @@
     <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
     <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
 </div>
+
+// 모임 사진첩 사진 첨부 & 사진 미리보기
+    <script>
+    document.getElementById('gallery-image').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+            // 기본 프로필 이미지의 src를 새로운 이미지로 변경
+            document.querySelector('.club-default-image').src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+        }
+    });
+</script>

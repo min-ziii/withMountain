@@ -15,7 +15,14 @@
 			<img src="${path}/resources/static/images/club-image.jpg" alt="모임 프로필 사진">
 		</div>
 		<div class="clubInfo">
-			<h1 class="clubName">한사랑 산악회</h1>
+
+			<div class="club-title">
+				<h1 class="clubName">한사랑 산악회</h1>
+				<button type="button" onclick="location.href='${path}/club/edit'">
+					<img class="club-setting" src="${path}/resources/static/images/settings.svg" alt="모임 관리">
+				</button>
+			</div>
+
 			<h2 class="clubCreateDate">개설 일자: 2024년 11월 01일</h2>
 		</div>
 	</div>
