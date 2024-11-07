@@ -4,12 +4,65 @@
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-<!-- <h1>커뮤니티 메인 페이지</h1> -->
+<!-- 상단 메뉴 -->
 
-<!-- <P>views/community/index.jsp</P> -->
+<header id="sub-menu">
+	<nav>
+        <ul>
+            <li><a href="${path}/community">사진 게시판</a></li>
+            <li class="selected"><a href="${path}/community/free">자유 게시판</a></li>
+            <li><a href="${path}/community/qna">QnA</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- 커뮤니티 자유 게시판 -->
 
-<div>자유 게시판</div>
+<!-- 글 분류 셀렉트 박스 -->
+<div class="header">
+	<div class="sort-container">
+		<select id="sort" class="sort-select">
+			<option value="latest">최신 순</option>
+			<option value="comments">댓글 많은 순</option>
+			<option value="likes">좋아요 많은 순</option>
+		</select>
+	</div>
+
 	
+<!-- 작성하기 버튼 -->	
+	<div class="add-container">
+		<button class="add" onclick="location.href='${path}/community/add'"> + 작성하기</button>
+	</div>
+</div>
+
+
+<!-- 자유 게시판 view -->
+<div class="free-post">
+    <div class="free-title">
+        <a href="#">안녕하세요! 방금 가입했습니다~</a>
+    </div>
+    <div class="free-content">
+        등산 좋아하는 등산러입니다.
+        새롭게 가입했어요~ 잘부탁 드려요
+    </div>
+    <div class="free-profile">
+        <img src="${path}/resources/static/images/default-profile.svg" alt="프로필 사진" class="profile-pic">
+        <span class="nickname">맛동산</span>
+        <div class="post-time">2024-11-05</div>
+    </div>
+
+<!-- 좋아요, 댓글 -->    
+    <div class="post-action">
+    	<div class="icon-item">
+        	<img src="${path}/resources/static/images/heart.svg" alt="좋아요" class="like-icon">
+        	<span class="like-count">2</span> <!-- 좋아요 수 -->
+    	</div>
+    	
+    	<div class="icon-item">
+        	<img src="${path}/resources/static/images/comment.svg" alt="댓글" class="comment-icon">
+        	<span class="comment-count">4</span> <!-- 댓글 수 -->
+    	</div>
+	</div>
+</div>
 
 
 

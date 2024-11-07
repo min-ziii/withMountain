@@ -20,6 +20,25 @@ public class CommunityController {
     public String qna() {
     	return "community.qna";
     }
+    @GetMapping("/add")
+    public String add() {
+    	return "community.add";
+    }
+    @GetMapping("/edit")
+    public String edit() {
+    	return "community.edit";
+    }
+    @GetMapping("/view")
+    public String view() {
+    	return "community.view";
+    }
+    @GetMapping("/del")
+    public String del() {
+    	return "community.del";
+    }
+    
+    
+    
 }
 
 
