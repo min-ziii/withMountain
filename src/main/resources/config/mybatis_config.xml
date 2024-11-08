@@ -5,9 +5,12 @@
 	<typeAliases>
 		<typeAlias type="com.test.hike.dto.HikingRoadSpotDTO" alias="SpotDTO"/>
 		<typeAlias type="com.test.hike.dto.MountainDTO" alias="MountainDTO"/>
+<<<<<<< Updated upstream
 		<typeAlias type="com.test.hike.dto.custom.MountainDTO" alias="CustomMountainDTO"/>
 		<typeAlias type="com.test.hike.dto.custom.CoordDTO" alias="CustomCoordDTO"/>
 		<typeAlias type="com.test.hike.dto.custom.RoadDTO" alias="CustomRoadDTO"/>
+=======
+>>>>>>> Stashed changes
 		<typeAlias type="com.test.hike.dto.HikingRoadDTO" alias="RoadDTO"/>
 	</typeAliases>
 </configuration>

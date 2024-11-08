@@ -30,6 +30,7 @@
 	<select id="getSearchMountainSpots" resultMap="MountainDTOMap">
 		select * from MountainList
 	</select>
+<<<<<<< Updated upstream
 
 	<resultMap id="CustomCoordDTOMap" type="CustomCoordDTO">
 		<id property="coordId" column="coord_id"/>
@@ -63,6 +64,9 @@
 		inner join HikingRoadCoord cd on rd.ROAD_ID = cd.ROAD_ID
 	</select>
 
+=======
+	
+>>>>>>> Stashed changes
 	<resultMap id="RoadDTOMap" type="RoadDTO">
 		<result property="coordId" column="coord_id"/>
 		<result property="mtId" column="mt_id"/>
@@ -79,5 +83,9 @@
 	<select id="getHikingRoads" resultMap="RoadDTOMap">
 		SELECT coord_id, mt_id, road_id, road_km, road_level, road_time_up, road_time_down, road_seq, road_x, road_y FROM ViewHikingRoad
 	</select>
+<<<<<<< Updated upstream
+=======
+	 
+>>>>>>> Stashed changes
 
 </mapper>
