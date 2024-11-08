@@ -13,11 +13,17 @@
 </div>
 </div>
 	
-<div class="add-box">
-    <div class="add-form">
-        <input type="text" id="title" name="title" class="add-control" placeholder="글의 제목을 입력해주세요." required>
-        <textarea id="content" name="content" class="add-control" placeholder="내용을 작성해주세요." required></textarea>
-        <input type="text" id="hashtags" name="hashtags" class="add-control" placeholder="#해시태그">
+<!-- 글 작성 박스 -->
+<div class="content-box">
+    <div class="content-form">
+        <input type="text" id="title" name="title" class="content-control" placeholder="글의 제목을 입력해주세요." required>
+        
+        <div>
+         <div id="content-container" class="content-control"></div>
+            <textarea id="content" name="content" style="display:none;" placeholder="내용을 작성해주세요." required></textarea>
+        </div>
+        
+        <input type="text" id="hashtags" name="hashtags" class="content-control" placeholder="#해시태그">
     </div>
 </div>
 

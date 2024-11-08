@@ -9,8 +9,10 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script type="module" src="${path}/resources/static/js/community.js"></script>
 <script type="module" src="${path}/resources/static/js/common.js"></script>
-<script type="text/javascript">window.path = "${path}";</script>
-<%-- <script type="text/javascript" src="${path}/resources/static/js/community.js"></script> --%>
+<!-- Quill 스타일 시트 -->
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<!-- Quill 스크립트 -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 
 
 

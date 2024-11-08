@@ -44,9 +44,9 @@
     		<a href="#">경사가 있는편인데 생각보다 금방 올라가요!
 						아주 멋진 북한산 ~</a>
 		</div>
- 
+<%-- 
 <!-- 좋아요, 댓글 -->    
-    <div class="p-post-action">
+    <div class="p-post-action" >
     	<div class="icon-item">
         	<img src="${path}/resources/static/images/heart.svg" alt="좋아요" class="like-icon">
         	<span class="like-count">2</span> <!-- 좋아요 수 -->
@@ -57,6 +57,21 @@
     	</div>
 	</div>
 </div>
+ --%>
+
+<!-- 좋아요, 댓글 -->
+<div class="p-post-action" data-post-id="게시물ID">
+    <div class="icon-item">
+        <img src="${path}/resources/static/images/heart.svg" alt="좋아요" class="like-icon">
+        <span class="like-count">2</span>
+    </div>
+    <div class="icon-item">
+        <img src="${path}/resources/static/images/comment.svg" alt="댓글" class="comment-icon">
+        <span class="comment-count">4</span>
+    </div>
+</div> 
+
+
 
 <!-- 댓글 -->
 	<div class="comments">
@@ -72,6 +87,10 @@
         </div>
         <p class="comment-text">안녕하세요! 아주 멋지네요~~~~~~ 저도 가고 싶어요~~~</p>
         <span class="comment-date">2024-11-06</span> <!-- 댓글 작성 날짜 -->
+        <div class="comment-actions">
+        	<button class="delete-btn" onclick="deleteComment(this)">삭제</button>
+        	<button class="edit-btn" onclick="editComment(this)">수정</button>
+    	</div>
     </div>
 
     <!-- 댓글 2 -->
@@ -82,6 +101,10 @@
         </div>
         <p class="comment-text">안녕하세요! 아주 멋지네요~~~~~~ 저도 가고 싶어요~~~</p>
         <span class="comment-date">2024-11-06</span> <!-- 댓글 작성 날짜 -->
+        <div class="comment-actions">
+        	<button class="delete-btn" onclick="deleteComment(this)">삭제</button>
+        	<button class="edit-btn" onclick="editComment(this)">수정</button>
+    	</div>
     </div>
 
     <!-- 댓글 3 -->
@@ -92,6 +115,10 @@
         </div>
         <p class="comment-text">안녕하세요! 아주 멋지네요~~~~~~ 저도 가고 싶어요~~~</p>
         <span class="comment-date">2024-11-06</span> <!-- 댓글 작성 날짜 -->
+        <div class="comment-actions">
+        	<button class="delete-btn" onclick="deleteComment(this)">삭제</button>
+        	<button class="edit-btn" onclick="editComment(this)">수정</button>
+    	</div>
     </div>
 
     <!-- 댓글 4 -->
@@ -102,12 +129,15 @@
         </div>
         <p class="comment-text">안녕하세요! 아주 멋지네요~~~~~~ 저도 가고 싶어요~~~</p>
         <span class="comment-date">2024-11-06</span> <!-- 댓글 작성 날짜 -->
-    
-</div>
+        <div class="comment-actions">
+        	<button class="delete-btn" onclick="deleteComment(this)">삭제</button>
+        	<button class="edit-btn" onclick="editComment(this)">수정</button>
+    	</div>
+    </div>
 
     <!-- 댓글 입력 폼 -->
     <div class="comment-form">
-        <textarea id="new-comment" placeholder="댓글을 남겨보세요!" rows="4"></textarea>
+        <textarea id="new-comment" placeholder="댓글을 남겨보세요!"></textarea>
         <button id="submit-comment">등록</button>
     </div>
     </div>
