@@ -13,13 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    buttons.addEventListener('click', function() {
-    const mountainName = this.textContent;
-    const url = `http://localhost:8090/hike/course/view?mt_id=113050202&name=%EB%B6%81%ED%95%9C%EC%82%B0&lat=37.6594&lng=126.9822`;
-    window.location.href = url;
-});
-    
-    
 });
     
 const mountains = document.querySelectorAll('.img-rad');
