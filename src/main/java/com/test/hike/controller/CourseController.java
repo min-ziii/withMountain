@@ -9,10 +9,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+<<<<<<< Updated upstream
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+=======
+import lombok.RequiredArgsConstructor;
+
+@Controller
+@RequiredArgsConstructor // 의존 주입
+>>>>>>> Stashed changes
 @RequestMapping("/course")
 public class CourseController {
     private final MapCustomDAO dao;
@@ -29,6 +36,7 @@ public class CourseController {
 
     @GetMapping("view")
     public String view () {
+    	
         return "course.view";
     }
 }

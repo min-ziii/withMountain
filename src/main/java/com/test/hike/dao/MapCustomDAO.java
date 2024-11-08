@@ -5,6 +5,7 @@ import java.util.List;
 import com.test.hike.dto.MountainDTO;
 import org.springframework.stereotype.Repository;
 
+import com.test.hike.dto.HikingRoadDTO;
 import com.test.hike.dto.HikingRoadSpotDTO;
 import com.test.hike.mapper.MapCustomMapper;
 
@@ -19,7 +20,13 @@ public class MapCustomDAO {
 		return mapper.getHikingRoadSpots();
 	}
 
+<<<<<<< Updated upstream
 	public List<MountainDTO> getSearchMountainSpots() {
 		return mapper.getSearchMountainSpots();
+=======
+	public List<HikingRoadDTO> getHikingRoads() {
+
+		return mapper.getHikingRoads();
+>>>>>>> Stashed changes
 	}
 }

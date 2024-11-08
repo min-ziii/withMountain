@@ -7,17 +7,18 @@
 	
 	<!-- MyBatis가 DB의 컬럼명과 DTO의 필드명을 잘 매핑할 수 있게 resultMap 명시. -->
 	<resultMap id="SpotDTOMap" type="SpotDTO">
-	    <result property="spot_id" column="spot_id"/>
-	    <result property="mt_id" column="mt_id"/>
-	    <result property="spot_type" column="spot_type"/>
-	    <result property="mt_name" column="mt_name"/>
-	    <result property="spot_x" column="spot_x"/>
-	    <result property="spot_y" column="spot_y"/>
+	    <result property="spotId" column="spot_id"/>
+	    <result property="mtId" column="mt_id"/>
+	    <result property="spotType" column="spot_type"/>
+	    <result property="mtName" column="mt_name"/>
+	    <result property="spotX" column="spot_x"/>
+	    <result property="spotY" column="spot_y"/>
 	</resultMap>
 	
 	<select id="getHikingRoadSpots" resultMap="SpotDTOMap">
 		SELECT spot_id, mt_id, spot_type, mt_name, spot_x, spot_y FROM HikingRoadSpot
 	</select>
+<<<<<<< Updated upstream
 
 	<resultMap id="MountainDTOMap" type="MountainDTO">
 		<result property="mtId" column="mt_id"/>
@@ -31,4 +32,24 @@
 		select * from MountainList
 	</select>
 
+=======
+	
+	<resultMap id="RoadDTOMap" type="RoadDTO">
+		<result property="coordId" column="coord_id"/>
+		<result property="mtId" column="mt_id"/>
+		<result property="roadId" column="road_id"/>
+		<result property="roadKm" column="road_km"/>
+		<result property="roadLevel" column="road_level"/>
+		<result property="roadTimeUp" column="road_time_up"/>
+		<result property="roadTimeDown" column="road_time_down"/>
+		<result property="roadSeq" column="road_seq"/>
+		<result property="roadX" column="road_x"/>
+		<result property="roadY" column="road_y"/>
+	</resultMap>
+	
+	<select id="getHikingRoads" resultMap="RoadDTOMap">
+		SELECT coord_id, mt_id, road_id, road_km, road_level, road_time_up, road_time_down, road_seq, road_x, road_y FROM ViewHikingRoad
+	</select>
+	 
+>>>>>>> Stashed changes
 </mapper>

@@ -15,4 +15,5 @@ $(document).ready(function () {
         parseFloat(mtX),
         MIN_ZOOM_LEVEL,
         MAX_ZOOM_LEVEL);
+        
 });
