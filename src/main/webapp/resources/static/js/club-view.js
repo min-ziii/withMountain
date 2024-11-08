@@ -143,7 +143,7 @@ function popupCloseSchedule() {
 //사진첩 추가 팝업창 띄우기 ---------------------------------------------------------------
 
 //팝업창 띄우기
-function showModal() {
+function showModalAddGallery() {
     $('html, body').css({
         overflow: 'hidden',
         height: '100%'
@@ -152,7 +152,7 @@ function showModal() {
 }
 
 //팝업창 닫기
-function popupClose() {
+function popupCloseAddGallery() {
     $('html, body').css({
         overflow: 'visible',
         height: '100%'
@@ -162,7 +162,7 @@ function popupClose() {
 
 // 모임 사진첩 사진 첨부 ------------------------------------------------------
     // 프로필 이미지 첨부
-document.getElementById('gallery-image').addEventListener('change', function(e) {
+document.getElementById('galleryImage').addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (file) {
         const reader = new FileReader();
@@ -173,6 +173,7 @@ document.getElementById('gallery-image').addEventListener('change', function(e) 
         reader.readAsDataURL(file);
     }
 });
+
 
 // 사진첩 > 사진 클릭시 팝업창 ------------------------------------------------
 function showModalImage() {

@@ -17,7 +17,7 @@
         <%-- 팝업 내용 여기 안에서 작업--%>
         <div class="window-title">등산 일정 생성</div>
 
-        <form method="" action="">
+        <form method="POST" action="">
         <table class="window-content">
             <tr>
                 <th>제목: </th>
@@ -42,7 +42,7 @@
         <div class="course-map"></div>
 
         <div class="window-btn">
-            <button type="button" class="close-btn" id="schedule-close-btn" onclick="location.href='${path}/club/scheduler'">취소</button>
+            <button type="button" class="close-btn" id="schedule-close-btn" onclick='popupCloseSchedule();'>취소</button>
             <button type="button" class="plus-btn" id="schedule-plus-btn" onclick="location.href='${path}/club/scheduler'">등록</button>
         </div>
 

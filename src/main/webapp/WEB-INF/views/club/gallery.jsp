@@ -9,7 +9,7 @@
     <div class="window">
 
         <div class="popup-close">
-            <button type="button" class="popup-close-btn" onclick='popupClose();'>
+            <button type="button" class="popup-close-btn" onclick='popupCloseAddGallery();'>
 
                 <img class="close-logo" src="${path}/resources/static/images/close.svg" alt="닫기">
             </button>
@@ -18,7 +18,7 @@
         <%-- 팝업 내용 여기 안에서 작업--%>
         <div class="window-title">사진 추가하기</div>
 
-        <form method="" action="">
+        <form method="POST" action="">
         <table class="window-content">
             <tr>
                 <th>산 이름: </th>
@@ -27,7 +27,7 @@
             <tr>
                 <th>파일명: </th>
                 <td>
-                    <input type="file" name="image" id="gallery-image" class="gallery-image" accept="image/*">
+                    <input type="file" name="galleryImage" id="galleryImage" class="galleryImage" accept="image/*">
                 </td>
             </tr>
         </table>
@@ -37,7 +37,7 @@
 
                 <div class="club-img-upload">
                     <!-- <div class="inner"> -->
-                    <label for="gallery-image">
+                    <label for="galleryImage">
                         <img class="club-default-image" src="${path}/resources/static/images/club-image.jpg" alt="모임기본이미지">
                     </label>
                 </div>
@@ -140,9 +140,9 @@
 <div id="gallery-sub-head">
     <div class="gallery-title">사진첩</div>
 
-    <button type="button" class="image-add-btn" onclick="showModal();">
+    <button type="button" class="image-add-btn" onclick="showModalAddGallery();">
         <img class="plus-logo" src="${path}/resources/static/images/plus.svg" alt="플러스 로고">
-        <span onclick="showModal();">추가하기</span>
+        <span>추가하기</span>
     </button>
 
 </div>
