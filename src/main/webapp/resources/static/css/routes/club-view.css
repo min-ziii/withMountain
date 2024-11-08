@@ -1,6 +1,388 @@
 @import "../style.css";
 
 /* 공통사항 ------------------------------------------------- */
+/* 팝업창 템플릿------------- */
+#popup {
+	display: none;
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left:0;
+	right: 0;
+	margin: calc(0px - var(--main-menu-height)) auto;
+	z-index: 100000000000000;
+
+	justify-content: center;
+	align-items: center;
+}
+
+#popup .window {
+	width: auto;
+	height: auto;
+	padding: 40px;
+	background-color: var(--white);
+	border-radius: 10px;
+}
+
+/* 팝업창 오른쪽 X 버튼 작업 */
+.window .popup-close {
+	float: right;
+}
+
+.window .popup-close .close-logo {
+	cursor: pointer;
+}
+
+/* 일정 등록 작업 --------- */
+#popupAddSchedule {
+	display: none;
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left:0;
+	right: 0;
+	margin: calc(0px - var(--main-menu-height)) auto;
+	z-index: 100000000000000;
+
+	justify-content: center;
+	align-items: center;
+}
+
+#popupAddSchedule .window {
+	width: auto;
+	height: auto;
+	padding: 40px;
+	background-color: var(--white);
+	border-radius: 10px;
+}
+
+.window-title {
+	font-size: 20px;
+	font-weight: 700;
+	padding-bottom: 30px;
+}
+
+/* 일정 내용 */
+.window-content{
+	width: 100%;
+}
+
+.window-content tr {
+	padding: 30px 0;
+}
+
+.window-content th {
+	width: auto;
+	font-family: 'Pretendard', sans-serif;
+	font-size: 16px;
+	color: var(--dark-gray);
+	padding: 15px 0;
+	text-align: left;
+}
+
+.window-content td {
+	/*padding: 0 15px;*/
+}
+
+.window-content .content-input {
+	width: 100%;
+	height: 30px;
+	padding: 0 12px;
+	border: 1px solid var(--gray06);
+	border-radius: 6px;
+	outline: none;
+	background-color: transparent;
+	font-weight: 400;
+	font-size: 14px;
+	color: var(--gray02);
+}
+
+/* 커스텀 코스 생성하기_버튼 */
+.course-add {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 30px 0;
+}
+
+.course-add-btn {
+	width: 200px;
+	height: 40px;
+	border-radius: 10px;
+	border: 1px solid var(--gray05);
+	background-color: var(--gray05);
+	color: var(--dark-gray);
+	margin-right: 20px;
+	font-weight: 500;
+}
+
+.course-add-btn:last-child {
+	margin-right: 0;
+}
+
+.course-add-btn:last-child {
+	background-color: var(--white);
+}
+/* 일정 팝업 창 - 지도 보여주기 */
+.course-map {
+	width: auto;
+	height: 300px;
+	border: 1px solid var(--gray05);
+	border-radius: 10px;
+	margin-bottom: 20px;;
+}
+
+/* 일정 상세보기 팝업창 작업 */
+#popupSchedule {
+	display: none;
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left:0;
+	right: 0;
+	margin: calc(0px - var(--main-menu-height)) auto;
+	z-index: 100000000000000;
+
+	justify-content: center;
+	align-items: center;
+}
+
+#popupSchedule .window {
+	width: 500px;
+	height: auto;
+	padding: 40px;
+	background-color: var(--white);
+	border-radius: 10px;
+	justify-content: center;
+	align-items: center;
+}
+
+.schedule-content {
+	color: var(--gray02);
+}
+
+.schedule-event-title {
+	width: 200px;
+	font-size: 20px;
+	font-weight: 700;
+	color: var(--dark-gray);
+	padding-bottom: 5px;
+	border-bottom: 1px solid var(--gray04);
+	margin: 15px 0;
+}
+
+.schedule-Month {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	margin-bottom: 15px;
+}
+
+#eventMonth{
+	margin-left: 5px;
+}
+
+.schedule-time {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	margin-bottom: 15px;
+	margin-left: -2px;
+}
+
+#eventTime{
+	margin-left: 5px;
+}
+
+.schedule-sub-content {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+#eventContent {
+	margin-left: 5px;
+}
+
+
+
+/* 사진첩 팝업창 작업 ------- */
+#popupAddGallery {
+	display: none;
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left:0;
+	right: 0;
+	margin: calc(0px - var(--main-menu-height)) auto;
+	z-index: 100000000000000;
+
+	justify-content: center;
+	align-items: center;
+}
+
+#popupAddGallery .window {
+	width: auto;
+	height: auto;
+	padding: 40px;
+	background-color: var(--white);
+	border-radius: 10px;
+}
+
+.window-content .mt-name-input, .gallery-image {
+	width: 100%;
+	height: 30px;
+	padding: 0 12px;
+	border: 1px solid var(--gray06);
+	border-radius: 6px;
+	outline: none;
+	background-color: transparent;
+	font-weight: 400;
+	font-size: 14px;
+	color: var(--gray02);
+}
+
+.window-content .gallery-image::file-selector-button {
+	float: right;
+}
+
+.form-club-img .club-img-upload {
+	margin-top: 15px;
+}
+
+/* 사진첩 이미지 미리보기 */
+.form-club-img {
+	margin-bottom: 20px;
+}
+
+.club-default-image {
+	width: auto;
+	height: auto;
+	border-radius: 10px;
+	object-fit: cover;
+}
+
+/* 취소 + 닫기 버튼 */
+.window-btn {
+	display: flex;
+	align-items: center;
+	justify-content: right;
+}
+
+/* 취소 버튼 */
+.close-btn {
+	width: 80px;
+	height: 40px;
+	border-radius: 10px;
+	border: 1px solid var(--main);
+	background-color: var(--white);
+	color: var(--main);
+}
+
+.plus-btn {
+	width: 80px;
+	height: 40px;
+	border-radius: 10px;
+	border: 1px solid var(--main);
+	background-color: var(--main);
+	color: var(--white);
+	margin-left: 15px;
+}
+
+/* 사진첩 > 사진 클릭시 사진 팝업창 */
+#popupImage {
+	display: none;
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left:0;
+	right: 0;
+	margin: calc(0px - var(--main-menu-height)) auto;
+	z-index: 100000000000000;
+
+	justify-content: center;
+	align-items: center;
+}
+
+#popupImage .window {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: 500px;
+	height: 700px;
+	background-color: var(--black);
+	border-radius: 10px;
+	position: relative;
+}
+
+#popupImage .popup-close .popup-close-btn {
+	color: var(--white);
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+.close-logo {
+	cursor: pointer;
+}
+
+/*.club-image-click {*/
+/*	position: relative;*/
+/*	display: flex;*/
+/*	justify-content: center;*/
+/*	align-items: center;*/
+/*}*/
+
+/*.club-image-click img {*/
+/*	width: 50%;*/
+/*	height: 50%;*/
+/*	border-radius: 10px;*/
+/*	background-attachment: fixed;*/
+/*}*/
+
+#popupImage .window .club-image {
+	object-fit: contain;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	background-attachment: fixed;
+}
+
+.club-image-content {
+	position: absolute;
+	top: 20px;
+	left: 30px;
+	/*transform: translate( 50%, 50% );*/
+	color: white;
+}
+
+.club-image-title {
+	width: 100px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid var(--dark-gray);
+	line-height: 30px;
+	font-weight: 600;
+	font-size: 16px;
+}
+
+.club-image-title span {
+	color: var(--main);
+}
+
+.club-image-user {
+	margin-bottom: 10px;
+}
+
+.club-image-date {
+
+}
+
 /* 상단 모임 프로필 ------------------------ */
 #club-profile-background {
 	width: 100%;
@@ -24,7 +406,7 @@
 }
 
 /* 프로필 이미지 */
-#profile-info .profile-image img {
+.profile-image img {
 	position: relative;
 	top: -50px;
 	width: 180px;
@@ -34,28 +416,37 @@
 }
 
 /* 프로필 정보 */
-#profile-info .clubInfo {
+.clubInfo {
 	margin-left: 10px;
 }
 
-#profile-info .clubInfo .clubName {
+.clubInfo .clubName {
 	font-size: 22px;
 	font-weight: 700;
 	margin-bottom: 10px;
 }
 
-#profile-info .clubInfo .club-title {
+.clubInfo .club-title {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-#profile-info .clubInfo .club-title .club-setting {
+.clubInfo .club-title .club-setting {
 	padding: 0 0 5px 5px;
 	cursor: pointer;
 }
 
-#profile-info .clubInfo .clubCreateDate {
+
+.clubInfo .club-title .club-member-setting {
+	width: 20px;
+	height: 20px;
+	padding: 0 0 5px 5px;
+	cursor: pointer;
+	color: var(--gray02);
+}
+
+.clubInfo .clubCreateDate {
 	font-size: 13px;
 	font-weight: 400;
 	color: var(--gray02);
@@ -134,169 +525,6 @@
 	font-weight: 700;
 }
 
-/* 팝업창 ------------- */
-#popup {
-	display: none;
-	background: rgba(0, 0, 0, 0.5);
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	left:0;
-	right: 0;
-	margin: calc(0px - var(--main-menu-height)) auto;
-	z-index: 100000000000000;
-
-	justify-content: center;
-	align-items: center;
-}
-
-#popup .window {
-	width: 500px;
-	height: auto;
-	padding: 40px;
-	background-color: var(--white);
-	border-radius: 10px;
-}
-
-/* 팝업창 오른쪽 X 버튼 작업 */
-#popup .window .popup-close {
-	float: right;
-}
-
-#popup .window .popup-close .close-logo {
-	cursor: pointer;
-}
-
-/* 일정 등록 작업 --------- */
-.window-title {
-	font-size: 20px;
-	font-weight: 700;
-	padding-bottom: 30px;
-}
-
-/* 일정 내용 */
-.window-content{
-	width: 100%;
-}
-
-.window-content tr {
-	padding: 30px 0;
-}
-
-.window-content th {
-	width: auto;
-	font-family: 'Pretendard', sans-serif;
-	font-size: 16px;
-	color: var(--dark-gray);
-	padding: 15px 0;
-	text-align: left;
-}
-
-.window-content td {
-	/*padding: 0 15px;*/
-}
-
-.window-content .content-input {
-	width: 100%;
-	height: 30px;
-	padding: 0 12px;
-	border: 1px solid var(--gray06);
-	border-radius: 6px;
-	outline: none;
-	background-color: transparent;
-	font-weight: 400;
-	font-size: 14px;
-	color: var(--gray02);
-}
-
-/* 커스텀 코스 생성하기_버튼 */
-.course-add {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 30px 0;
-}
-
-.course-add-btn {
-	width: 200px;
-	height: 40px;
-	border-radius: 10px;
-	border: 1px solid var(--gray05);
-	background-color: var(--gray05);
-	color: var(--dark-gray);
-}
-
-.course-add-btn:last-child {
-	background-color: var(--white);
-}
-/* 일정 팝업 창 - 지도 보여주기 */
-.course-map {
-	width: auto;
-	height: 300px;
-	border: 1px solid var(--gray05);
-	border-radius: 10px;
-	margin-bottom: 20px;;
-}
-
-/* 사진첩 팝업창 작업 ------- */
-.window-content .mt-name-input, .gallery-image {
-	width: 100%;
-	height: 30px;
-	padding: 0 12px;
-	border: 1px solid var(--gray06);
-	border-radius: 6px;
-	outline: none;
-	background-color: transparent;
-	font-weight: 400;
-	font-size: 14px;
-	color: var(--gray02);
-}
-
-.form-club-img .club-img-upload {
-	margin-top: 15px;
-}
-
-/* 사진첩 이미지 미리보기 */
-.form-club-img {
-	margin-bottom: 20px;
-}
-
-.club-default-image {
-	width: auto;
-	height: 300px;
-	border-radius: 10px;
-	object-fit: cover;
-}
-
-/* 취소 + 닫기 버튼 */
-.window-btn {
-	display: flex;
-	align-items: center;
-	justify-content: right;
-}
-
-/* 취소 버튼 */
-.close-btn {
-	width: 80px;
-	height: 40px;
-	border-radius: 10px;
-	border: 1px solid var(--main);
-	background-color: var(--white);
-	color: var(--main);
-}
-
-.plus-btn {
-	width: 80px;
-	height: 40px;
-	border-radius: 10px;
-	border: 1px solid var(--main);
-	background-color: var(--main);
-	color: var(--white);
-	margin-left: 15px;
-}
-
-
-
 
 /* 1. 모임 정보 -------------------------------------------------- */
 /* 1-1. 모임 채팅 + 가입하기 ------------- */
@@ -362,7 +590,7 @@
 	padding: 0 40px;
 }
 
-.memeber-toggle {
+.club-member-management {
   	display: flex;
   	align-items: center;
 	font-size: 14px;
@@ -372,9 +600,11 @@
 	margin-bottom: 5px;
 }
 
-.memeber-toggle .toggle-icon {
-	width: 30px;
-	height: 30px;
+.club-member-management .club-member-setting {
+	width: 20px;
+	height: 20px;
+	margin-left: 10px;
+	cursor: pointer;
 }
 
 .club-member-profile {
@@ -407,7 +637,7 @@
 	padding: 0 70px 5px 70px;
 }
 
-#scheduler-sub-head .scheduler-title {
+#scheduler-sub-head .scheduler-sub-title {
 	font-size: 18px;
 	font-weight: 500;
 	color: var(--black);
@@ -456,18 +686,19 @@
 
 /* 2-2.b. 툴바_버튼------ */
 
-/* 이전, 다음, 오늘 이동_버튼 */
+ 이전, 다음, 오늘 이동_버튼
 .fc .fc-button{
 	padding: 5px;
 }
 
 .fc .fc-button .fc-icon {
-	color: var(--gray03);
+	color: var(--dark-gray);
+	background-color: var(--white);
 }
 
 .fc .fc-toolbar-chunk .fc-button {
-	background-color: var(--white);
 	color: var(--gray02);
+	background-color: var(--white);
 	box-shadow: none;
 	border: none;
 	outline: none;
@@ -477,6 +708,7 @@
 /* 툴바 버튼 hover 시 배경색 변경 */
 .fc .fc-toolbar-chunk .fc-button:hover {
 	background-color: var(--white);
+	color: var(--dark-gray);
 	box-shadow: none;
 	border: none;
 	outline: none;
@@ -484,7 +716,6 @@
 
 /* 툴바 사용 불가 버튼 hover 시 스타일 주지 않기 */
 .fc .fc-toolbar-chunk .fc-button:disabled:hover {
-	background-color: var(--white);
 	box-shadow: none;
 	border: none;
 	outline: none;
@@ -495,8 +726,12 @@
 	 outline: none;
 	 box-shadow: none;
  	 border: none;
-	 background-color: var(--white);
 }
+
+/*:root {*/
+/*	--fc-today-bg-color: var(--light-green);*/
+/*}*/
+
 
 /* 2-2.c. 날짜 수정 작업 ---------*/
 /* 일요일 날짜 : 빨간색 */
@@ -530,10 +765,11 @@
 
 /* 2-2-d. 일정 등록 > 캘린더에 보여지는 일정 ---------- */
 .fc-event {
+	background-color: var(--white);
+	border-radius: 10px;
 	padding: 5px 10px;
 	margin-bottom: 5px;
 	border: none;
-	background-color: var(--white);
 	cursor: pointer;
 }
 
@@ -552,6 +788,21 @@
 	margin: 8px;
 }
 
+.fc-daygrid-event-dot {
+	display: none;
+}
+
+.fc-daygrid-event .fc-event-time {
+	display: none;
+}
+
+.fc-daygrid-dot-event .fc-event-title {
+	color: var(--dark-gray);
+	font-weight: 400;
+	font-size: 14px;
+	cursor: pointer;
+	text-align: center;
+}
 
 /* 3. 모임 등산 기록 --------------------------------------------------*/
 .sub-title {
@@ -572,15 +823,17 @@
 
 /* 3-1. 등산 기록 ------------- */
 .club-hike {
-	width: 480px;
-	height: 300px;
+	/*width: 480px;*/
+	/*height: 300px;*/
+	display: flex;
+	justify-content: space-between;
 	border-radius: 10px;
 	padding: 20px;
 	align-items: center;
 	box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 
-.club-hike .course-image .course-map {
+.club-hike .hike-course-image .hike-course-map {
 	width: 220px;
 	height: 260px;
 	object-fit: cover;
@@ -588,6 +841,7 @@
 	border-radius: 10px;
 	display: flex;
 	justify-content: center;
+	margin-left: 20px;
 }
 
 /* 3-1-a. 활동기록 내용 ------------- */
