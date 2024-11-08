@@ -211,6 +211,13 @@
 			<artifactId>tiles-servlet</artifactId>
 			<version>3.0.8</version>
 		</dependency>
+		
+		<!-- pro4j -->
+		<dependency>
+		    <groupId>org.locationtech.proj4j</groupId>
+		    <artifactId>proj4j</artifactId>
+		    <version>1.2.2</version>
+		</dependency>
 
 
 	</dependencies>

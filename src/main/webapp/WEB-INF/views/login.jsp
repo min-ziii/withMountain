@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>로그인</title>
-    <link rel="stylesheet" href="${path}/resources/static/css/routes/signup.css">
+    <link rel="stylesheet" href="${path}/resources/static/css/inc/signup.css">
 </head>
 <body>
 
@@ -109,15 +109,15 @@
     });
 
     // 프로필 이미지 미리보기
-    document.querySelector('input[name="profileImage"]').addEventListener('change', function(e) {
-        if (e.target.files && e.target.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.querySelector('.preview-image').innerHTML = '<img src="' + e.target.result + '" width="200">';
-            }
-            reader.readAsDataURL(e.target.files[0]);
-        }
-    });
+    // document.querySelector('input[name="profileImage"]').addEventListener('change', function (e) {
+    //     if (e.target.files && e.target.files[0]) {
+    //         const reader = new FileReader();
+    //         reader.onload = function (e) {
+    //             document.querySelector('.preview-image').innerHTML = '<img src="' + e.target.result + '" width="200">';
+    //         }
+    //         reader.readAsDataURL(e.target.files[0]);
+    //     }
+    // });
 
     // 폼 제출 전 유효성 검사
     document.querySelector('form').addEventListener('submit', function(e) {

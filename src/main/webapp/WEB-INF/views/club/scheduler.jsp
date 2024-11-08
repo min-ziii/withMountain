@@ -4,12 +4,21 @@
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
+<<<<<<< HEAD
 <%-- 일정 등록 팝업창 띄우기 --%>
 <div id="popupAddSchedule">
     <div class="window">
 
         <div class="popup-close">
             <button type="button" class="popup-close-btn" onclick='popupCloseSchedule();'>
+=======
+<%-- 팝업창 띄우기 --%>
+<div id="popup">
+    <div class="window">
+
+        <div class="popup-close">
+            <button type="button" id="popup-close-btn" onclick='popupClose();'>
+>>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
                 <img class="close-logo" src="${path}/resources/static/images/close.svg" alt="닫기">
             </button>
         </div>
@@ -21,6 +30,7 @@
         <table class="window-content">
             <tr>
                 <th>제목: </th>
+<<<<<<< HEAD
                 <td><input class="content-input" type="text" name="title" id="schedule-title" placeholder="일정 제목을 입력해주세요." required></td>
             </tr>
             <tr>
@@ -30,6 +40,17 @@
             <tr>
                 <th>내용: </th>
                 <td><input class="content-input" type="text" name="content" id="schedule-content" placeholder="일정에 대한 내용을 적어주세요." required></td>
+=======
+                <td><input class="content-input" type="text" name="title" id="title" placeholder="일정 제목을 입력해주세요." required></td>
+            </tr>
+            <tr>
+                <th>일자: </th>
+                <td><input class="content-input" type="month" name="hike-date" id="hike-date" placeholder="일정 일자를 선택해주세요." required></td>
+            </tr>
+            <tr>
+                <th>일시: </th>
+                <td><input class="content-input" type="time" name="hike-time" id="hike-time" placeholder="일정 일시를 선택해주세요." required></td>
+>>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
             </tr>
         </table>
 
@@ -42,8 +63,13 @@
         <div class="course-map"></div>
 
         <div class="window-btn">
+<<<<<<< HEAD
             <button type="button" class="close-btn" id="schedule-close-btn" onclick="location.href='${path}/club/scheduler'">취소</button>
             <button type="button" class="plus-btn" id="schedule-plus-btn" onclick="location.href='${path}/club/scheduler'">등록</button>
+=======
+            <button type="button" class="close-btn" onclick="location.href='${path}/club/scheduler'">취소</button>
+            <button type="submit" class="plus-btn" onclick="location.href='${path}/club/scheduler'">등록</button>
+>>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
         </div>
 
         </form>
@@ -51,6 +77,7 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 <%-- 일정 상세 보기 팝업창 띄우기 --%>
 <div id="popupSchedule">
     <div class="window">
@@ -87,6 +114,8 @@
     </div>
 </div>
 
+=======
+>>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 <!-- jsp작업 -->
 <div id="club-profile-background"></div>
 
@@ -131,6 +160,7 @@
     </nav>
 </header>
 
+<<<<<<< HEAD
 <%--<div id="scheduler-sub-head">--%>
 <%--    <div class="scheduler-sub-title">일정</div>--%>
 <%--    <button type="button" class="scheduler-add-btn" onclick="showModalSchedule();">--%>
@@ -138,6 +168,15 @@
 <%--        <span>추가하기</span>--%>
 <%--    </button>--%>
 <%--</div>--%>
+=======
+<div id="scheduler-sub-head">
+    <div class="scheduler-title">일정</div>
+    <button type="button" class="scheduler-add-btn" onclick="showModal();">
+        <img class="plus-logo" src="${path}/resources/static/images/plus.svg" alt="플러스 로고">
+        <span>추가하기</span>
+    </button>
+</div>
+>>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 
 <div id="calendar"></div>
 

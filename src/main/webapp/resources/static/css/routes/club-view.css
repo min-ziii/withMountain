@@ -426,17 +426,26 @@
 	margin-bottom: 10px;
 }
 
+<<<<<<< HEAD
 .clubInfo .club-title {
+=======
+#profile-info .clubInfo .club-title {
+>>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
+<<<<<<< HEAD
 .clubInfo .club-title .club-setting {
+=======
+#profile-info .clubInfo .club-title .club-setting {
+>>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 	padding: 0 0 5px 5px;
 	cursor: pointer;
 }
 
+<<<<<<< HEAD
 
 .clubInfo .club-title .club-member-setting {
 	width: 20px;
@@ -447,6 +456,9 @@
 }
 
 .clubInfo .clubCreateDate {
+=======
+#profile-info .clubInfo .clubCreateDate {
+>>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 	font-size: 13px;
 	font-weight: 400;
 	color: var(--gray02);
@@ -525,6 +537,172 @@
 	font-weight: 700;
 }
 
+<<<<<<< HEAD
+=======
+/* 팝업창 ------------- */
+#popup {
+	display: none;
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left:0;
+	right: 0;
+	margin: calc(0px - var(--main-menu-height)) auto;
+	z-index: 100000000000000;
+
+	justify-content: center;
+	align-items: center;
+}
+
+#popup .window {
+	width: 500px;
+	height: auto;
+	padding: 40px;
+	background-color: var(--white);
+	border-radius: 10px;
+}
+
+/* 팝업창 오른쪽 X 버튼 작업 */
+#popup .window .popup-close {
+	float: right;
+}
+
+#popup .window .popup-close .close-logo {
+	cursor: pointer;
+}
+
+/* 일정 등록 작업 --------- */
+.window-title {
+	font-size: 20px;
+	font-weight: 700;
+	padding-bottom: 30px;
+}
+
+/* 일정 내용 */
+.window-content{
+	width: 100%;
+}
+
+.window-content tr {
+	padding: 30px 0;
+}
+
+.window-content th {
+	width: auto;
+	font-family: 'Pretendard', sans-serif;
+	font-size: 16px;
+	color: var(--dark-gray);
+	padding: 15px 0;
+	text-align: left;
+}
+
+.window-content td {
+	/*padding: 0 15px;*/
+}
+
+.window-content .content-input {
+	width: 100%;
+	height: 30px;
+	padding: 0 12px;
+	border: 1px solid var(--gray06);
+	border-radius: 6px;
+	outline: none;
+	background-color: transparent;
+	font-weight: 400;
+	font-size: 14px;
+	color: var(--gray02);
+}
+
+/* 커스텀 코스 생성하기_버튼 */
+.course-add {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 30px 0;
+}
+
+.course-add-btn {
+	width: 200px;
+	height: 40px;
+	border-radius: 10px;
+	border: 1px solid var(--gray05);
+	background-color: var(--gray05);
+	color: var(--dark-gray);
+}
+
+.course-add-btn:last-child {
+	background-color: var(--white);
+}
+/* 일정 팝업 창 - 지도 보여주기 */
+.course-map {
+	width: auto;
+	height: 300px;
+	border: 1px solid var(--gray05);
+	border-radius: 10px;
+	margin-bottom: 20px;;
+}
+
+/* 사진첩 팝업창 작업 ------- */
+.window-content .mt-name-input, .gallery-image {
+	width: 100%;
+	height: 30px;
+	padding: 0 12px;
+	border: 1px solid var(--gray06);
+	border-radius: 6px;
+	outline: none;
+	background-color: transparent;
+	font-weight: 400;
+	font-size: 14px;
+	color: var(--gray02);
+}
+
+.form-club-img .club-img-upload {
+	margin-top: 15px;
+}
+
+/* 사진첩 이미지 미리보기 */
+.form-club-img {
+	margin-bottom: 20px;
+}
+
+.club-default-image {
+	width: auto;
+	height: 300px;
+	border-radius: 10px;
+	object-fit: cover;
+}
+
+/* 취소 + 닫기 버튼 */
+.window-btn {
+	display: flex;
+	align-items: center;
+	justify-content: right;
+}
+
+/* 취소 버튼 */
+.close-btn {
+	width: 80px;
+	height: 40px;
+	border-radius: 10px;
+	border: 1px solid var(--main);
+	background-color: var(--white);
+	color: var(--main);
+}
+
+.plus-btn {
+	width: 80px;
+	height: 40px;
+	border-radius: 10px;
+	border: 1px solid var(--main);
+	background-color: var(--main);
+	color: var(--white);
+	margin-left: 15px;
+}
+
+
+
+>>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 
 /* 1. 모임 정보 -------------------------------------------------- */
 /* 1-1. 모임 채팅 + 가입하기 ------------- */
@@ -833,7 +1011,11 @@
 	box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 
+<<<<<<< HEAD
 .club-hike .hike-course-image .hike-course-map {
+=======
+.club-hike .course-image .course-map {
+>>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 	width: 220px;
 	height: 260px;
 	object-fit: cover;

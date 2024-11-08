@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 // 달력 띄우기--------------------------------------------------------------------------
 
@@ -9,6 +10,9 @@ const events = [
     }
 ]
 
+=======
+// 달력 띄우기
+>>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
 
@@ -112,6 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     calendar.render();
+<<<<<<< HEAD
 
 });
 
@@ -146,12 +151,21 @@ function popupCloseSchedule() {
 
 
 //사진첩 추가 팝업창 띄우기 ---------------------------------------------------------------
+=======
+})
+
+//팝업창 띄우기
+>>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 function showModal() {
     $('html, body').css({
         overflow: 'hidden',
         height: '100%'
     });
+<<<<<<< HEAD
     $('#popupAddGallery').css('display', 'flex');
+=======
+    $('#popup').css('display', 'flex');
+>>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 }
 
 //팝업창 닫기
@@ -160,6 +174,7 @@ function popupClose() {
         overflow: 'visible',
         height: '100%'
     });
+<<<<<<< HEAD
     $('#popupAddGallery').css('display', 'none');
 }
 
@@ -195,3 +210,21 @@ function ModalImageClose() {
     $('#popupImage').css('display', 'none');
 }
 
+=======
+    $('#popup').css('display', 'none');
+}
+
+// 모임 사진첩 사진 첨부
+    // 프로필 이미지 첨부
+    document.getElementById('gallery-image').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+    // 기본 프로필 이미지의 src를 새로운 이미지로 변경
+    document.querySelector('.club-default-image').src = e.target.result;
+}
+    reader.readAsDataURL(file);
+}
+});
+>>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a

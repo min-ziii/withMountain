@@ -5,6 +5,7 @@ import java.util.List;
 import com.test.hike.dto.MountainDTO;
 import org.springframework.stereotype.Repository;
 
+import com.test.hike.dto.HikingRoadDTO;
 import com.test.hike.dto.HikingRoadSpotDTO;
 import com.test.hike.mapper.MapCustomMapper;
 
@@ -22,4 +23,15 @@ public class MapCustomDAO {
 	public List<MountainDTO> getSearchMountainSpots() {
 		return mapper.getSearchMountainSpots();
 	}
+<<<<<<< HEAD
+=======
+
+	public List<HikingRoadDTO> getHikingRoads() {
+		return mapper.getHikingRoads();
+	}
+
+	public com.test.hike.dto.custom.MountainDTO getAllRoadsWithCoordsByMtId(int mtId) {
+		return mapper.getAllRoadsWithCoordsByMtId(mtId);
+	}
+>>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 }

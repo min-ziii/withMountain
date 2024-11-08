@@ -5,5 +5,15 @@
 	<typeAliases>
 		<typeAlias type="com.test.hike.dto.HikingRoadSpotDTO" alias="SpotDTO"/>
 		<typeAlias type="com.test.hike.dto.MountainDTO" alias="MountainDTO"/>
+<<<<<<< HEAD
+=======
+		<typeAlias type="com.test.hike.dto.custom.MountainDTO" alias="CustomMountainDTO"/>
+		<typeAlias type="com.test.hike.dto.custom.CoordDTO" alias="CustomCoordDTO"/>
+		<typeAlias type="com.test.hike.dto.custom.RoadDTO" alias="CustomRoadDTO"/>
+		<typeAlias type="com.test.hike.dto.HikingRoadDTO" alias="RoadDTO"/>
+
+		<typeAlias type="com.test.hike.dto.ClubDTO" alias="ClubDTO"/>
+>>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 	</typeAliases>
+
 </configuration>
