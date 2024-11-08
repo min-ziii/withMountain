@@ -33,7 +33,7 @@
     font-weight: bold;
 }
 
-.exitButton {
+.popup-close {
     margin-left: auto;  /* x 버튼을 오른쪽 끝으로 */
 }
 
@@ -258,7 +258,11 @@ input[type="date"]:valid {
 /* --------------------------로그인---------------------------------- */
 
 #signup-container {
-	padding: 20px;
+	width: 100%;      /* 부모 요소(.window)의 너비에 맞춤 */
+    height: auto;     /* 내용물 높이에 맞춤 */
+    padding: 20px;    /* 내부 여백 */
+    box-sizing: border-box;  /* padding이 width에 포함되도록 */
+    margin: 0;
 }
 
 .divider {
@@ -335,6 +339,24 @@ input[readonly] {
 }
 
 
+
+/* 여기서부터는 팝업창 기능 */
+#popup {
+	position: fixed;
+}
+
+#popup .window {
+    background-color: var(--white);
+    position: relative;
+    width: auto;     /* 90%에서 auto로 변경 */
+    min-width: 300px; /* 최소 너비 설정 (선택사항) */
+    max-width: 500px; /* 최대 너비 유지 */
+    max-height: 90vh;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    display: inline-block; /* 내용물 크기에 맞춰 조정되도록 */
+}
 
 
 

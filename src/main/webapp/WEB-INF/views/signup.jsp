@@ -8,7 +8,9 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
+    <link rel="stylesheet" href="${path}/resources/static/css/routes/club.css">
     <link rel="stylesheet" href="${path}/resources/static/css/routes/signup.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 <body>
 <%-- 
@@ -22,13 +24,22 @@
             </div>
 
  --%>
- 	
- 	<div id="signup-container">
+ 
+<!-- main.jsp나 header.jsp 등 메인메뉴가 있는 파일 -->
+<button type="button" id="loginBtn" onclick="showSignupModal()">회원가입</button>
+
+<!-- 팝업창 띄우기 -->
+<div id="popup">
+    <div class="window">
+        
+        <!-- 팝업 내용 여기 안에서 작업-->
+        
+    <div id="signup-container">
     <form method="POST" action="${path}/signup" enctype="multipart/form-data">
         <div class="header">
             <h4>이메일 회원가입</h4>
-            <div class="exitButton">
-                <input type="button" name="exit" id="exit" accept="image/*" style="display: none;">
+            <div class="popup-close">
+                <input type="button" name="exit" id="exit" accept="image/*" style="display: none;" onclick='popupClose();'>
                 <label for="exit">
                     <img class="exitImage" src="${path}/resources/static/images/close.svg" alt="종료버튼">
                 </label>
@@ -144,6 +155,13 @@
            	<button type="submit" id="signup-btn">회원가입</button>
         </form>
     </div>
+        
+        
+        
+        
+    </div>
+</div>
+ 
 
     <script>
         // 비밀번호 보기/숨기기 토글
@@ -184,6 +202,43 @@
                 reader.readAsDataURL(file);
             }
         });
+        
+    	//팝업창 띄우기
+    	function showModal() {
+    		$('html, body').css({
+    			overflow: 'hidden',
+    			height: '100%'
+    		});
+    		$('#popup').css('display', 'flex');
+    	}
+
+    	//팝업창 닫기
+    	function popupClose() {
+    		$('html, body').css({
+    			overflow: 'visible',
+    			height: '100%'
+    		});
+    		$('#popup').css('display', 'none');
+    	}
+        
+    	// 로그인에서 회원가입 버튼 클릭 시 팝업 표시 함수
+    	function showSignupModal() {
+    	    $.ajax({
+    	        url: '${path}/signup',  // 회원가입 페이지 URL
+    	        type: 'GET',
+    	        success: function(response) {
+    	            // 팝업 표시
+    	            $('html, body').css({
+    	                overflow: 'hidden',
+    	                height: '100%'
+    	            });
+    	            $('#popup').css('display', 'flex');
+    	        },
+    	        error: function(xhr, status, error) {
+    	            console.error('Error:', error);
+    	        }
+    	    });
+    	}
         
     </script>
 </body>

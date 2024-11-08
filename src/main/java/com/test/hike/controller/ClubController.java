@@ -14,6 +14,7 @@ public class ClubController {
 	}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
 >>>>>>> Stashed changes
 	
@@ -31,6 +32,12 @@ public class ClubController {
 =======
 >>>>>>> Stashed changes
 	public String list() {
+=======
+
+
+	@GetMapping("/template")
+	public String template() {
+>>>>>>> Stashed changes
 		return "club.template";
 	}
 	
