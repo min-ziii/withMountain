@@ -9,7 +9,7 @@
         <form method="POST" action="${path}/signup" enctype="multipart/form-data">
             <div class="header">
                 <h4>로그인</h4>
-                <div class="exitButton">
+                <div class="popup-close">
                     <input type="button" name="exit" id="exit" accept="image/*" style="display: none;">
                     <label for="exit">
                         <img class="exitImage" src="${path}/resources/static/images/close.svg" alt="종료버튼">
@@ -201,6 +201,9 @@
     <a href="${path}/home">
         <img class="menu-logo" src="${path}/resources/static/images/logo.svg" alt="로고">
     </a>
+    
+    <!-- 수정전 -->
+    <%--
     <nav>
         <ul>
             <li id="nav-home"><a href="${path}/home">홈</a></li>
@@ -212,6 +215,31 @@
             <li class="log-in">로그인</li>
         </ul>
     </nav>
+    --%>
+    
+    <!-- 수정후 -->
+    <!-- header 부분 수정 -->
+	<nav>
+	    <ul>
+	        <li id="nav-home"><a href="${path}/home">홈</a></li>
+	        <li id="nav-course"><a href="${path}/course">코스</a></li>
+	        <li id="nav-community"><a href="${path}/community">커뮤니티</a></li>
+	        <li id="nav-club"><a href="${path}/club">모임</a></li>
+	        <li id="nav-mypage"><a href="${path}/mypage">나의 등산</a></li>
+	        <c:choose>
+	            <c:when test="${empty sessionScope.loginMember}">
+	                <!-- 비로그인 상태 -->
+	                <li class="log-in">로그인</li>
+	            </c:when>
+	            <c:otherwise>
+	                <!-- 로그인 상태 -->
+	                <li class="log-out">로그아웃</li>
+	            </c:otherwise>
+	        </c:choose>
+	    </ul>
+	</nav>
+   
+    
 </header>
 
 
