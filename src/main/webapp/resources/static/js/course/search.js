@@ -36,8 +36,8 @@ function toggleAutoComplete() {
 
         if (event.target.value.length > 0) {
             const filtered = mountains.filter(({
-                                                    mtmtName, mtAddress: mtmtAddress
-                                                }) => mtmtName.includes(event.target.value) || mtmtAddress.includes(event.target.value));
+                                                    mtName, mtAddress: mtAddress
+                                                }) => mtName.includes(event.target.value) || mtAddress.includes(event.target.value));
 
 
             filtered.forEach(({mtName, mtAddress, mtY, mtX, mtId: mtId}) => {

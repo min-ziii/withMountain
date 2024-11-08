@@ -30,7 +30,7 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	padding: 100px 16px 32px;
+	padding: 50px 16px 32px;
 }
 
 /* 1-2. 검색창 */
@@ -47,17 +47,22 @@
 	margin: 24px 0 32px;
 	box-shadow: 0 4px 8px 0 rgb(0 0 0/4%);
 }
+
 #search-text {
 	font-size: 15px;
-	color: var(--gray01);
-	opacity: .3;
+	color: var(--black);
 	font-weight: 500;
 	width: 500px;
 	border: none;
+	cursor: text;
 }
+
+#search-text::placeholder {
+	color: var(--gray04);
+}
+
 #search-btn {
 	border: none;
-	background-color: transparant;
 	outline: none;
 	width: 22px;
 	height: 22px;
@@ -72,6 +77,9 @@
 	grid-template-columns: repeat(3, 1fr);
 	grid-gap: 10px;
 	place-items: center;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 350px;
 }
 #joinlist-header {
 	display: flex;
@@ -80,6 +88,21 @@
 	align-items: center;
 	margin: 10px;
 }
+
+/* 스크롤바 막대 커스텀 */
+#clublist-joinlist::-webkit-scrollbar {
+	width: 8px;  /* 스크롤바의 너비 */
+}
+#clublist-joinlist::-webkit-scrollbar-thumb {
+	height: 30%; /* 스크롤바의 길이 */
+	background: var(--gray05); /* 스크롤바의 색상 */
+
+	border-radius: 10px;
+}
+#clublist-joinlist::-webkit-scrollbar-track {
+	background: var(--white);  /*스크롤바 뒷 배경 색상*/
+}
+
 
 /* 2-1. 가입한 모임 카드 */
 #clublist-joinlist .joinclub {
@@ -110,7 +133,7 @@
 .joinclub .joinclub-content .joinclub-header div:nth-child(2) {
 	font-size: 16px;
 	line-height: 1.6;
-	color: var(--balck);	
+	color: var(--black);
 	font-weight: 500;
 }
 .joinclub .joinclub-content .joinclub-footer {
@@ -159,8 +182,7 @@
 
 /* 3-3. 추천모임 내용 */
 .recommendclub .recommendclub-content {
-	margin: 5px;
-	margin-left: 10px;
+	margin: 0 0 5px 10px;
 }
 .recommendclub .recommendclub-content .recommendclub-header, .recommendclub-intro, .recommendclub-tag, .recommendclub-footer {
 	margin-top: 5px;
@@ -174,7 +196,7 @@
 .recommendclub .recommendclub-content .recommendclub-header div:nth-child(1) {
 	font-size: 16px;
 	line-height: 1.6;
-	color: var(--balck);	
+	color: var(--black);
 	font-weight: 500;
 }
 .recommendclub .recommendclub-content .recommendclub-intro {
@@ -217,12 +239,18 @@
 	border-radius: 50%;
 	background-color: var(--light-green);
 	display: flex;
-	flex-direction: column; /* 요소검사에서 flex 버튼으로 지정/복붙 */
-	align-items: center; /* 요소검사에서 flex 버튼으로 지정/복붙 */
-	justify-content: center; /* 요소검사에서 flex 버튼으로 지정/복붙 */
+	flex-direction: column; 
+	align-items: center;
+	justify-content: center;
 }
 #club-plus-btn img {
-	 height: 45%;
+	height: 45%;
+	cursor: pointer;
+	transition: transform 0.2s ease; /* 애니메이션 효과 추가 */
+}
+
+.rotate {
+	transform: rotate(45deg); /* 45도 회전 */
 }
 
 #club-close-btn {
@@ -234,44 +262,574 @@
 	border-radius: 50%;
 	background-color: var(--light-green);
 	display: flex;
-	flex-direction: column; /* 요소검사에서 flex 버튼으로 지정/복붙 */
-	align-items: center; /* 요소검사에서 flex 버튼으로 지정/복붙 */
-	justify-content: center; /* 요소검사에서 flex 버튼으로 지정/복붙 */
+	flex-direction: column;
+	align-items: center;
+	justify-content: center; 
 }
 #club-close-btn img {
 	 height: 45%;
+	 cursor: pointer; 
 }
 
 #club-add-btn {
 	position: fixed;
 	width: 70px;
 	height: 70px;
-	right: 100px;
+	right: 20px;
 	bottom: 100px;
 	border-radius: 50%;
 	background-color: var(--light-green);
 	display: flex;
-	flex-direction: column; /* 요소검사에서 flex 버튼으로 지정/복붙 */
-	align-items: center; /* 요소검사에서 flex 버튼으로 지정/복붙 */
-	justify-content: center; /* 요소검사에서 flex 버튼으로 지정/복붙 */
-}
+	flex-direction: column; 
+	align-items: center; 
+	justify-content: center; 
+} 
 #club-add-btn img {
 	 height: 45%;
+	 cursor: pointer; 
 }
 
 #club-otp-btn {
 	position: fixed;
 	width: 70px;
 	height: 70px;
-	right: 100px;
+	right: 20px;
 	bottom: 180px;
 	border-radius: 50%;
 	background-color: var(--light-green);
 	display: flex;
-	flex-direction: column; /* 요소검사에서 flex 버튼으로 지정/복붙 */
-	align-items: center; /* 요소검사에서 flex 버튼으로 지정/복붙 */
-	justify-content: center; /* 요소검사에서 flex 버튼으로 지정/복붙 */
+	flex-direction: column; 
+	align-items: center;
+	justify-content: center;
 }
 #club-otp-btn img {
 	 height: 45%;
+	 cursor: pointer; 
 }
+ 
+
+
+/* 초대코드 팝업창 띄우기 */
+/* 팝업창  고정 ------------- */
+#popup {
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left:0;
+    right: 0;
+    margin: calc(0px - var(--main-menu-height)) auto;
+    z-index: 100000000000000;
+
+    justify-content: center;
+    align-items: center;
+}
+
+/* 너비랑 높이는 각자에 맞게 수정 */
+#popup .window {
+    width: 500px;
+    height: auto;
+    padding: 40px;
+    background-color: var(--white);
+    border-radius: 10px;
+}
+
+/* 팝업창 닫기 버튼 */
+.popup-close {
+	float: right;
+}
+
+/* 초대코드  지문 글자 크기 */
+.code-title {
+	font-size: 14px;
+	line-height: 1.6;
+	font-weight: 400;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	margin-left: 10px
+}
+
+/* 초대코드 입력창 */
+.invite-code {
+	width: 100%;
+	height: 44px;
+	padding: 0 12px;
+	border: 1px solid var(--gray06);
+	border-radius: 6px;
+	outline: none;
+	background-color: transparent;
+	font-weight: 400;
+	font-size: 14px;
+	font-family: Pretendard;
+	margin-bottom: 5px;
+	margin-left: 10px
+}
+
+/* 모임 참여 하기 버튼 */
+ #joinclub-btn{
+    background-color: var(--light-green);  /* 배경색 */
+    color: var(--main);              /* 텍스트 색상 */
+    padding: 10px 20px;        /* 버튼 내부 여백 */
+    border: none;              /* 테두리 제거 */
+    border-radius: 10px;        /* 모서리 둥글게 */
+    cursor: pointer;           /* 마우스 오버시 포인터 모양 */
+    width: 100%;
+    margin-top: 30px;             
+    margin-bottom: 30px;             
+}
+
+
+/* ---------------------------------------------------------------------------------------- */
+/* club/add.jsp */
+/* ---------------------------------------------------------------------------------------- */
+/* 타이틀 글자크기 (모임생성하기) */
+#clubadd-title {
+	font-size: 24px;
+	line-height: 1.6;
+	font-weight: bold;
+	padding-top: 30px;
+	margin-left: 30px;
+}
+
+/* 모든 지문 글자크기(공개여부,활동지역 등) */
+#club-add-form div:nth-child(1) {
+	font-size: 14px;
+	line-height: 1.6;
+	font-weight: 400;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+/* 헤더부분 공개여부 ~ 최대인원수 와 대표사진 */
+/* 헤더부분 글자와 이미지칸 나누기 */
+#club-add-form .form-club-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-left: 50px;
+	margin-right: 50px;
+	padding: 0;
+}
+/* 헤더부분 칸 넓히기 */
+#club-add-form .form-club-header .form-club-content {
+	width: 520px;
+}
+
+
+/* 공개 여부--------------------------- */
+/* 라디오 버튼 그룹 스타일 */
+#radio-private {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 300px;
+}
+.radio-gender {
+	display: flex;
+	gap: 20px;
+	margin-top: 8px;
+	width: 300px;
+}
+
+/* 레이블 컨테이너 스타일 */
+.chk_round {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+/* 기본 라디오 버튼 숨기기 */
+.chk_round input[type="radio"] {
+	display: none;
+}
+
+/* 커스텀 라디오 버튼 기본 스타일 */
+.chk_round .radio-btn {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: var(--gray05);
+	display: inline-block;
+	position: relative;
+	margin-right: 10px;
+}
+
+/* 선택됐을 때 내부 원 스타일 */
+.chk_round input:checked + .radio-btn:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 50%;
+	right: 50%;
+	width: 15px;
+	height: 15px;
+	background-color: var(--main);
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, .1);
+	border-radius: 50%;
+	transform: translate(50%, -50%);
+}
+
+
+/* 모든 input 창 크기 조절 */
+.form-group .addclub_input {
+	width: 100%;
+	height: 44px;
+	padding: 0 12px;
+	border: 1px solid var(--gray06);
+	border-radius: 6px;
+	outline: none;
+	background-color: transparent;
+	font-weight: 400;
+	font-size: 14px;
+	font-family: Pretendard;
+	margin-bottom: 5px;
+}
+.form-group .addclub_full {
+	height: 147px;
+	padding: 15px 12px;
+	line-height: 1.7;
+	resize: none;
+}
+
+
+/* 대표 사진 */
+.club-upload-image {
+	width: 500px;
+	height: 300px;
+	border-radius: 10px;
+	object-fit: cover;
+}
+
+
+
+/* 모임소개 ~ 초대코드 부분 */
+.form-club-footer {
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+/* 모임소개 */
+/* 모임 스크롤 */
+.addclub_full {
+	overflow-y: scroll;
+}
+.form-club-footer #intro {
+	padding: 5px 0 0 10px;
+}
+
+/* 해시태그 */
+.tagify .full {
+	border: 1px solid var(--gray01);
+	border-radius: 10px;
+	outline: none;
+	width: calc(100% - 5px);
+}
+#addclub-tagcontent {
+	padding-left: 10px;
+	color: var(--gray04);
+}
+
+
+/* 초대코드 자동생성 부분 */
+.form-club-footer #addclub-code {
+	width: 520px;
+	margin-top: 10px;
+}
+
+
+/* 모임 생성하기 버튼 */
+#addclub-btn{
+	background-color: var(--light-green);  /* 배경색 */
+	color: var(--main);              /* 텍스트 색상 */
+	padding: 10px 20px;        /* 버튼 내부 여백 */
+	border: none;              /* 테두리 제거 */
+	border-radius: 10px;        /* 모서리 둥글게 */
+	cursor: pointer;           /* 마우스 오버시 포인터 모양 */
+	width: 520px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+
+
+/* ---------------------------------------------------------------------------------------- */
+/* club/edit.jsp */
+/* ---------------------------------------------------------------------------------------- */
+/*모임 수정하는 페이지에 버튼*/
+#addclub-btn-area {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+/* 모임 수정하기 버튼 */
+#editclub-btn{
+	background-color: var(--light-green);  /* 배경색 */
+	color: var(--main);              /* 텍스트 색상 */
+	padding: 10px 20px;        /* 버튼 내부 여백 */
+	border: none;              /* 테두리 제거 */
+	border-radius: 10px;        /* 모서리 둥글게 */
+	cursor: pointer;           /* 마우스 오버시 포인터 모양 */
+	width: 520px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+/* 모임 삭제하기 버튼 */
+#delclub-btn{
+	background-color: var(--light-red);  /* 배경색 */
+	color: var(--red);              /* 텍스트 색상 */
+	padding: 10px 20px;        /* 버튼 내부 여백 */
+	border: none;              /* 테두리 제거 */
+	border-radius: 10px;        /* 모서리 둥글게 */
+	cursor: pointer;           /* 마우스 오버시 포인터 모양 */
+	width: 520px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-left: 25px;
+}
+
+
+
+
+
+/* ---------------------------------------------------------------------------------------- */
+/* club/member.jsp */
+/* ---------------------------------------------------------------------------------------- */
+/* 멤버 관리 팝업창 띄우기 */
+/* 팝업창  고정 ------------- */
+#member-popup {
+	display: none;
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left:0;
+	right: 0;
+	margin: calc(0px - var(--main-menu-height)) auto;
+	z-index: 100000000000000;
+
+	justify-content: center;
+	align-items: center;
+}
+
+/* 너비랑 높이는 각자에 맞게 수정 */
+#member-popup .window {
+	width: 500px;
+	height: auto;
+	padding: 40px;
+	background-color: var(--white);
+	border-radius: 10px;
+}
+
+/* 검색창 크기 살짝 줄이기 */
+#member-popup #search-box {
+	width: 400px;
+	height: 35px;
+	margin: 0 0 10px 0;
+}
+#member-popup #search-text {
+	width: 400px;
+}
+#member-popup #search-btn {
+	width: 16px;
+	height: 16px;
+}
+/* 멤버 프로필 */
+/* 멤버 정보랑 버튼 일렬로 나열 */
+.profile-container {
+	display: flex;
+	align-items: center;
+	font-family: Arial, sans-serif;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+.profile-image {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+/* 모임 호스트 왕관아이콘 붙이기 */
+.crown-icon {
+	position: absolute;
+	bottom: -0.1px;
+	right: 370px;
+	width: 10px; /* 왕관 아이콘 크기 조정 */
+	height: 10px;
+}
+.profile-info {
+	flex-grow: 1;
+}
+
+.profile-name {
+	font-weight: 700;
+	font-size: 16px;
+	margin: 5px;
+}
+
+.profile-date {
+	color: var(--gray04);
+	font-size: 12px;
+	margin: 5px;
+}
+
+.profile-buttons {
+	display: flex;
+	gap: 10px;
+	margin-right: 20px;
+}
+
+.btn {
+	padding: 5px 15px;
+	border-radius: 10px;
+	border: 1px solid var(--main);
+	cursor: pointer;
+	font-size: 0.9em;
+}
+
+.assign-btn {
+	color: var(--main);
+	background-color: var(--white);
+	border: 1px solid var(--main);
+}
+
+.leave-btn {
+	color: var(--light-green);
+	background-color: var(--main);
+	border: 1px solid var(--light-green);
+}
+
+
+
+
+/* ---------------------------------------------------------------------------------------- */
+/* club/member.jsp */
+/* ---------------------------------------------------------------------------------------- */
+/* 채팅방 팝업창 */
+#chat-popup {
+	display: none;
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left:0;
+	right: 0;
+	margin: calc(0px - var(--main-menu-height)) auto;
+	z-index: 100000000000000;
+
+	justify-content: center;
+	align-items: center;
+}
+
+/* 너비랑 높이는 각자에 맞게 수정 */
+#chat-popup .window {
+	width: 600px;
+	height: auto;
+	padding: 40px;
+	background-color: var(--white);
+	border-radius: 10px;
+}
+
+/* 팝업창 닫기 버튼 */
+#chat-popup .popup-close {
+	float: right;
+	margin-right: 15px;
+	margin-top: 13px;
+}
+
+/* 채팅방 스타일 적용 */
+#chatWrap {
+	width: 520px;
+	border: 1px solid var(--gray06);
+}
+
+#chatHeader {
+	height: 50px;
+	text-align: center;
+	line-height: 60px;
+	font-size: 20px;
+	font-weight: 900;
+	border-bottom: 1px solid var(--gray06);
+	color: var(--gray01);
+}
+
+#chatLog {
+	height: 600px;
+	overflow-y: auto;
+	padding: 10px;
+}
+
+.myMsg {
+	text-align: right;
+}
+
+.anotherMsg {
+	text-align: left;
+	margin-bottom: 5px;
+}
+
+.msg {
+	display: inline-block;
+	border-radius: 15px;
+	padding: 7px 15px;
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+
+.anotherMsg > .msg {
+	background-color: var(--light-green);
+	color: var(--main);
+	font-size: 16px;
+}
+.anotherMsg > .send-date {
+	color: var(--gray04);
+}
+
+.myMsg > .msg {
+	background-color: var(--main);
+	color: var(--light-green);
+	font-size: 16px;
+}
+
+.myMsg > .send-date {
+	color: var(--gray04);
+}
+
+.anotherName {
+	font-size: 12px;
+	display: block;
+	color: var(--dark-gray);
+}
+
+#chatForm {
+	display: block;
+	width: 100%;
+	height: 50px;
+	border-top: 2px solid var(--gray06);
+}
+
+#message {
+	width: 85%;
+	height: calc(100% - 1px);
+	border: none;
+	padding-bottom: 0;
+	padding-left: 10px;
+}
+
+#message:focus {
+	outline: none;
+}
+
+#chatForm > input[type=submit] {
+	outline: none;
+	border: none;
+	background: none;
+	color: var(--main);
+	font-size: 17px;
+}
+
+
+

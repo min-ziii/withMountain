@@ -5,6 +5,7 @@ import java.util.List;
 import com.test.hike.dto.MountainDTO;
 import org.apache.ibatis.annotations.Mapper;
 
+import com.test.hike.dto.HikingRoadDTO;
 import com.test.hike.dto.HikingRoadSpotDTO;
 
 @Mapper
@@ -14,4 +15,7 @@ public interface MapCustomMapper {
 
 	List<MountainDTO> getSearchMountainSpots(); // 산 위치
 
+	List<HikingRoadDTO> getHikingRoads();
+
+	com.test.hike.dto.custom.MountainDTO getAllRoadsWithCoordsByMtId(int mtId);
 }

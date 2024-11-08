@@ -4,6 +4,11 @@
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
+<script>
+    // For Test
+    <%--const data = JSON.parse('${data}');--%>
+</script>
+
 <div id="view-map" class="course-map">
     <div class="zoom-button-area">
         <button class="zoom-in" type="button">
