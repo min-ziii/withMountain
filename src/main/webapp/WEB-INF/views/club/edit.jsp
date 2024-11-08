@@ -69,7 +69,7 @@
 				style="display: none;">
 			<!-- <div class="inner"> -->
 			<label for="image"> <img class="club-default-image"
-				src="${path}/resources/static/images/club-default-image.jpg" alt="모임기본이미지">
+                                     src="${path}/resources/static/images/club-upload-image.jpg" alt="모임기본이미지">
 			</label>
 			<!-- </div> -->
 		</div>

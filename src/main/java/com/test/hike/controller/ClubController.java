@@ -1,15 +1,28 @@
 package com.test.hike.controller;
 
+import com.test.hike.dao.ClubDAO;
+import com.test.hike.dto.ClubDTO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/club")
 public class ClubController {
 
-	@GetMapping("")
-	public String index() {
+	private final ClubDAO dao;
+
+    @GetMapping("")
+	public String index(Model model) {
+
+		List<ClubDTO> clubList = dao.clubList();
+		model.addAttribute("clubList", clubList);
+
 		return "club.index";
 	}
 
@@ -52,4 +65,6 @@ public class ClubController {
 	public String edit() {
 		return "club.edit";
 	}
+
 }
+

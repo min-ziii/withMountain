@@ -78,6 +78,7 @@
 	grid-gap: 10px;
 	place-items: center;
 	overflow-y: scroll;
+	overflow-x: hidden;
 	height: 350px;
 }
 #joinlist-header {
@@ -94,12 +95,12 @@
 }
 #clublist-joinlist::-webkit-scrollbar-thumb {
 	height: 30%; /* 스크롤바의 길이 */
-	background: var(--main); /* 스크롤바의 색상 */
+	background: var(--gray05); /* 스크롤바의 색상 */
 
 	border-radius: 10px;
 }
 #clublist-joinlist::-webkit-scrollbar-track {
-	background: var(--light-green);  /*스크롤바 뒷 배경 색상*/
+	background: var(--white);  /*스크롤바 뒷 배경 색상*/
 }
 
 
@@ -243,8 +244,13 @@
 	justify-content: center;
 }
 #club-plus-btn img {
-	 height: 45%;
-	 cursor: pointer; 
+	height: 45%;
+	cursor: pointer;
+	transition: transform 0.2s ease; /* 애니메이션 효과 추가 */
+}
+
+.rotate {
+	transform: rotate(45deg); /* 45도 회전 */
 }
 
 #club-close-btn {
@@ -479,7 +485,7 @@
 	font-family: Pretendard;
 	margin-bottom: 5px;
 }
-.form-group #addclub_textarea {
+.form-group .addclub_full {
 	height: 147px;
 	padding: 15px 12px;
 	line-height: 1.7;
@@ -488,7 +494,7 @@
 
 
 /* 대표 사진 */
-.club-default-image {
+.club-upload-image {
 	width: 500px;
 	height: 300px;
 	border-radius: 10px;
@@ -504,8 +510,13 @@
 }
 
 /* 모임소개 */
-
-
+/* 모임 스크롤 */
+.addclub_full {
+	overflow-y: scroll;
+}
+.form-club-footer #intro {
+	padding: 5px 0 0 10px;
+}
 
 /* 해시태그 */
 .tagify .full {

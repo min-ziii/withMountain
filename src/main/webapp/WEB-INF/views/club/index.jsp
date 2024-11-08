@@ -111,20 +111,18 @@
 			</div>
 		</div>
 	</div>
-	
-	<c:forEach begin="1" end="4">
+
+	<c:forEach items="${clubList}" var="dto">
 	<div class="recommendclub">
 		<img class="joinclub-image"
 			src="${path}/resources/static/images/club-image.jpg" alt="산악회 대표사진">
 		<div class="recommendclub-content">
 			<div class="recommendclub-header">
-				<div>한사랑 산악회</div>
+				<div>${dto.name}</div>
 				<img class="useradd-logo"
 					src="${path}/resources/static/images/user-add.svg" alt="가입하기">
 			</div>
-			<div class="recommendclub-intro">안녕하십니까? ○○○산악회 회원 여러분. 우리
-				산악인들의 마음을 한껏 부풀어오르게 만드는 아름다운 단풍이 곱게 피어나는 10월입니다. 이 좋은 가을날, 또 한번의 멋진
-				산행을 위해서 이렇게 올해의 ○○번째 모임을 갖게 되었습니다. 저희 모임에 오셔서 즐거운 산행 이어 갑시다</div>
+			<div class="recommendclub-intro">${dto.intro}</div>
 			<div class="recommendclub-tag">
 				<span class="recommendclub-tag-item"># 백숙</span> <span
 					class="recommendclub-tag-item"># 가을산</span> <span
@@ -134,11 +132,11 @@
 				<div>
 					<span><img class="clock-logo"
 						src="${path}/resources/static/images/clock.svg" alt="가입날짜"></span>
-					<span>2024-11-05</span>
+					<span>${dto.createDate}</span>
 				</div>
 				<div>
 					<span><img class="users-logo"
-						src="${path}/resources/static/images/users.svg" alt="멤버"></span> <span>6/50</span>
+						src="${path}/resources/static/images/users.svg" alt="멤버"></span> <span>6/${dto.maxMember}</span>
 				</div>
 			</div>
 		</div>
@@ -152,19 +150,19 @@
 
 <div class="club-plus">
 <button type="button" id="club-plus-btn" onclick='plusBtnToggle();'>
-	<img class="plus-logo" src="${path}/resources/static/images/plus.svg" alt="모임플러스버튼">
+	<img id="plus-image" class="plus-logo" src="${path}/resources/static/images/plus.svg" alt="모임플러스버튼">
 </button>
 </div>
 
-<div class="club-plus-btns">
+<div class="club-plus-btns" >
 <div class="club-otp">
-<button type="button" id="club-otp-btn" onclick="showModal();">
+<button type="button" id="club-otp-btn" onclick="showModal();" style="visibility: hidden;">
 	<img class="otp-logo" src="${path}/resources/static/images/otp.svg" alt="초대코드버튼">
 </button>
 </div>
 
 <div class="club-add">
-<button type="button" id="club-add-btn" onclick="location.href='http://localhost:8090/hike/club/add';">
+<button type="button" id="club-add-btn" onclick="location.href='http://localhost:8090/hike/club/add';" style="visibility: hidden;">
 	<img class="users-medical-logo" src="${path}/resources/static/images/users-medical.svg" alt="모임생성버튼">
 </button>
 </div>
