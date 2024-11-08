@@ -20,13 +20,15 @@ public class MapCustomDAO {
 		return mapper.getHikingRoadSpots();
 	}
 
-<<<<<<< Updated upstream
 	public List<MountainDTO> getSearchMountainSpots() {
 		return mapper.getSearchMountainSpots();
-=======
-	public List<HikingRoadDTO> getHikingRoads() {
+	}
 
+	public List<HikingRoadDTO> getHikingRoads() {
 		return mapper.getHikingRoads();
->>>>>>> Stashed changes
+	}
+
+	public com.test.hike.dto.custom.MountainDTO getAllRoadsWithCoordsByMtId(int mtId) {
+		return mapper.getAllRoadsWithCoordsByMtId(mtId);
 	}
 }
