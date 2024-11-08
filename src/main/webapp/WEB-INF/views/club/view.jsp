@@ -11,7 +11,7 @@
 <div id="club-profile">
 	
 	<div id="profile-info">
-		<div class="profile-image">
+		<div class="club-profile-image">
 			<img src="${path}/resources/static/images/club-image.jpg" alt="모임 프로필 사진">
 		</div>
 		<div class="clubInfo">
@@ -22,8 +22,8 @@
 					<img class="club-setting" src="${path}/resources/static/images/settings.svg" alt="모임 관리">
 				</button>
 			</div>
+				<h2 class="clubCreateDate">개설 일자: 2024년 11월 01일</h2>
 
-			<h2 class="clubCreateDate">개설 일자: 2024년 11월 01일</h2>
 		</div>
 	</div>
 

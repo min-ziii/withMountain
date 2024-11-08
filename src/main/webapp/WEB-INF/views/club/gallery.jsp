@@ -4,21 +4,13 @@
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-<<<<<<< HEAD
 <%-- 사진 등록 팝업창 띄우기 --%>
 <div id="popupAddGallery">
     <div class="window">
 
         <div class="popup-close">
             <button type="button" class="popup-close-btn" onclick='popupClose();'>
-=======
-<%-- 팝업창 띄우기 --%>
-<div id="popup">
-    <div class="window">
 
-        <div class="popup-close">
-            <button type="button" id="popup-close-btn" onclick='popupClose();'>
->>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
                 <img class="close-logo" src="${path}/resources/static/images/close.svg" alt="닫기">
             </button>
         </div>
@@ -66,7 +58,6 @@
     </div>
 </div>
 
-<<<<<<< HEAD
 <%-- 사진 클릭시 상세 팝업창 띄우기 --%>
 <div id="popupImage">
     <div class="window">
@@ -100,8 +91,6 @@
     </div>
 </div>
 
-=======
->>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 <!-- jsp작업 -->
 <div id="club-profile-background"></div>
 
@@ -109,7 +98,7 @@
 <div id="club-profile">
 
     <div id="profile-info">
-        <div class="profile-image">
+        <div class="club-profile-image">
             <img src="${path}/resources/static/images/club-image.jpg" alt="모임 프로필 사진">
         </div>
         <div class="clubInfo">
@@ -150,14 +139,12 @@
 <%-- 사진 --%>
 <div id="gallery-sub-head">
     <div class="gallery-title">사진첩</div>
-<<<<<<< HEAD
+
     <button type="button" class="image-add-btn" onclick="showModal();">
-=======
-    <button type="button" class="image-add-btn" onclick="//location.href=''">
->>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
         <img class="plus-logo" src="${path}/resources/static/images/plus.svg" alt="플러스 로고">
         <span onclick="showModal();">추가하기</span>
     </button>
+
 </div>
 
 <div id="club-gallery-list">
@@ -172,7 +159,6 @@
     <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
 </div>
 
-// 모임 사진첩 사진 첨부 & 사진 미리보기
     <script>
     document.getElementById('gallery-image').addEventListener('change', function(e) {
         const file = e.target.files[0];

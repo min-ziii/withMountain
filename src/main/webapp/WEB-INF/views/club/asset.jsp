@@ -12,5 +12,6 @@
 <script src="${path}/resources/static/js/club.js"></script>
 <script type="module" src="${path}/resources/static/js/common.js"></script>
 <script src="${path}/resources/static/js/tagify.js"></script>
+<script src="${path}/resources/static/js/dist/index.global.js"></script>
 <script src="${path}/resources/static/js/club-view.js"></script>
 

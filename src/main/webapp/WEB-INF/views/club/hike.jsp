@@ -11,7 +11,7 @@
 <div id="club-profile">
 
     <div id="profile-info">
-        <div class="profile-image">
+        <div class="club-profile-image">
             <img src="${path}/resources/static/images/club-image.jpg" alt="모임 프로필 사진">
         </div>
         <div class="clubInfo">
@@ -52,15 +52,7 @@
 <div class="sub-title">등산 기록</div>
 <div id="club-hike-list">
 
-<<<<<<< HEAD
     <div class="club-hike">
-=======
-    <div class="myhike">
-        <div class="course-image">
-            <img class="course-map" src="${path}/resources/static/images/map-test.jpg" alt="코스 사진">
-        </div>
-
->>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
         <div class="hike-main-content">
             <div class="hike-title"><span style="color: var(--main)">북한산</span> 등반</div>
             <div class="hike-content">
@@ -92,7 +84,7 @@
                     <span>8.4KM</span>
                 </div>
             </div>
-<<<<<<< HEAD
+
         </div>
         <div class="hike-course-image">
             <img class="hike-course-map" src="${path}/resources/static/images/map-test.jpg" alt="코스 사진">
@@ -134,8 +126,6 @@
         </div>
         <div class="hike-course-image">
             <img class="hike-course-map" src="${path}/resources/static/images/map-test.jpg" alt="코스 사진">
-=======
->>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
         </div>
     </div>
 

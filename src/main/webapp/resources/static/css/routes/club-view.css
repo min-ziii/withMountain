@@ -400,13 +400,15 @@
 }
 
 /* 프로필 전체 */
-#profile-info{
+#profile-info {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 }
 
 /* 프로필 이미지 */
-.profile-image img {
+.club-profile-image img {
+	display: flex;
 	position: relative;
 	top: -50px;
 	width: 180px;
@@ -426,39 +428,18 @@
 	margin-bottom: 10px;
 }
 
-<<<<<<< HEAD
 .clubInfo .club-title {
-=======
-#profile-info .clubInfo .club-title {
->>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-<<<<<<< HEAD
 .clubInfo .club-title .club-setting {
-=======
-#profile-info .clubInfo .club-title .club-setting {
->>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 	padding: 0 0 5px 5px;
 	cursor: pointer;
-}
-
-<<<<<<< HEAD
-
-.clubInfo .club-title .club-member-setting {
-	width: 20px;
-	height: 20px;
-	padding: 0 0 5px 5px;
-	cursor: pointer;
-	color: var(--gray02);
 }
 
 .clubInfo .clubCreateDate {
-=======
-#profile-info .clubInfo .clubCreateDate {
->>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 	font-size: 13px;
 	font-weight: 400;
 	color: var(--gray02);
@@ -537,8 +518,6 @@
 	font-weight: 700;
 }
 
-<<<<<<< HEAD
-=======
 /* 팝업창 ------------- */
 #popup {
 	display: none;
@@ -701,9 +680,6 @@
 }
 
 
-
->>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
-
 /* 1. 모임 정보 -------------------------------------------------- */
 /* 1-1. 모임 채팅 + 가입하기 ------------- */
 #info-btn {
@@ -864,7 +840,7 @@
 
 /* 2-2.b. 툴바_버튼------ */
 
- 이전, 다음, 오늘 이동_버튼
+/* 이전, 다음, 오늘 이동_버튼 */
 .fc .fc-button{
 	padding: 5px;
 }
@@ -1001,8 +977,8 @@
 
 /* 3-1. 등산 기록 ------------- */
 .club-hike {
-	/*width: 480px;*/
-	/*height: 300px;*/
+	width: 480px;
+	height: 300px;
 	display: flex;
 	justify-content: space-between;
 	border-radius: 10px;
@@ -1011,11 +987,7 @@
 	box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 
-<<<<<<< HEAD
 .club-hike .hike-course-image .hike-course-map {
-=======
-.club-hike .course-image .course-map {
->>>>>>> 7206289000a0cf5d94e69b440c3ad7e867c25e4a
 	width: 220px;
 	height: 260px;
 	object-fit: cover;
