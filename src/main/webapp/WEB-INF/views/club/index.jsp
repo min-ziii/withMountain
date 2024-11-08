@@ -8,13 +8,14 @@
 <div id="popup">
     <div class="window">
 
-        <!-- 팝업 내용 여기 안에서 작업-->
+		<!-- 팝업 닫기 버튼-->
         <div class="popup-close">
         <button type="button" id="popup-close-btn" onclick='popupClose();'>
 			<img class="close-logo" src="${path}/resources/static/images/close.svg" alt="닫기">
 		</button>
         </div>
-        
+
+		<!-- 팝업 내용 여기 안에서 작업-->
         <div class="clublist-title">초대 코드</div>
         
         <form>
@@ -33,7 +34,7 @@
 <div id="clublist-header">
 	<div class="clublist-title">함께라면 산행이 더 즐거워요</div>
 	<div id="search-box">
-		<input type="text" value="모임 이름이나 활동 지역을 검색해보세요!" id="search-text" size="15">
+		<input type="text" placeholder="모임 이름이나 활동 지역을 검색해보세요!" id="search-text" size="15">
 		<button type="submit" id="search-btn">
 			<img class="search-logo" src="${path}/resources/static/images/search.svg" alt="검색">
 		</button>
@@ -47,7 +48,7 @@
 </div>
 <div id="clublist-joinlist">
 
-	<c:forEach begin="1" end="4">
+	<c:forEach begin="1" end="7">
 	<div class="joinclub">
 		<img class="joinclub-image" src="${path}/resources/static/images/club-image.jpg" alt="산악회 대표사진">
 		<div class="joinclub-content">
@@ -170,26 +171,6 @@
 </div>
 
 
-<script>
-	//팝업창 띄우기
-	function showModal() {
-		$('html, body').css({
-			overflow: 'hidden',
-			height: '100%'
-		});
-		$('#popup').css('display', 'flex');
-	}
-
-	//팝업창 닫기
-	function popupClose() {
-		$('html, body').css({
-			overflow: 'visible',
-			height: '100%'
-		});
-		$('#popup').css('display', 'none');
-	}
-
-</script>
 
 
 

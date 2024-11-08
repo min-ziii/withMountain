@@ -30,7 +30,7 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	padding: 100px 16px 32px;
+	padding: 50px 16px 32px;
 }
 
 /* 1-2. 검색창 */
@@ -47,17 +47,22 @@
 	margin: 24px 0 32px;
 	box-shadow: 0 4px 8px 0 rgb(0 0 0/4%);
 }
+
 #search-text {
 	font-size: 15px;
-	color: var(--gray01);
-	opacity: .3;
+	color: var(--black);
 	font-weight: 500;
 	width: 500px;
 	border: none;
+	cursor: text;
 }
+
+#search-text::placeholder {
+	color: var(--gray04);
+}
+
 #search-btn {
 	border: none;
-	background-color: transparant;
 	outline: none;
 	width: 22px;
 	height: 22px;
@@ -72,6 +77,8 @@
 	grid-template-columns: repeat(3, 1fr);
 	grid-gap: 10px;
 	place-items: center;
+	overflow-y: scroll;
+	height: 350px;
 }
 #joinlist-header {
 	display: flex;
@@ -80,6 +87,21 @@
 	align-items: center;
 	margin: 10px;
 }
+
+/* 스크롤바 막대 커스텀 */
+#clublist-joinlist::-webkit-scrollbar {
+	width: 8px;  /* 스크롤바의 너비 */
+}
+#clublist-joinlist::-webkit-scrollbar-thumb {
+	height: 30%; /* 스크롤바의 길이 */
+	background: var(--main); /* 스크롤바의 색상 */
+
+	border-radius: 10px;
+}
+#clublist-joinlist::-webkit-scrollbar-track {
+	background: var(--light-green);  /*스크롤바 뒷 배경 색상*/
+}
+
 
 /* 2-1. 가입한 모임 카드 */
 #clublist-joinlist .joinclub {
@@ -110,7 +132,7 @@
 .joinclub .joinclub-content .joinclub-header div:nth-child(2) {
 	font-size: 16px;
 	line-height: 1.6;
-	color: var(--balck);	
+	color: var(--black);
 	font-weight: 500;
 }
 .joinclub .joinclub-content .joinclub-footer {
@@ -159,8 +181,7 @@
 
 /* 3-3. 추천모임 내용 */
 .recommendclub .recommendclub-content {
-	margin: 5px;
-	margin-left: 10px;
+	margin: 0 0 5px 10px;
 }
 .recommendclub .recommendclub-content .recommendclub-header, .recommendclub-intro, .recommendclub-tag, .recommendclub-footer {
 	margin-top: 5px;
@@ -174,7 +195,7 @@
 .recommendclub .recommendclub-content .recommendclub-header div:nth-child(1) {
 	font-size: 16px;
 	line-height: 1.6;
-	color: var(--balck);	
+	color: var(--black);
 	font-weight: 500;
 }
 .recommendclub .recommendclub-content .recommendclub-intro {
@@ -308,12 +329,6 @@
     border-radius: 10px;
 }
 
-/* 일정 팝업 작업 */
-.window-title {
-    font-size: 20px;
-    font-weight: 700;
-}
-
 /* 팝업창 닫기 버튼 */
 .popup-close {
 	float: right;
@@ -336,7 +351,6 @@
 	padding: 0 12px;
 	border: 1px solid var(--gray06);
 	border-radius: 6px;
-	outline: none;
 	outline: none;
 	background-color: transparent;
 	font-weight: 400;
@@ -459,7 +473,6 @@
 	border: 1px solid var(--gray06);
 	border-radius: 6px;
 	outline: none;
-	outline: none;
 	background-color: transparent;
 	font-weight: 400;
 	font-size: 14px;
@@ -495,7 +508,7 @@
 
 
 /* 해시태그 */
-.tagify.full {
+.tagify .full {
 	border: 1px solid var(--gray01);
 	border-radius: 10px;
 	outline: none;
@@ -534,7 +547,7 @@
 /* ---------------------------------------------------------------------------------------- */
 /*모임 수정하는 페이지에 버튼*/
 #addclub-btn-area {
-	display: felx;
+	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
@@ -570,32 +583,55 @@
 
 
 /* ---------------------------------------------------------------------------------------- */
-/* club/member.jsp
-   팝업창으로 만들어 봅시다 ~~ */
+/* club/member.jsp */
 /* ---------------------------------------------------------------------------------------- */
+/* 멤버 관리 팝업창 띄우기 */
+/* 팝업창  고정 ------------- */
+#member-popup {
+	display: none;
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left:0;
+	right: 0;
+	margin: calc(0px - var(--main-menu-height)) auto;
+	z-index: 100000000000000;
+
+	justify-content: center;
+	align-items: center;
+}
+
+/* 너비랑 높이는 각자에 맞게 수정 */
+#member-popup .window {
+	width: 500px;
+	height: auto;
+	padding: 40px;
+	background-color: var(--white);
+	border-radius: 10px;
+}
+
 /* 검색창 크기 살짝 줄이기 */
-#popup #search-box {
+#member-popup #search-box {
 	width: 400px;
 	height: 35px;
-	margin: 0;
+	margin: 0 0 10px 0;
 }
-#popup #search-text {
+#member-popup #search-text {
 	width: 400px;
 }
-
+#member-popup #search-btn {
+	width: 16px;
+	height: 16px;
+}
 /* 멤버 프로필 */
-/*.member-profile img {*/
-/*	width: 60px;*/
-/*	height: 60px;*/
-/*	border-radius: 30px;*/
-/*}*/
-
 /* 멤버 정보랑 버튼 일렬로 나열 */
 .profile-container {
 	display: flex;
 	align-items: center;
 	font-family: Arial, sans-serif;
 	margin-bottom: 10px;
+	position: relative;
 }
 
 .profile-image {
@@ -605,6 +641,14 @@
 	margin-right: 10px;
 }
 
+/* 모임 호스트 왕관아이콘 붙이기 */
+.crown-icon {
+	position: absolute;
+	bottom: -0.1px;
+	right: 370px;
+	width: 10px; /* 왕관 아이콘 크기 조정 */
+	height: 10px;
+}
 .profile-info {
 	flex-grow: 1;
 }
@@ -646,3 +690,135 @@
 	background-color: var(--main);
 	border: 1px solid var(--light-green);
 }
+
+
+
+
+/* ---------------------------------------------------------------------------------------- */
+/* club/member.jsp */
+/* ---------------------------------------------------------------------------------------- */
+/* 채팅방 팝업창 */
+#chat-popup {
+	display: none;
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left:0;
+	right: 0;
+	margin: calc(0px - var(--main-menu-height)) auto;
+	z-index: 100000000000000;
+
+	justify-content: center;
+	align-items: center;
+}
+
+/* 너비랑 높이는 각자에 맞게 수정 */
+#chat-popup .window {
+	width: 600px;
+	height: auto;
+	padding: 40px;
+	background-color: var(--white);
+	border-radius: 10px;
+}
+
+/* 팝업창 닫기 버튼 */
+#chat-popup .popup-close {
+	float: right;
+	margin-right: 15px;
+	margin-top: 13px;
+}
+
+/* 채팅방 스타일 적용 */
+#chatWrap {
+	width: 520px;
+	border: 1px solid var(--gray06);
+}
+
+#chatHeader {
+	height: 50px;
+	text-align: center;
+	line-height: 60px;
+	font-size: 20px;
+	font-weight: 900;
+	border-bottom: 1px solid var(--gray06);
+	color: var(--gray01);
+}
+
+#chatLog {
+	height: 600px;
+	overflow-y: auto;
+	padding: 10px;
+}
+
+.myMsg {
+	text-align: right;
+}
+
+.anotherMsg {
+	text-align: left;
+	margin-bottom: 5px;
+}
+
+.msg {
+	display: inline-block;
+	border-radius: 15px;
+	padding: 7px 15px;
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+
+.anotherMsg > .msg {
+	background-color: var(--light-green);
+	color: var(--main);
+	font-size: 16px;
+}
+.anotherMsg > .send-date {
+	color: var(--gray04);
+}
+
+.myMsg > .msg {
+	background-color: var(--main);
+	color: var(--light-green);
+	font-size: 16px;
+}
+
+.myMsg > .send-date {
+	color: var(--gray04);
+}
+
+.anotherName {
+	font-size: 12px;
+	display: block;
+	color: var(--dark-gray);
+}
+
+#chatForm {
+	display: block;
+	width: 100%;
+	height: 50px;
+	border-top: 2px solid var(--gray06);
+}
+
+#message {
+	width: 85%;
+	height: calc(100% - 1px);
+	border: none;
+	padding-bottom: 0;
+	padding-left: 10px;
+}
+
+#message:focus {
+	outline: none;
+}
+
+#chatForm > input[type=submit] {
+	outline: none;
+	border: none;
+	background: none;
+	color: var(--main);
+	font-size: 17px;
+}
+
+
+
