@@ -11,15 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-<<<<<<< Updated upstream
-@Controller
-@RequiredArgsConstructor
-=======
-import lombok.RequiredArgsConstructor;
-
 @Controller
 @RequiredArgsConstructor // 의존 주입
->>>>>>> Stashed changes
 @RequestMapping("/course")
 public class CourseController {
     private final MapCustomDAO dao;

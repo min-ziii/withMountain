@@ -26,12 +26,9 @@ public class MapCustomDAO {
 
 	public List<HikingRoadDTO> getHikingRoads() {
 		return mapper.getHikingRoads();
-<<<<<<< Updated upstream
 	}
 
 	public com.test.hike.dto.custom.MountainDTO getAllRoadsWithCoordsByMtId(int mtId) {
 		return mapper.getAllRoadsWithCoordsByMtId(mtId);
-=======
->>>>>>> Stashed changes
 	}
 }
