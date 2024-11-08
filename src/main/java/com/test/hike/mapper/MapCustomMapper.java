@@ -15,7 +15,9 @@ public interface MapCustomMapper {
 
 	List<MountainDTO> getSearchMountainSpots(); // 산 위치
 
+
 	List<HikingRoadDTO> getHikingRoads();
 
 	com.test.hike.dto.custom.MountainDTO getAllRoadsWithCoordsByMtId(int mtId);
+
 }

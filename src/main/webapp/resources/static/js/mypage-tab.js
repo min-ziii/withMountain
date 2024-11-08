@@ -197,6 +197,12 @@ function loadQnA() {
     qnaContent.innerHTML = boardHTML;
 }
 
+//여기는 상단바에 id줘서 해당 부분응로 이동하는 기능
+
+
+
+
+
 // 사진 상세정보 표시
 function showPhotoDetail(photoId) {
     console.log(`사진 ID ${photoId}의 상세 정보를 보여줍니다.`);

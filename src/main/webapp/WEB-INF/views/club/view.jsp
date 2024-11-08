@@ -58,8 +58,9 @@
 
 <!-- 모임원 -->
 <div id="club-member">
-	<div class="memeber-toggle">
-		<img class="toggle-icon" src="${path}/resources/static/images/arrow-down.svg" alt="토글 아이콘">가입 멤버 (6)
+	<div class="club-member-management">
+		가입 멤버 (6 / 50)
+		<img class="club-member-setting" src="${path}/resources/static/images/member-management.svg" alt="모임 멤버 관리">
 	</div>
 	
 	<div class="club-member-profile">
