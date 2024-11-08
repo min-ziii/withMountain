@@ -34,7 +34,7 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	padding: 100px 16px 32px;
+	padding: 30px 16px 32px;
 }
 
 /* 1-2. 검색창 */
@@ -67,3 +67,135 @@
 	height: 22px;
 	margin-left: auto;
 }
+
+
+/* 이미지 이동 애니메이션 */
+#circle-mtlist{
+	overflow:hidden;
+   	position:relative;
+   	width:970px;  /* 이미지 보여지는 뷰 부분 */
+   	height:200px;
+   	margin: auto;
+}
+
+.img-box{
+	width:2860px; /* 원본+클론의 총 합 */
+   	height:200px;
+   	display:flex;
+   	flex-wrap:nowrap;
+   	overflow: hidden;
+   	animation: bannermove 20s linear infinite;
+   	text-align: center;
+}
+.img-rad{
+	display: inline-block;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.img-rad img {
+  width: 100px;          /* 이미지 너비 */
+  height: 100px;         /* 이미지 높이 */
+  border-radius: 50%;    /* 원형으로 만들기 */
+  object-fit: cover;     /* 이미지가 원형 영역을 꽉 채우도록 잘라내기 */
+  cursor: pointer;
+}
+
+.img-box img{
+	width:100px; /* 원본+클론의 총 합 */
+   	height:100px;
+   	object-fit: cover; 
+}
+
+.img-rad p {
+  margin-top: 10px;      /* 이미지와 텍스트 사이의 간격 */
+  font-size: 16px;       /* 텍스트 크기 */
+  color: #333;           /* 텍스트 색상 */
+  font-weight: bold;     /* 텍스트 굵게 */
+  cursor: pointer;
+}
+
+@keyframes bannermove {
+  0% {
+      transform: translatex(0);
+  }
+  100% {
+      transform: translatex(-50%);
+  }
+}
+/* 애니메이션 종료 */
+
+
+.line{
+	width: 80%;
+}
+
+  .header-box {
+    display: flex;
+  }
+
+  /* 버튼 영역 */
+  .scroll-box {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  overflow-y: auto;
+  max-height: 300px;
+  padding-right:20px; 
+  width: 430px;
+}
+
+  .header-btn {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+  .mtnbtn {
+    background-color: #f1f1f1;
+    border: none;
+	border-radius: 10px; 
+    color: #333;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 10px;
+    cursor: pointer;
+    width:100px;
+  	justify-content: center;
+  }
+
+  /* 이미지 영역 */
+  .header-img {
+    width: 600px;
+    height: 300px;
+    overflow: hidden;
+    /* margin-left: 20px; */
+  }
+
+  .header-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+.header-btn{
+	width: 400px;
+	height: auto;
+	overflow: scroll; 
+}
+
+.mtnbtn:hover {
+    width: 100px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--light-green); 
+    color: var(--main); 
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer; 
+    transition: background-color 0.6s ease; 
+}
+

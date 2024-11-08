@@ -4,6 +4,7 @@
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
+
 <!-- 홈페이지 -->
 <!-- 1. 헤더문구 & 검색창 -->
 <div id="home-header">
@@ -19,15 +20,160 @@
 <!-- 2. 산 이름과 원형 이미지 -->
 <div id="circle-mtlist">
 	<div class="circle-mtlist-item">
-		<img>
+		<div class="img-box">
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/북한산.jpg">
+				<p>북한산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/덕유산.jpg">
+				<p>덕유산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/방태산.jpg">
+				<p>방태산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/수락산.jpg">
+				<p>수락산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/아차산.jpg">
+				<p>아차산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/영축산.jpg">
+				<p>영축산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/지리산.jpg">
+				<p>지리산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/천마산.jpg">
+				<p>천마산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/청계산.jpg">
+				<p>청계산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/치악산.jpg">
+				<p>치악산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/태백산.jpg">
+				<p>태백산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/팔봉산.jpg">
+				<p>팔봉산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/한라산.jpg">
+				<p>한라산</p>
+			</div>
+			<!-- 클론  -->
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/북한산.jpg">
+				<p>북한산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/덕유산.jpg">
+				<p>덕유산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/방태산.jpg">
+				<p>방태산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/수락산.jpg">
+				<p>수락산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/아차산.jpg">
+				<p>아차산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/영축산.jpg">
+				<p>영축산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/지리산.jpg">
+				<p>지리산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/천마산.jpg">
+				<p>천마산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/청계산.jpg">
+				<p>청계산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/치악산.jpg">
+				<p>치악산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/태백산.jpg">
+				<p>태백산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/팔봉산.jpg">
+				<p>팔봉산</p>
+			</div>
+			<div class="img-rad">
+				<img src="${path}/resources/static/images/mtn/한라산.jpg">
+				<p>한라산</p>
+			</div>
+		</div>
 	</div>
-	<p>북한산</p>
 </div>
+<hr class="line">
 
 <!-- 3. 산 이름 목록과 큰 이미지 -->
 <div id="mini-mtlist-header">
 	<div class="header-title">지금 인기 있는 산</div>
 	<div class="header-content">유저들이 가장 좋아하는 산들을 모아봤어요!</div>
+		<div class="header-box">
+			<div class="scroll-box" style="overflow-x:hidden;">
+				<div class="header-btn"style="overflow-x:hidden;" >
+					<button class="mtnbtn">설악산</button>
+					<button class="mtnbtn">지리산</button>
+					<button class="mtnbtn">북한산</button>
+					<button class="mtnbtn">한라산</button>
+					<button class="mtnbtn">검단산</button>
+					<button class="mtnbtn">계룡산</button>
+					<button class="mtnbtn">고헌산</button>
+					<button class="mtnbtn">광교산</button>
+					<button class="mtnbtn">금마산</button>
+					<button class="mtnbtn">내장산</button>
+					<button class="mtnbtn">대덕산</button>
+					<button class="mtnbtn">대암산</button>
+					<button class="mtnbtn">아차산</button>
+					<button class="mtnbtn">주왕산</button>
+					<button class="mtnbtn">수락산</button>
+					<button class="mtnbtn">팔봉산</button>
+					<button class="mtnbtn">용마산</button>
+					<button class="mtnbtn">월악산</button>
+					<button class="mtnbtn">청계산</button>
+					<button class="mtnbtn">태백산</button>
+					<button class="mtnbtn">대덕산</button>
+					<button class="mtnbtn">화악산</button>
+					<button class="mtnbtn">천성산</button>
+					<button class="mtnbtn">방태산</button>
+					<button class="mtnbtn">금마산</button>
+					<button class="mtnbtn">오대산</button>
+					<button class="mtnbtn">천마산</button>
+					<button class="mtnbtn">영축산</button>
+					<button class="mtnbtn">불암산</button>
+					<button class="mtnbtn">속리산</button>
+				</div>
+			</div>
+			<div class="header-img">
+				<img id="mountainImage"src="${path}/resources/static/images/mtn/한라산.jpg">
+			</div>
+		</div>
 </div>
 
 <!-- 4. 등산 예정 모임 -->
@@ -42,3 +188,7 @@
 	<div class="header-content">등산에 대한 다양한 정보와 재미있는 이야기를 즐겨봐요!</div>
 </div>
 
+<script src="${path}/resources/static/js/home.js">
+
+
+</script>
