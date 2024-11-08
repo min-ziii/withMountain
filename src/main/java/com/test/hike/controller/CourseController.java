@@ -30,14 +30,15 @@ public class CourseController {
 
     @GetMapping("view")
     public String view(Model model, String mtId) {
-        com.test.hike.dto.custom.MountainDTO result = dao.getAllRoadsWithCoordsByMtId(Integer.parseInt(mtId));
-
-        try {
-            String jsonResult = objectMapper.writeValueAsString(result);
-            model.addAttribute("data", jsonResult);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // For Test
+        // com.test.hike.dto.custom.MountainDTO result = dao.getAllRoadsWithCoordsByMtId(Integer.parseInt(mtId));
+        //
+        // try {
+        //     String jsonResult = objectMapper.writeValueAsString(result);
+        //     model.addAttribute("data", jsonResult);
+        // } catch (Exception e) {
+        //     e.printStackTrace();
+        // }
 
         return "course.view";
     }
