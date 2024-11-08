@@ -97,14 +97,10 @@ function loadMarker(map) {
     }
 }
 
-<<<<<<< Updated upstream
 function navigateToView(mtId, mtName, mtY, mtX) {
     location.href = `course/view?mtId=${mtId}&mtName=${mtName}&mtY=${mtY}&mtX=${mtX}`;
 }
-=======
-function navigateToView(mt_id, name, lat, lng) {
-    location.href = `course/view?mt_id=${mt_id}&name=${name}&lat=${lat}&lng=${lng}`;
-}
+
 
 const DUMMY_DATA = [
     {
@@ -438,4 +434,3 @@ const DUMMY_DATA = [
     }
 ];
 
->>>>>>> Stashed changes
