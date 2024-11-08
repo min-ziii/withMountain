@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>로그아웃</title>
-    <link rel="stylesheet" href="${path}/resources/static/css/routes/signup.css">
+    <link rel="stylesheet" href="${path}/resources/static/css/inc/signup.css">
     <link rel="stylesheet" href="${path}/resources/static/css/routes/login.css">
 </head>
 <body>

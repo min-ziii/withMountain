@@ -17,7 +17,7 @@ public class ClubController {
 
 	private final ClubDAO dao;
 
-    @GetMapping("")
+	@GetMapping("")
 	public String index(Model model) {
 
 		List<ClubDTO> clubList = dao.clubList();
@@ -67,4 +67,3 @@ public class ClubController {
 	}
 
 }
-
