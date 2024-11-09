@@ -12,9 +12,24 @@
 		select * from club where club_id = #{club_id}
 	</select>
 
-
 	<select id="clubScheduler" parameterType="String" resultType="ClubDTO">
 		select * from club where club_id = #{club_id}
 	</select>
 
+	<select id="clubHike" parameterType="String" resultType="ClubDTO">
+		select * from club where club_id = #{club_id}
+	</select>
+
+	<select id="clubGallery" parameterType="String" resultType="ClubDTO">
+		select * from club where club_id = #{club_id}
+	</select>
+
+
+	<select id="galleryList" parameterType="String" resultType="ClubGalleryDTO">
+		select * from clubGallery where club_id = #{club_id}
+	</select>
+
+<!--	<insert id="clubGalleryAdd">-->
+<!--		insert into ClubGallery(club_gallery_id, club_id, schedule_id, gallery_date, image) values (seqClubGallery.nextVal, 1, null, sysdate, #{galleryImage})-->
+<!--	</insert>-->
 </mapper>

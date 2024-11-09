@@ -10,6 +10,7 @@
 		<typeAlias type="com.test.hike.dto.custom.RoadDTO" alias="CustomRoadDTO"/>
 		<typeAlias type="com.test.hike.dto.HikingRoadDTO" alias="RoadDTO"/>
 		<typeAlias type="com.test.hike.dto.ClubDTO" alias="ClubDTO"/>
+		<typeAlias type="com.test.hike.dto.ClubGalleryDTO" alias="ClubGalleryDTO"/>
 	</typeAliases>
 
 </configuration>

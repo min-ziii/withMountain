@@ -176,7 +176,11 @@ document.getElementById('galleryImage').addEventListener('change', function(e) {
 
 
 // 사진첩 > 사진 클릭시 팝업창 ------------------------------------------------
-function showModalImage() {
+function showModalImage(imageSrc, galleryDate, galleryId) {
+    document.querySelector('.club-image').src = imageSrc;
+    document.querySelector('.club-image-date').innerText = galleryDate;
+    document.querySelector('.gallery-id').innerText = galleryId;
+
     $('html, body').css({
         overflow: 'hidden',
         height: '100%'
