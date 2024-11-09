@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class LocationDTO {
-	private int locationId;
-	private String name;
+    private String locationId;  // String으로 통일 > 수정했어~
+    private String name;
 }
