@@ -36,8 +36,12 @@ function initializeEventListeners() {
     
     // 회원가입 버튼 타입 변경 및 이벤트 바인딩
     $('#emailsignup-btn').attr('type', 'button').off('click').on('click', loginToSignUp);
-    
-    
+
+    //배경 클릭 시 모달 끄기
+    $('#login-container').click((event) => event.stopPropagation());
+    $('#signup-container').click((event) => event.stopPropagation());
+    $('#login-overlay').click(closeLoginModal);
+    $('#signup-overlay').click(closeSignUpModal);
 }
 
 // 네비게이션 활성화
