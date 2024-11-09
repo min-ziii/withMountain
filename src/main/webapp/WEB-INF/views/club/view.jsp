@@ -40,12 +40,12 @@
 <%-- 서브 메뉴 --%>
 <header id="sub-menu">
 	<nav>
-        <ul>
-            <li class="selected"><a href="${path}/club/view">정보</a></li>
-            <li><a href="${path}/club/scheduler">일정</a></li>
-            <li><a href="${path}/club/hike">등산 기록</a></li>
-            <li><a href="${path}/club/gallery">사진첩</a></li>
-        </ul>
+		<ul>
+			<li class="selected"><a href="${path}/club/view?club_id=${clubDTO.club_id}">정보</a></li>
+			<li><a href="${path}/club/scheduler?club_id=${clubDTO.club_id}" id="club-schedule">일정</a></li>
+			<li><a href="${path}/club/hike?club_id=${clubDTO.club_id}" id="club-hike">등산 기록</a></li>
+			<li><a href="${path}/club/gallery?club_id=${clubDTO.club_id}" id="club-gallery">사진첩</a></li>
+		</ul>
     </nav>
 </header>
 
@@ -103,9 +103,6 @@
 		
 	</div>
 </div>
-
-
-
 
 
 

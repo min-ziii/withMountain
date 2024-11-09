@@ -88,6 +88,7 @@
 </div>
 
 <!-- jsp작업 -->
+<input type="hidden" name="club_id" value="${clubDTO.club_id}">
 <div id="club-profile-background"></div>
 
 <!-- 모임 프로필 -->
@@ -100,13 +101,13 @@
         <div class="clubInfo">
 
             <div class="club-title">
-                <h1 class="clubName">한사랑 산악회</h1>
+                <h1 class="clubName">${clubDTO.name}</h1>
                 <button type="button" onclick="location.href='${path}/club/edit'">
                     <img class="club-setting" src="${path}/resources/static/images/settings.svg" alt="모임 관리">
                 </button>
             </div>
+            <h2 class="clubCreateDate">개설 일자: ${clubDTO.create_date}</h2>
 
-            <h2 class="clubCreateDate">개설 일자: 2024년 11월 01일</h2>
         </div>
     </div>
 
@@ -123,10 +124,10 @@
 <header id="sub-menu">
     <nav>
         <ul>
-            <li><a href="${path}/club/view">정보</a></li>
-            <li class="selected"><a href="${path}/club/scheduler">일정</a></li>
-            <li><a href="${path}/club/hike">등산 기록</a></li>
-            <li><a href="${path}/club/gallery">사진첩</a></li>
+            <li><a href="${path}/club/view?club_id=${clubDTO.club_id}">정보</a></li>
+            <li class="selected"><a href="${path}/club/scheduler?club_id=${clubDTO.club_id}" id="club-schedule">일정</a></li>
+            <li><a href="${path}/club/hike?club_id=${clubDTO.club_id}" id="club-hike">등산 기록</a></li>
+            <li><a href="${path}/club/gallery?club_id=${clubDTO.club_id}" id="club-gallery">사진첩</a></li>
         </ul>
     </nav>
 </header>
@@ -141,3 +142,13 @@
 
 <div id="calendar"></div>
 
+<script>
+// 현재 페이지 URL에서 쿼리 스트링 값 읽기
+const urlParams = new URLSearchParams(window.location.search);
+
+// 특정 파라미터 값을 추출
+const clubId = urlParams.get('club_id');  // 'club_id' 값 추출
+
+// 값 확인 (console로 출력)
+console.log('club_id:', clubId);  // 123
+</script>

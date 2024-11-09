@@ -12,4 +12,9 @@
 		select * from club where club_id = #{club_id}
 	</select>
 
+
+	<select id="clubScheduler" parameterType="String" resultType="ClubDTO">
+		select * from club where club_id = #{club_id}
+	</select>
+
 </mapper>

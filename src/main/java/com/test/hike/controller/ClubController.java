@@ -46,7 +46,12 @@ public class ClubController {
 	}
 
 	@GetMapping("/scheduler")
-	public String scheduler() {
+	public String scheduler(Model model, String club_id) {
+
+
+		ClubDTO clubDTO = dao.clubScheduler(club_id);
+		model.addAttribute("clubDTO", clubDTO);
+
 		return "club.scheduler";
 	}
 

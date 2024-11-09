@@ -10,5 +10,6 @@ public interface ClubMapper {
 
 	List<ClubDTO> clubList();
 	ClubDTO clubView(String club_id);
+	ClubDTO clubScheduler(String club_id);
 }
 

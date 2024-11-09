@@ -5,6 +5,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <!-- jsp작업 -->
+<input type="hidden" name="club_id" value="${clubDTO.club_id}">
 <div id="club-profile-background"></div>
 
 <!-- 모임 프로필 -->
@@ -17,13 +18,13 @@
         <div class="clubInfo">
 
             <div class="club-title">
-                <h1 class="clubName">한사랑 산악회</h1>
+                <h1 class="clubName">${clubDTO.name}</h1>
                 <button type="button" onclick="location.href='${path}/club/edit'">
                     <img class="club-setting" src="${path}/resources/static/images/settings.svg" alt="모임 관리">
                 </button>
             </div>
+            <h2 class="clubCreateDate">개설 일자: ${clubDTO.create_date}</h2>
 
-            <h2 class="clubCreateDate">개설 일자: 2024년 11월 01일</h2>
         </div>
     </div>
 

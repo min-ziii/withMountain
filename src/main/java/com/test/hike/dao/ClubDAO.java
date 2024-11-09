@@ -24,4 +24,10 @@ public class ClubDAO {
         return mapper.clubView(club_id);
     }
 
+
+    public ClubDTO clubScheduler(String club_id) {
+
+        return mapper.clubScheduler(club_id);
+    }
+
 }
