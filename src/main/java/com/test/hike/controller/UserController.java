@@ -45,16 +45,23 @@ public class UserController {
     }
     
     // GET mapping도 .do로 변경
-    @GetMapping("/login")
-    public String loginPage(
-        @RequestParam(value = "error", required = false) String error,
-        Model model
-    ) {
-        if (error != null) {
-            model.addAttribute("loginError", "이메일 또는 비밀번호가 올바르지 않습니다.");
-        }
-        return "redirect:/";
+    // @GetMapping("/login")
+    // public String loginPage(
+    //     @RequestParam(value = "error", required = false) String error,
+    //     Model model
+    // ) {
+    //     if (error != null) {
+    //         model.addAttribute("loginError", "이메일 또는 비밀번호가 올바르지 않습니다.");
+    //     }
+    //     return "redirect:/";
+    // }
+
+    @GetMapping("/login-page")
+    public String loginPage() {
+
+        return "login-page";
     }
+
 
     @PostMapping("/login")
     @ResponseBody
