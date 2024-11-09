@@ -1,15 +1,18 @@
 package com.test.hike.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class ClubDTO {
-	private String clubId;
+	private String club_id;
+    private String location_id;
     private String name;
-    private String isPrivate;
-    private String maxMember;
+    private String is_private;
+    private String max_member;
     private String intro;
     private String image;
-    private String createDate;
+    private String create_date;
     private String code;
 }

@@ -5,6 +5,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <!-- jsp작업 -->
+<input type="hidden" name="club_id" value="${clubDTO.club_id}">
 <div id="club-profile-background"></div>
 
 <!-- 모임 프로필 -->
@@ -17,12 +18,12 @@
 		<div class="clubInfo">
 
 			<div class="club-title">
-				<h1 class="clubName">한사랑 산악회</h1>
+				<h1 class="clubName">${clubDTO.name}</h1>
 				<button type="button" onclick="location.href='${path}/club/edit'">
 					<img class="club-setting" src="${path}/resources/static/images/settings.svg" alt="모임 관리">
 				</button>
 			</div>
-				<h2 class="clubCreateDate">개설 일자: 2024년 11월 01일</h2>
+				<h2 class="clubCreateDate">개설 일자: ${clubDTO.create_date}</h2>
 
 		</div>
 	</div>
@@ -51,15 +52,13 @@
 <%-- 모임 정보 --%>
 <div id="intro">
 	<div class="intro-title">소개</div>
-	<div class="intro-content"><pre>안녕하십니까? ○○○산악회 회원 여러분.
-우리 산악인들의 마음을 한껏 부풀어오르게 만드는 아름다운 단풍이 곱게 피어나는 11월입니다.
-이 좋은 가을날, 또 한번의 멋진 산행을 위해서 이렇게 올해의 ○○번째 모임을 갖게 되었습니다. 저희 모임에 오셔서 즐거운 산행 이어 갑시다 </pre></div>
+	<div class="intro-content"><pre>${clubDTO.intro}</pre></div>
 </div>
 
 <!-- 모임원 -->
 <div id="club-member">
 	<div class="club-member-management">
-		가입 멤버 (6 / 50)
+		가입 멤버 (6 / ${clubDTO.max_member})
 		<img class="club-member-setting" src="${path}/resources/static/images/member-management.svg" alt="모임 멤버 관리">
 	</div>
 	

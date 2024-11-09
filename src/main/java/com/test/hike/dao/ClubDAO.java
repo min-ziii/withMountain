@@ -18,4 +18,10 @@ public class ClubDAO {
         return mapper.clubList();
 
     }
+
+    public ClubDTO clubView(String club_id) {
+
+        return mapper.clubView(club_id);
+    }
+
 }

@@ -9,4 +9,6 @@ import java.util.List;
 public interface ClubMapper {
 
 	List<ClubDTO> clubList();
+	ClubDTO clubView(String club_id);
 }
+

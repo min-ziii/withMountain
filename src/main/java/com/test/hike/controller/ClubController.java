@@ -37,7 +37,11 @@ public class ClubController {
 	}
 
 	@GetMapping("/view")
-	public String view() {
+	public String view(Model model, String club_id) {
+
+		ClubDTO clubDTO = dao.clubView(club_id);
+		model.addAttribute("clubDTO", clubDTO);
+
 		return "club.view";
 	}
 
