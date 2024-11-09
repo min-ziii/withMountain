@@ -1,0 +1,225 @@
+@import "../style.css";
+
+#mountain-detail {
+    padding: 40px 120px;
+}
+
+
+.image-section {
+    position: relative;
+}
+
+
+.main-image {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.like-button {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+
+    display: flex;
+    align-items: center;
+}
+
+.like-count {
+    margin-left: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--white);
+}
+
+.like-img {
+    width: 24px;
+    height: 24px;
+}
+
+.info-section {
+    padding: 0 12px;
+}
+
+.title {
+    display: flex;
+    align-items: baseline;
+}
+
+.title-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.title h1 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.title span {
+    font-size: 14px;
+    margin-left: 12px;
+    color: var(--gray04);
+}
+
+.custom-button {
+    height: 48px;
+    padding: 0 16px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 10px;
+    background-color: var(--light-green);
+    color: var(--main);
+    margin-top: 8px;
+
+}
+
+.intro {
+    font-size: 16px;
+    color: var(--gray02);
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+.weather-title-wrap {
+    font-weight: 500;
+    margin-top: 70px;
+    margin-bottom: 40px;
+    font-size: 18px;
+}
+
+.daily-weather {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.daily-weather .item {
+    min-width: 100px;
+    text-align: center;
+}
+
+.date-wrap {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.date {
+    margin-right: 2px;
+}
+
+.saturday {
+   color: var(--blue);
+}
+
+.sunday {
+    color: var(--red);
+}
+
+
+.weather-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin: 12px 0;
+}
+
+.min-max-temp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 14px;
+
+    font-weight: 500;
+    font-size: 16px;
+    gap: 4px;
+}
+
+.min-max-temp .min {
+    color: var(--blue);
+}
+
+.min-max-temp .max {
+    color: var(--red);
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detail-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: var(--gray01);
+}
+
+.detail-title {
+    color: var(--gray02);
+    margin-right: 5px;
+}
+
+.detail-metric {
+    font-size: 12px;
+}
+
+.sun {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.sun-container {
+    width: 600px;
+    height: 60px;
+    border: 1px solid var(--gray06);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px 0 #00000010;
+    margin-top: 60px;
+    display: flex;
+}
+
+.sun-separator {
+    border-left: 1px solid var(--gray06);
+    margin: 20px 0;
+}
+
+.sun-item {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sun-item span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sun-title-wrap {
+    margin-right: 12px;
+}
+
+.sun-icon {
+    width: 30px;
+    height: auto;
+}
+
+.sun-title {
+    color: var(--gray02);
+}
+
+.sun-time {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
