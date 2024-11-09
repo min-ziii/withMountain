@@ -53,6 +53,10 @@ function closeSignUpModal() {
     unlockScroll();
 }
 
+// X 이미지 클릭 이벤트 추가
+$('#login-container .exitImage').click(closeLoginModal);
+$('#signup-container .exitImage').click(closeSignUpModal);
+
 function lockScroll() {
     $('html, body').css({
         overflow: 'hidden',
@@ -62,8 +66,8 @@ function lockScroll() {
 
 function unlockScroll() {
     $('html, body').css({
-        overflow: 'hidden',
-        height: '100%'
+        overflow: 'auto',	//'hidden'에서 'auto'로 수정
+        height: 'auto'		//'100%'에서 'auto'로 수정
     });
 }
 
@@ -81,7 +85,6 @@ function loginToSignUp() {
             const input = this.closest('.addon_input').querySelector('input');
             if (input.type === 'password') {
                 input.type = 'text';
-                this.querySelector('img').src = '${path}/resources/static/images/icon/eye-off.svg';
             } else {
                 input.type = 'password';
                 this.querySelector('img').src = '${path}/resources/static/images/icon/eye.svg';
