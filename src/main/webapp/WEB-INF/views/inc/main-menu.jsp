@@ -4,13 +4,43 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
+<!-- 여기서부터 수정함 -->
+
+<!-- jQuery가 먼저 로드되어야 합니다 -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
+<!-- 수정전 -->
+
+<!-- path 변수 선언 -->
+<!-- <script>
+    const path = '${path}';
+</script> -->
+
+<!-- common.js 로드 -->
+<%-- <script src="${path}/resources/js/common.js"></script> --%>
+
+
+<!-- path 변수 선언 및 확인 -->
+<script>
+    const path = '${pageContext.request.contextPath}';
+    console.log('현재 path:', path); // path 값 확인
+</script>
+
+
+<!-- 공통 스크립트 -->
+<script type="module" src="${path}/resources/static/js/constants.js"></script>
+<script type="module" src="${path}/resources/static/js/common.js"></script>
+
+
 <div id="login-overlay" class="auth-overlay">
     <div id="login-container">
-        <form method="POST" action="${path}/signup" enctype="multipart/form-data">
+    <!-- 수정 후 -->
+        <form method="POST" action="${path}/login" enctype="application/x-www-form-urlencoded" novalidate>
             <div class="header">
                 <h4>로그인</h4>
                 <div class="popup-close">
-                    <input type="button" name="exit" id="exit" accept="image/*" style="display: none;">
+                    <input type="button" name="exit" id="login-exit" accept="image/*" style="display: none;">
                     <label for="exit">
                         <img class="exitImage" src="${path}/resources/static/images/close.svg" alt="종료버튼">
                     </label>
@@ -21,13 +51,13 @@
                 <div class="form-group">
                     <div><label>이메일</label></div>
                     <div class="addon_input">
-                        <input type="email" name="email" id="email" placeholder="이메일을 입력해주세요" required>
+                        <input type="email" name="email" id="login-email" placeholder="이메일을 입력해주세요" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <div><label>비밀번호</label></div>
                     <div class="addon_input">
-                        <input type="password" name="password" id="password" placeholder="비밀번호를 입력해주세요." required>
+                        <input type="password" name="password" id="login-password" placeholder="비밀번호를 입력해주세요." required>
                         <div class="addon">
                             <button type="button" class="eye-button">
                                 <img alt="보기" loading="lazy" width="20" height="15" decoding="async"
@@ -43,7 +73,7 @@
 
 
             <button type="submit" id="login-btn">로그인</button>
-            <button type="submit" id="emailsignup-btn">✉️ 이메일 회원가입</button>
+            <button type="button" id="emailsignup-btn">✉️ 이메일 회원가입</button>
 
             <div class="divider">
                 <span> sns 계정으로 간편 로그인 </span>
@@ -69,11 +99,11 @@
 
 <div id="signup-overlay" class="auth-overlay">
     <div id="signup-container">
-        <form method="POST" action="${path}/signup" enctype="multipart/form-data">
+        <form method="POST" action="${path}/hike/login" enctype="application/x-www-form-urlencoded" novalidate>
             <div class="header">
                 <h4>이메일 회원가입</h4>
                 <div class="popup-close">
-                    <input type="button" name="exit" id="exit" accept="image/*" style="display: none;"
+                    <input type="button" name="exit" id="signup-exit" accept="image/*" style="display: none;"
                            onclick='popupClose();'>
                     <label for="exit">
                         <img class="exitImage" src="${path}/resources/static/images/close.svg" alt="종료버튼">
@@ -85,10 +115,13 @@
             <div id="signup-containerSon">
                 <div class="form-group">
                     <div class="profile-upload">
+                    	<!-- 프로필 이미지 업로드 input -->
                         <input type="file" name="profileImage" id="profileImage" accept="image/*"
                                style="display: none;">
+                        <!-- 프로필 이미지 미리보기 -->
                         <label for="profileImage">
-                            <img class="defaultprofile" src="${path}/resources/static/images/default-profile.svg"
+                        	<!-- 기본 프로필 이미지 (회원가입 시 기본 이미지 보이게) -->
+                            <img id="profilePreview" class="defaultprofile" src="${path}/resources/static/images/default-profile.svg"
                                  alt="기본프로필">
                             <img class="edit_icon" src="${path}/resources/static/images/edit_icon.svg" alt="편집아이콘">
                             <!-- 추가된 편집 아이콘입니당 건들지 마세요. -->
@@ -100,7 +133,10 @@
                 <div class="form-group">
                     <div><label>이메일</label></div>
                     <div class="addon_input">
-                        <input type="email" name="email" id="email" placeholder="이메일을 입력해주세요." required>
+                        <input type="email" name="email" id="signup-email" placeholder="이메일을 입력해주세요." required>
+                    	<div class="addon">
+				            <button type="button" id="email-check-btn">중복확인</button>
+				        </div>
                     </div>
                     <span class="error-message" id="email-error"></span>
                 </div>
@@ -108,7 +144,7 @@
                 <div class="form-group">
                     <div><label>비밀번호</label></div>
                     <div class="addon_input">
-                        <input type="password" name="password" id="password" placeholder="비밀번호를 입력해주세요." required>
+                        <input type="password" name="password" id="signup-password" placeholder="비밀번호를 입력해주세요." required>
                         <div class="addon">
                             <button type="button" class="eye-button">
                                 <img alt="보기" loading="lazy" width="20" height="15" decoding="async"
@@ -173,21 +209,21 @@
                 </div>
 
                 <div class="form-group">
-                    <div><label>활동지역</label></div>
-                    <div class="addon_input">
-                        <select name="locationId" id="locationId" required>
-                            <option value="">활동지역을 선택해주세요</option>
-                            <c:forEach items="${locations}" var="location">
-                                <option value="${location.locationId}">${location.locationName}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-                </div>
+				    <div><label>활동지역</label></div>
+				    <div class="addon_input">
+				        <select name="location_id" id="location_id" required>
+				            <option value="">활동지역을 선택해주세요</option>
+				            <c:forEach items="${locations}" var="location">
+				                <option value="${location.location_id}">${location.name}</option>
+				            </c:forEach>
+				        </select>
+				    </div>
+				</div>
 
                 <div class="form-group">
                     <div><label>소개</label></div>
                     <div class="addon_textarea">
-                        <textarea name="intro" maxlength="600" placeholder="자유롭게 소개글을 작성해주세요. (200자 이하)"></textarea>
+                        <textarea name="intro" id="intro" maxlength="600" placeholder="자유롭게 소개글을 작성해주세요. (200자 이하)"></textarea>
                     </div>
                 </div>
 

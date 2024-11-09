@@ -7,16 +7,16 @@ import lombok.Setter;
 @Setter
 public class UserInfoDTO {
 
-	    private String userId;
-	    private String locationId;
-	    private String email;
-	    private String password;
-	    private String nickname;
-	    private String name;
-	    private String gender;
-	    private String birthday;
-	    private String intro;
-	    private String profileImage;
-	    private String createDate;
+	private String userid;
+    private String locationId;    
+    private String email;
+    private String password;
+    private String nickname;
+    private String name;
+    private String gender;
+    private String birthday;
+    private String intro;
+    private String profileImage;  
+    private String createDate;    
 	
 }

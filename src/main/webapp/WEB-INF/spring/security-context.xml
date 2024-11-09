@@ -5,6 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<!-- 수정전
     <security:http>
         <security:form-login/>
     </security:http>
@@ -12,5 +13,43 @@
 
     <security:authentication-manager>
     </security:authentication-manager>
+ -->
+ 
+ 	<security:http auto-config="true" use-expressions="true">
+        <!-- 권한 설정 -->
+        <security:intercept-url pattern="/resources/**" access="permitAll"/>
+        <security:intercept-url pattern="/login" access="permitAll"/>
+        <security:intercept-url pattern="/signup" access="permitAll"/>
+        <security:intercept-url pattern="/getLocations" access="permitAll"/>
+        <security:intercept-url pattern="/" access="permitAll"/>
+        <security:intercept-url pattern="/home" access="permitAll"/>
+        
+        <!-- 로그인 설정 -->
+        <security:form-login
+            login-page="/login-page"
+            username-parameter="email"
+            password-parameter="password"
+            login-processing-url="/login"
+            default-target-url="/home"
+            authentication-failure-url="/login?error=true"
+        />
+        
+        <!-- 로그아웃 설정 -->
+        <security:logout
+            logout-url="/logout"
+            logout-success-url="/home"
+            invalidate-session="true"
+            delete-cookies="JSESSIONID"
+        />
+        
+        <!-- CSRF 보호 비활성화 (개발 중) -->
+        <security:csrf disabled="true"/>
+    </security:http>
 
+    <security:authentication-manager>
+        <!-- 필요한 경우 authentication provider 설정 -->
+    </security:authentication-manager>
+ 
+ 
+ 
 </beans>
