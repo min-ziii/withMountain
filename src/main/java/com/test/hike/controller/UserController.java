@@ -28,7 +28,6 @@ import com.test.hike.dto.UserInfoDTO;
 import com.test.hike.service.LocationService;
 
 @Controller
-@RequestMapping("/hike")  // 기본 경로 추가
 public class UserController {
 	
     @Autowired
@@ -46,7 +45,7 @@ public class UserController {
     }
     
     // GET mapping도 .do로 변경
-    @GetMapping("/login.do")
+    @GetMapping("/login")
     public String loginPage(
         @RequestParam(value = "error", required = false) String error,
         Model model
@@ -57,7 +56,7 @@ public class UserController {
         return "redirect:/";
     }
 
-    @PostMapping("/login.do")  // /login에서 /login.do로 변경
+    @PostMapping("/login")
     @ResponseBody
     public Map<String, Object> login(
         @RequestParam String email, 
@@ -173,7 +172,7 @@ public class UserController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/";
+        return "redirect:/home";
     }
 
     // 기존의 여러 saveFile 메서드들을 하나로 통합

@@ -36,7 +36,7 @@
 <div id="login-overlay" class="auth-overlay">
     <div id="login-container">
     <!-- 수정 후 -->
-        <form method="POST" action="${path}/login/login.do" enctype="application/x-www-form-urlencoded" novalidate>
+        <form method="POST" action="${path}/login" enctype="application/x-www-form-urlencoded" novalidate>
             <div class="header">
                 <h4>로그인</h4>
                 <div class="popup-close">

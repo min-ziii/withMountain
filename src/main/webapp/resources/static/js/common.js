@@ -176,9 +176,8 @@ function ajaxRequest(url, data, successCallback, errorCallback) {
 
 //로그인
 // common.js 파일 내 handleLogin 함수 수정
-function handleLogin(e) {
-    e.preventDefault();
-    
+function handleLogin() {
+
     const email = $('#login-email').val();
     const password = $('#login-password').val();
     
@@ -186,10 +185,10 @@ function handleLogin(e) {
         $('#emailorpassword-confirm-error').text('이메일과 비밀번호를 입력해주세요.');
         return;
     }
-    
+
     // URL을 login.do로 변경
     $.ajax({
-        url: path + '/hike/login.do',  // login에서 login.do로 변경
+        url: path + '/login/',
         type: 'POST',
         data: {
             email: email,
@@ -217,7 +216,7 @@ $(document).ready(function() {
     // 로그인 폼 제출 이벤트
     $('#login-container form').on('submit', function(e) {
         e.preventDefault();
-        handleLogin(e);
+        handleLogin();
     });
 });
 
@@ -282,7 +281,7 @@ function handleSignup(e) {
     }
 
     $.ajax({
-        url: path + '/signup.do',  // .do 패턴 사용
+        url: path + '/signup/',
         type: 'POST',
         data: formData,
         processData: false,  // FormData를 사용하므로 false로 설정
