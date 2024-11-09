@@ -34,8 +34,46 @@
 	</div>
 </div>
 
+<!-- 좋아요 수, 댓글 수 -->
 
 <div class="total">
+<!-- 자유 게시판 view -->
+<!-- 게시물 목록을 반복문으로 출력 -->
+    <c:forEach var="board" items="${boardList}">
+        <div class="free-post">
+            <!-- 게시물 제목 -->
+            <div class="free-title">
+                <a href="${path}/community/view?board=${board.cm_board_id}">
+                    ${board.title}
+                </a>
+            </div>
+            
+            <!-- 게시물 내용 -->
+            <div class="free-content">
+                ${board.content}
+            </div>
+            
+            <!-- 작성자와 작성일 -->
+            <div class="free-profile">
+                <img src="${path}/resources/static/images/default-profile.svg" alt="프로필 사진" class="profile-pic">
+                <span class="nickname">${board.user_id}</span> <!-- 작성자 ID -->
+                <div class="post-time">${board.create_time}</div> <!-- 작성일 -->
+            </div>
+
+            <!-- 좋아요, 댓글 -->
+            <div class="post-action">
+                <div class="icon-item">
+                    <img src="${path}/resources/static/images/heart.svg" alt="좋아요" class="like-icon">
+                    <span class="like-count">${board.likeCount}</span> <!-- 좋아요 수 -->
+                </div>
+                
+                <div class="icon-item">
+                    <img src="${path}/resources/static/images/comment.svg" alt="댓글" class="comment-icon">
+                    <span class="comment-count">${board.commentCount}</span> <!-- 댓글 수 -->
+                </div>
+            </div>
+        </div>
+    </c:forEach>
 <!-- 자유 게시판 view -->
 <div class="free-post">
     <div class="free-title">

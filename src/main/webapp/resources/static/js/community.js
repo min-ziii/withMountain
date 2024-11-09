@@ -101,3 +101,71 @@ function confirmDelete() {
     window.location.href = `${path}/community/del`;  // 해당 URL로 이동하여 서버에서 삭제 처리
 }
 
+    // 댓글 등록
+    function submitComment() {
+        var commentContent = document.getElementById("new-comment").value;
+        if(commentContent.trim() === "") {
+            alert("댓글을 입력해주세요.");
+            return;
+        }
+        // Ajax 요청으로 댓글 등록 처리
+        // 예시로 서버로 전달하는 코드입니다.
+        $.ajax({
+            url: "${path}/community/addComment",
+            type: "POST",
+            data: {
+                content: commentContent,
+                boardId: "${communityBoard.cm_board_id}"
+            },
+            success: function(response) {
+                // 댓글 등록 후, 댓글 목록을 갱신하는 로직
+                alert("댓글이 등록되었습니다.");
+                location.reload(); // 새로 고침 (댓글 목록 갱신)
+            },
+            error: function(xhr, status, error) {
+                alert("댓글 등록에 실패했습니다.");
+            }
+        });
+    }
+
+    // 댓글 삭제
+    function deleteComment(commentId) {
+        if(confirm("정말로 이 댓글을 삭제하시겠습니까?")) {
+            $.ajax({
+                url: "${path}/community/deleteComment",
+                type: "POST",
+                data: {
+                    commentId: commentId
+                },
+                success: function(response) {
+                    alert("댓글이 삭제되었습니다.");
+                    location.reload(); // 새로 고침 (댓글 목록 갱신)
+                },
+                error: function(xhr, status, error) {
+                    alert("댓글 삭제에 실패했습니다.");
+                }
+            });
+        }
+    }
+
+    // 댓글 수정
+    function editComment(commentId) {
+        var newContent = prompt("수정할 댓글을 입력하세요:");
+        if(newContent != null && newContent.trim() !== "") {
+            $.ajax({
+                url: "${path}/community/editComment",
+                type: "POST",
+                data: {
+                    commentId: commentId,
+                    newContent: newContent
+                },
+                success: function(response) {
+                    alert("댓글이 수정되었습니다.");
+                    location.reload(); // 새로 고침 (댓글 목록 갱신)
+                },
+                error: function(xhr, status, error) {
+                    alert("댓글 수정에 실패했습니다.");
+                }
+            });
+        }
+    }

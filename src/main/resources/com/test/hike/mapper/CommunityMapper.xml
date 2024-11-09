@@ -6,8 +6,30 @@
 <mapper namespace="com.test.hike.mapper.CommunityMapper">
 	
 	<!-- MyBatis가 DB의 컬럼명과 DTO의 필드명을 잘 매핑할 수 있게 resultMap 명시. -->
-	<!-- <select id="boardList" resultType="CommunityBoardDTO">
+	<!-- 글 목록 -->
+	<select id="boardList" resultType="CommunityBoardDTO">
 		select * from CommunityBoard order by cm_board_id desc
-	</select> -->
+	</select>
+	
+	<!-- 글 상세 -->
+	<select id="boardView" resultType="com.test.hike.dto.CommunityBoardDTO">
+        select 
+            cm.cm_board_id,
+            cm.user_id,
+            cm.create_time,
+            cm.title,
+            cm.content,
+            cm.type,
+            cm.image,
+            cm.board_like_id,
+            c.comment_id,
+            c.cm_board_id,
+            c.user_id AS comment_user_id,
+            c.content AS comment_content,
+            c.create_time AS comment_create_time
+        from community_board cm
+        left JOIN comments c on cm.cm_board_id = c.cm_board_id
+        where cm.cm_board_id = #{cm_board_id}
+    </select>
 
 </mapper>

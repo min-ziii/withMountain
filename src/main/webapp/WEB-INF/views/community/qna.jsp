@@ -34,8 +34,37 @@
 	</div>
 </div>
 
-
+<!-- 댓글 수 어떻게 -->
 <div class="total">
+<!-- qna 게시판 view -->
+<!-- 게시물 목록을 반복문으로 출력 -->
+    <c:forEach var="board" items="${boardList}">
+        <div class="qna-post">
+            <div class="qna-title">
+                <!-- 게시물 제목 -->
+                <a href="${path}/community/view?board=${board.cm_board_id}">
+                    <span class="q">Q</span> ${board.title}
+                </a>
+            </div>
+            <div class="qna-content">
+                <!-- 게시물 내용 -->
+                ${board.content}
+            </div>
+            <div class="qna-profile">
+                <img src="${path}/resources/static/images/default-profile.svg" alt="프로필 사진" class="profile-pic">
+                <span class="nickname">${board.user_id}</span> <!-- 작성자 ID -->
+                <div class="post-time">${board.create_time}</div> <!-- 게시물 작성일 -->
+            </div>
+            
+            <!-- 댓글 수 -->
+            <div class="post-action">
+                <div class="icon-item">
+                    <img src="${path}/resources/static/images/comment.svg" alt="댓글" class="comment-icon">
+                    <span class="comment-count">${board.commentCount}</span> <!-- 댓글 수 -->
+                </div>
+            </div>
+        </div>
+    </c:forEach>
 <!-- qna 게시판 view -->
 <div class="qna-post">
     <div class="qna-title">
