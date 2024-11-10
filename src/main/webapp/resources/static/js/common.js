@@ -79,7 +79,6 @@ function closeLoginModal() {
 }
 
 function showSignUpModal() {
-    $('#signup-overlay').css('display', 'flex');
 
     // 활동지역 데이터 가져오기
     $.ajax({
@@ -309,7 +308,7 @@ function handleSignup(e) {
     }
 
     $.ajax({
-        url: path + '/hike/signup.do',  // .do 패턴 사용
+        url: path + '/signup.do',  // .do 패턴 사용
         type: 'POST',
         data: formData,
         processData: false,  // FormData를 사용하므로 false로 설정
@@ -437,7 +436,7 @@ function checkEmailDuplicate() {
     }
 
     $.ajax({
-        url: path + '/hike/checkEmail.do',  // 경로 수정
+        url: path + '/checkEmail.do',  // 경로 수정
         type: 'POST',
         data: { email: email },
         success: function (response) {
@@ -453,7 +452,45 @@ function checkEmailDuplicate() {
     });
 }
 
+// 로그인 필요 여부 체크 함수
+function checkLoginRequired() {
+    // 현재 페이지 URL 가져오기
+    const currentPath = window.location.pathname;
+    
+    // 로그인이 필요한 페이지 목록 (필요에 따라 수정)
+    const protectedPaths = [
+        '/mypage',
+        '/settings',
+        // 추가적인 보호된 경로들...
+    ];
+    
+    // 현재 페이지가 보호된 경로인지 확인
+    const requiresLogin = protectedPaths.some(path => 
+        currentPath.startsWith(path + '/') || currentPath === path
+    );
+    
+    if (requiresLogin) {
+        // 서버에 로그인 상태 확인 요청
+        $.ajax({
+            url: path + '/checkLoginStatus',  // 실제 서버의 엔드포인트로 수정 필요
+            type: 'GET',
+            success: function(response) {
+                if (!response.isLoggedIn) {
+                    alert('로그인이 필요한 페이지입니다.');
+                    window.location.href = path + '/home';  // 또는 로그인 페이지로 리다이렉트
+                }
+            },
+            error: function() {
+                console.error('로그인 상태 확인 중 오류 발생');
+                window.location.href = path + '/home';
+            }
+        });
+    }
+}
+
+
 // 이메일 중복확인 버튼 클릭 이벤트
 $('#email-check-btn').click(checkEmailDuplicate);
+
 
 
