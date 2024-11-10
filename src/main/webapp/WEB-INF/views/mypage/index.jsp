@@ -1,14 +1,18 @@
-<%@ page contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
 <html>
 <head>
-</head>
-<body>
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+
+<script>
+	console.log('현재 path:', '${path}');  // EL을 직접 사용
+</script>
+
+<%@ include file="asset.jsp" %>
+</head>
+<body>
 
 <!-- jsp작업 -->
 <div id="club-profile-background"></div>
@@ -21,16 +25,33 @@
 			<img src="${path}/resources/static/images/club-image.jpg" alt="모임 프로필 사진">
 		</div>
 		<div class="clubInfo">
-			<h1 class="clubName">이택조</h1>
-			<h2 class="clubCreateDate">가입 일자: 2024년 11월 01일</h2>
+		
+			<div class="club-title">
+				<h1 class="clubName">이택조</h1>
+			</div>
+				<h2 class="clubCreateDate">가입 일자: 2024년 11월 01일</h2>
 		</div>
 	</div>
 
 	<div id="info-btn">
 		<button type="submit" class="pref-btn" name="pref-btn">
-			<img class="set-logo" src="${path}/resources/static/images/settings.svg" alt="채팅 로고">
+			<img class="set-logo" src="${path}/resources/static/images/settings.svg" alt="환경설정">
 		</button>
 	</div>
+	
+	<!-- 팝업 창 -->
+	<div id="popup" class="auth-overlay">
+	    <div class="window">
+	        <div class="header">
+	            <span class="popup-close">
+	            </span>
+	        </div>
+	        <div id="popup-content">
+	            <!-- infoedit.jsp의 내용이 여기에 로드됨 -->
+	        </div>
+	    </div>
+	</div>
+	
 	
 </div>
 
@@ -198,14 +219,9 @@
 
 
 </div> <!-- 나의 등산 끝~ -->
-<script>
-	/* mypage-tab.js 에서 확인하세요~ */
-</script>
-
 
 </body>
 </html>
-
 
 
 
