@@ -26,11 +26,11 @@
         AND password = #{password}
     </select>
 
-	<select id="loadUser" parameterType="int" resultType="com.test.hike.dto.UserInfoDTO">
+	<select id="loadUser" parameterType="String" resultMap="userInfoDTOResultMap" resultType="com.test.hike.dto.UserInfoDTO">
 		SELECT
 			*
 		FROM UserInfo
-		WHERE user_id = #{username}
+		WHERE email = #{username}
 	</select>
     
 	<!-- 이메일 중복 체크 -->

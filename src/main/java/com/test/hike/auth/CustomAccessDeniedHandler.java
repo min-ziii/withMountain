@@ -18,9 +18,8 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
 		System.out.println("CustomAccessDeniedHandler.handle 호출");
 
-		response.sendRedirect("/hike/home");
+		response.sendRedirect("/hike/redirect?state=denied");
 	}
-
 }
 
 

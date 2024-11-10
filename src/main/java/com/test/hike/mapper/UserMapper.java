@@ -6,7 +6,6 @@ public interface UserMapper {
     
     // 로그인 체크
     UserInfoDTO loginCheck(UserInfoDTO params);
-    
 
     // 회원가입
     int insertUser(UserInfoDTO user);

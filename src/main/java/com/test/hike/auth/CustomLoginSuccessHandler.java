@@ -18,7 +18,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
 		System.out.println("CustomLoginSuccessHandler.onAuthenticationSuccess 호출");
 
-		response.sendRedirect("/hike/home");
+		response.sendRedirect("/hike/redirect?state=success");
 	}
 }
 

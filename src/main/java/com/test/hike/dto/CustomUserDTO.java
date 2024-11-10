@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.User;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -26,11 +25,19 @@ public class CustomUserDTO extends User {
 
     public CustomUserDTO(UserInfoDTO dto) {
         super(
-                String.valueOf(dto.getUserid()),
+                String.valueOf(dto.getUserId()),
                 dto.getPassword(),
-                Collections.singletonList(new SimpleGrantedAuthority(dto.getUserToken().getAccess_token())
-                ));
+                Collections.singletonList(getGrantedAuthority(dto))
+        );
 
         this.userInfo = dto;
+    }
+
+    private static GrantedAuthority getGrantedAuthority(UserInfoDTO dto) {
+        if (dto.getUserToken() != null && dto.getUserToken().getAccess_token() != null) {
+            return new SimpleGrantedAuthority(dto.getUserToken().getAccess_token());
+        } else {
+            return new SimpleGrantedAuthority("ROLE_DEFAULT");
+        }
     }
 }

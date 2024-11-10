@@ -59,44 +59,44 @@ public class UserController {
     //     return "redirect:/";
     // }
 
-    @GetMapping("/login-page")
-    public String loginPage() {
+    @GetMapping("/redirect")
+    public String redirect() {
 
-        return "login-page";
+        return "redirect";
     }
 
 
-    @PostMapping("/login")
-    @ResponseBody
-    public Map<String, Object> login(
-            @RequestParam String email,
-            @RequestParam String password,
-            HttpSession session
-    ) {
-        Map<String, Object> response = new HashMap<>();
-
-        try {
-            System.out.println("POST 로그인 시도 - 이메일: " + email);
-            UserInfoDTO user = userDAO.loginCheck(email, password);
-
-            if (user != null) {
-                session.setAttribute("loginMember", user);
-                response.put("success", true);
-                System.out.println("로그인 성공");
-            } else {
-                response.put("success", false);
-                response.put("message", "이메일 또는 비밀번호가 일치하지 않습니다.");
-                System.out.println("로그인 실패 - 사용자 정보 없음");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("로그인 처리 중 에러: " + e.getMessage());
-            response.put("success", false);
-            response.put("message", "로그인 처리 중 오류가 발생했습니다.");
-        }
-
-        return response;
-    }
+    // @PostMapping("/login")
+    // @ResponseBody
+    // public Map<String, Object> login(
+    //         @RequestParam String email,
+    //         @RequestParam String password,
+    //         HttpSession session
+    // ) {
+    //     Map<String, Object> response = new HashMap<>();
+    //
+    //     try {
+    //         System.out.println("POST 로그인 시도 - 이메일: " + email);
+    //         UserInfoDTO user = userDAO.loginCheck(email, password);
+    //
+    //         if (user != null) {
+    //             session.setAttribute("loginMember", user);
+    //             response.put("success", true);
+    //             System.out.println("로그인 성공");
+    //         } else {
+    //             response.put("success", false);
+    //             response.put("message", "이메일 또는 비밀번호가 일치하지 않습니다.");
+    //             System.out.println("로그인 실패 - 사용자 정보 없음");
+    //         }
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //         System.out.println("로그인 처리 중 에러: " + e.getMessage());
+    //         response.put("success", false);
+    //         response.put("message", "로그인 처리 중 오류가 발생했습니다.");
+    //     }
+    //
+    //     return response;
+    // }
 
     // 회원가입 처리
     @PostMapping("/signup.do")

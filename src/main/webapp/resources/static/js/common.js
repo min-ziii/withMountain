@@ -1,4 +1,4 @@
-import { PATHS } from "./constants.js";
+import {PATHS} from "./constants.js";
 
 // DOM이 로드된 후 실행될 초기화 함수들
 $(document).ready(function () {
@@ -29,7 +29,7 @@ function initializeEventListeners() {
 
     // 폼 제출
     // 로그인 폼 제출 이벤트는 한 번만 바인딩
-    $('#login-container form').off('submit').on('submit', handleLogin);
+    // $('#login-container form').off('submit').on('submit', handleLogin);
 
     // 회원가입 버튼 타입 변경 및 이벤트 바인딩
     $('#emailsignup-btn').attr('type', 'button').off('click').on('click', loginToSignUp);
@@ -202,50 +202,49 @@ function ajaxRequest(url, data, successCallback, errorCallback) {
 
 //로그인
 // common.js 파일 내 handleLogin 함수 수정
-function handleLogin() {
-
-    const email = $('#login-email').val();
-    const password = $('#login-password').val();
-
-    if (!email || !password) {
-        $('#emailorpassword-confirm-error').text('이메일과 비밀번호를 입력해주세요.');
-        return;
-    }
-
-    // URL을 login.do로 변경
-    $.ajax({
-        url: path + '/login/',
-        type: 'POST',
-        data: {
-            email: email,
-            password: password
-        },
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        success: function (response) {
-            console.log('서버 응답:', response);
-            if (response.success) {
-                window.location.href = path + '/home';
-            } else {
-                $('#emailorpassword-confirm-error').text(response.message || '로그인에 실패했습니다.');
-            }
-        },
-        error: function (xhr, status, error) {
-            console.error('로그인 에러:', xhr.responseText);
-            $('#emailorpassword-confirm-error').text('로그인 처리 중 오류가 발생했습니다.');
-        }
-    });
-}
+// function handleLogin() {
+//
+//     const email = $('#login-email').val();
+//     const password = $('#login-password').val();
+//
+//     if (!email || !password) {
+//         $('#emailorpassword-confirm-error').text('이메일과 비밀번호를 입력해주세요.');
+//         return;
+//     }
+//
+//     // URL을 login.do로 변경
+//     $.ajax({
+//         url: path + '/login/',
+//         type: 'POST',
+//         data: {
+//             email: email,
+//             password: password
+//         },
+//         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+//         success: function (response) {
+//             console.log('서버 응답:', response);
+//             if (response.success) {
+//                 window.location.href = path + '/home';
+//             } else {
+//                 $('#emailorpassword-confirm-error').text(response.message || '로그인에 실패했습니다.');
+//             }
+//         },
+//         error: function (xhr, status, error) {
+//             console.error('로그인 에러:', xhr.responseText);
+//             $('#emailorpassword-confirm-error').text('로그인 처리 중 오류가 발생했습니다.');
+//         }
+//     });
+// }
 
 
 // 이벤트 리스너 수정
-$(document).ready(function () {
+// $(document).ready(function () {
     // 로그인 폼 제출 이벤트
-    $('#login-container form').on('submit', function (e) {
-        e.preventDefault();
-        handleLogin();
-    });
-});
-
+    // $('#login-container form').on('submit', function (e) {
+    //     e.preventDefault();
+    //     handleLogin();
+    // });
+// });
 
 
 // 회원가입 버튼 type도 수정이 필요함
@@ -338,7 +337,6 @@ function handleSignup(e) {
 }
 
 
-
 //로그아웃
 function handleLogout() {
     window.location.href = `${path}/logout`;
@@ -382,8 +380,6 @@ function handleProfileImageChange(e) {
 }
 
 
-
-
 // 프로필 이미지 업데이트 함수
 function updateProfileImage(file) {
     const formData = new FormData();
@@ -412,7 +408,6 @@ function updateProfileImage(file) {
 }
 
 
-
 // 이메일 중복 체크 함수 수정
 function checkEmailDuplicate() {
     const email = $('#signup-email').val();  // id 수정
@@ -438,7 +433,7 @@ function checkEmailDuplicate() {
     $.ajax({
         url: path + '/checkEmail.do',  // 경로 수정
         type: 'POST',
-        data: { email: email },
+        data: {email: email},
         success: function (response) {
             if (response.exists) {
                 errorSpan.text('이미 사용중인 이메일입니다.').css('color', 'red');
@@ -454,19 +449,30 @@ function checkEmailDuplicate() {
 
 // 로그인 필요 여부 체크 및 리디렉션 처리 함수
 function checkLoginRequired() {
-    // URL 파라미터 체크
     const currentUrl = new URL(window.location.href);
     const params = currentUrl.searchParams;
-    const targetParam = 'login-required';
-    
-    if (params.has(targetParam, 'true')) {
-        // 로그인 필요 파라미터가 있으면 모달 표시
-        params.delete(targetParam);
-        const newUrl = currentUrl.origin + currentUrl.pathname + (params.toString() ? ('?' + params.toString()) : '');
-        window.history.replaceState({}, '', newUrl);
-        showLoginModal();
+    const targetParam = 'state';
+
+    if (params.has(targetParam)) {
+        const stateValue = params.get(targetParam);
+
+        if (stateValue === 'denied' || stateValue === 'failed') {
+            params.delete(targetParam);
+            updateUrl(params);
+            showLoginModal();
+        } else if (stateValue === 'success') {
+            params.delete(targetParam);
+            updateUrl(params);
+        }
     }
 }
+
+function updateUrl(params) {
+    const currentUrl = new URL(window.location.href);
+    const newUrl = currentUrl.origin + currentUrl.pathname + (params.toString() ? ('?' + params.toString()) : '');
+    window.history.replaceState({}, '', newUrl);
+}
+
 
 // 이메일 중복확인 버튼 클릭 이벤트
 $('#email-check-btn').click(checkEmailDuplicate);

@@ -40,12 +40,11 @@
 
         <!-- 로그인 설정 -->
         <security:form-login
-            login-page="/login-page"
+            login-page="/redirect?state=denied"
             username-parameter="email"
-            password-parameter="password"
             login-processing-url="/login"
             default-target-url="/home"
-            authentication-failure-url="/login?error=true"
+            authentication-failure-url="/redirect?state=failed"
             authentication-success-handler-ref="customLoginSuccessHandler"
         />
         

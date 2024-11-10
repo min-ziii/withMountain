@@ -36,7 +36,7 @@ public class UserInfoDAO {
 
     public String insertUser(UserInfoDTO userInfoDTO) {
         sqlSession.insert(NAMESPACE + "insertUser", userInfoDTO);
-        return userInfoDTO.getUserid();
+        return userInfoDTO.getUserId();
     }
 
     public int insertToken(UserTokenDTO userTokenDTO) {
