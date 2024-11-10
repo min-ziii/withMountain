@@ -10,7 +10,7 @@ public interface UserMapper {
     int insertUser(UserInfoDTO user);
     
     // 이메일 중복 체크
-    int isEmailExists(String email);
+    int checkEmailExists(String email);
     
     // 프로필 이미지 업데이트
     int updateProfileImage(UserInfoDTO params);

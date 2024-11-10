@@ -26,27 +26,32 @@
     </select>
     
 	<!-- 이메일 중복 체크 -->
-	<select id="isEmailExists" parameterType="string" resultType="int">
+	<select id="checkEmailExists" parameterType="string" resultType="int">
 	    SELECT CASE 
 	           WHEN COUNT(*) > 0 THEN 1 
 	           ELSE 0 
 	           END 
-	    FROM UserInfo 
+	    FROM UserInfo   
 	    WHERE email = #{email}
 	</select>
     
     <!-- 회원 등록 -->
     <insert id="insertUser" parameterType="com.test.hike.dto.UserInfoDTO">
-        INSERT INTO UserInfo (
-            email, password, name, nickname,
-            gender, birthday, location_id,
-            intro, profile_image, create_date
-        ) VALUES (
-            #{email}, #{password}, #{name}, #{nickname},
-            #{gender}, #{birthday}, #{location_id},
-            #{intro}, #{profile_image}, #{create_date}
-        )
-    </insert>
+	   INSERT INTO UserInfo 
+	   VALUES(
+	       seqUserInfo.nextVal, 
+	       #{locationId}, 
+	       #{email}, 
+	       #{password},
+	       #{nickname},
+	       #{name},
+	       #{gender},
+	       #{birthday},
+	       #{intro, jdbcType=VARCHAR},
+	       #{profileImage, jdbcType=VARCHAR},
+	       sysdate
+	   )
+	</insert>
     
     <!-- 프로필 이미지 업데이트 -->
     <update id="updateProfileImage" parameterType="com.test.hike.dto.UserInfoDTO">
@@ -63,4 +68,8 @@
         FROM LOCATION
         ORDER BY location_id
     </select>
+    
+
+    
+    
 </mapper>

@@ -27,24 +27,21 @@ public class UserInfoDAO {
     }
     
     // 회원가입
-    public int insertUser(UserInfoDTO user) {
-        try {
-            return sqlSession.insert(NAMESPACE + "insertUser", user);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 0;
-        }
+	/*
+	 * public int insertUser(UserInfoDTO user) { try { return
+	 * sqlSession.insert(NAMESPACE + "insertUser", user); } catch (Exception e) {
+	 * e.printStackTrace(); return 0; } }
+	 */
+    public int insertUser(UserInfoDTO dto) {
+        return sqlSession.insert("com.test.hike.mapper.UserMapper.insertUser", dto);
     }
     
+    
     // 이메일 중복 체크
-    public int isEmailExists(String email) {
-        try {
-            return sqlSession.selectOne(NAMESPACE + "isEmailExists", email);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 0; // 예외 발생 시 0 반환 (중복 아님)
-        }
+    public int checkEmailExists(String email) {  // 메서드명 변경
+        return sqlSession.selectOne("com.test.hike.mapper.UserMapper.checkEmailExists", email);
     }
+    
     
     // 프로필 이미지 업데이트
     public int updateProfileImage(UserInfoDTO user) {

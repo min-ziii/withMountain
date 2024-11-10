@@ -99,7 +99,7 @@
 
 <div id="signup-overlay" class="auth-overlay">
     <div id="signup-container">
-        <form method="POST" action="${path}/hike/login" enctype="application/x-www-form-urlencoded" novalidate>
+        <form method="POST" action="${path}/hike/signup.do" enctype="application/x-www-form-urlencoded" novalidate>
             <div class="header">
                 <h4>이메일 회원가입</h4>
                 <div class="popup-close">
@@ -211,7 +211,7 @@
                 <div class="form-group">
 				    <div><label>활동지역</label></div>
 				    <div class="addon_input">
-				        <select name="location_id" id="location_id" required>
+				        <select name="location_id" id="location_id">
 				            <option value="">활동지역을 선택해주세요</option>
 				            <c:forEach items="${locations}" var="location">
 				                <option value="${location.location_id}">${location.name}</option>

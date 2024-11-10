@@ -1,11 +1,9 @@
 package com.test.hike.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,6 +24,7 @@ import com.test.hike.dao.UserInfoDAO;
 import com.test.hike.dto.LocationDTO;
 import com.test.hike.dto.UserInfoDTO;
 import com.test.hike.service.LocationService;
+import com.test.hike.service.UserService;
 
 @Controller
 @RequestMapping("/hike")  // 기본 경로 추가
@@ -92,7 +91,7 @@ public class UserController {
 
 
     // 회원가입 처리
-    @PostMapping("/signup")
+    @PostMapping("/signup.do")
     @ResponseBody
     public Map<String, Object> signup(@ModelAttribute UserInfoDTO user,
                                     @RequestParam(required = false) MultipartFile profileImage,
@@ -101,8 +100,8 @@ public class UserController {
         Map<String, Object> response = new HashMap<>();
         Map<String, String> errors = new HashMap<>();
 
-        // 유효성 검사 - int 반환값을 boolean 조건으로 변환
-        if(userDAO.isEmailExists(user.getEmail()) > 0) {  // 0보다 크면 이메일이 존재
+        // checkEmailExists 메서드 사용
+        if(userDAO.checkEmailExists(user.getEmail()) > 0) {  // isEmailExists를 checkEmailExists로 변경
             errors.put("email", "이미 사용중인 이메일입니다.");
         }
         
@@ -143,28 +142,15 @@ public class UserController {
     }
 
     // 이메일 중복 확인
-    @PostMapping("/checkEmail")
+    @Autowired
+    private UserService userService;
+    
+    @PostMapping("/checkEmail.do")
     @ResponseBody
-    public Map<String, Object> checkEmail(@RequestParam String email) {
-        Map<String, Object> response = new HashMap<>();
-        
-        try {
-            int count = userDAO.isEmailExists(email);  // int로 받고
-            boolean exists = count > 0;  // boolean으로 변환
-            
-            response.put("exists", exists);
-            response.put("success", true);
-            
-            if (exists) {
-                response.put("message", "이미 사용중인 이메일입니다.");
-            } else {
-                response.put("message", "사용 가능한 이메일입니다.");
-            }
-        } catch (Exception e) {
-            response.put("success", false);
-            response.put("message", "이메일 확인 중 오류가 발생했습니다.");
-        }
-        
+    public Map<String, Boolean> checkEmail(@RequestParam String email) {
+        boolean exists = userService.checkEmailExists(email);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("exists", exists);
         return response;
     }
     
@@ -176,31 +162,29 @@ public class UserController {
         return "redirect:/";
     }
 
-    // 기존의 여러 saveFile 메서드들을 하나로 통합
+    // 프로필 이미지 저장하는 메서드
     private String saveFile(MultipartFile file, HttpServletRequest request) {
         try {
-            // 이미지가 저장될 실제 경로
-            String realPath = request.getServletContext().getRealPath("/resources/static/images/profile");
+            // 실제 파일 저장 경로 설정
+            String uploadPath = request.getServletContext().getRealPath("/resources/static/images/profile/");
             
-            // 디렉토리 생성
-            File dir = new File(realPath);
-            if (!dir.exists()) {
-                dir.mkdirs();
+            // 디렉토리가 없으면 생성
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdirs();
             }
 
-            // 파일명 생성 (UUID + 확장자)
+            // 파일명 생성 (timestamp_originalfilename)
             String originalFileName = file.getOriginalFilename();
-            String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
-            String savedFileName = UUID.randomUUID().toString() + extension;
+            String savedFileName = System.currentTimeMillis() + "_" + originalFileName;
             
             // 파일 저장
-            File savedFile = new File(dir, savedFileName);
-            file.transferTo(savedFile);
+            File destFile = new File(uploadPath + savedFileName);
+            file.transferTo(destFile);
             
-            // 저장된 파일의 경로 반환
             return savedFileName;
             
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

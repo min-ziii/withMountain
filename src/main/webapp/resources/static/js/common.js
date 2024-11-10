@@ -28,9 +28,6 @@ function initializeEventListeners() {
     $('#email-check-btn').click(checkEmailDuplicate);
     
     // 폼 제출
-    //$('#login-container form').submit(handleLogin);
-    //$('#signup-container form').submit(handleSignup);
-    
     // 로그인 폼 제출 이벤트는 한 번만 바인딩
     $('#login-container form').off('submit').on('submit', handleLogin);
     
@@ -79,7 +76,30 @@ function closeLoginModal() {
 
 function showSignUpModal() {
     $('#signup-overlay').css('display', 'flex');
-    lockScroll();
+    
+    // 활동지역 데이터 가져오기
+    $.ajax({
+        url: path + '/getAllLocations.do',  // 또는 적절한 URL
+        type: 'GET',
+        success: function(locations) {
+            // select 옵션 채우기
+            const locationSelect = $('#location_id');
+            locationSelect.empty(); // 기존 옵션 비우기
+            locationSelect.append('<option value="">활동지역을 선택해주세요</option>');
+            
+            locations.forEach(function(location) {
+                locationSelect.append(`<option value="${location.locationId}">${location.name}</option>`);
+            });
+            
+            // 모달 표시
+            $('#signup-overlay').css('display', 'flex');
+            lockScroll();
+        },
+        error: function() {
+            alert('활동지역 정보를 불러오는데 실패했습니다.');
+        }
+    });
+    
 }
 
 function closeSignUpModal() {
@@ -136,14 +156,21 @@ function initializePasswordToggles() {
 // 폼 유효성 검사 초기화
 function initializeFormValidation() {
     $('#signup-container form').on('submit', function(e) {
-        const password = $('#password').val();
+        e.preventDefault(); // 폼 제출 일단 막기
+        
+        const password = $('#signup-password').val();
         const passwordConfirm = $('#password-confirm').val();
         
+        console.log('Password:', password); // 값 확인용
+        console.log('Password Confirm:', passwordConfirm); // 값 확인용
+        
         if (password !== passwordConfirm) {
-            e.preventDefault();
             $('#password-confirm-error').text('비밀번호가 일치하지 않습니다.');
             return false;
         }
+        
+        // 비밀번호가 일치하면 회원가입 처리 진행
+        handleSignup(e);
     });
 }
 
@@ -237,16 +264,17 @@ function handleSignup(e) {
     const locationId = $('#location_id').val();
     
     // 기본 유효성 검사
-    if (!email || !password || !passwordConfirm || !name || !nickname || !gender || !birthday || !locationId) {
+    if (!email || !password || !passwordConfirm || !name || !nickname || !gender || !birthday) {
         alert('모든 필수 항목을 입력해주세요.');
         return;
-    }
+    } 
     
+    /* 
     // 비밀번호 일치 검사
     if (password !== passwordConfirm) {
         $('#password-confirm-error').text('비밀번호가 일치하지 않습니다.');
         return;
-    }
+    } */
     
     // 이메일 중복 확인 메시지 체크
     const emailErrorMsg = $('#email-error').text();
@@ -278,7 +306,7 @@ function handleSignup(e) {
     }
 
     $.ajax({
-        url: path + '/signup.do',  // .do 패턴 사용
+        url: path + '/hike/signup.do',  // .do 패턴 사용
         type: 'POST',
         data: formData,
         processData: false,  // FormData를 사용하므로 false로 설정
@@ -309,7 +337,7 @@ function handleSignup(e) {
 
 
 
-
+//로그아웃
 function handleLogout() {
     window.location.href = `${path}/logout`;
 }
@@ -385,8 +413,12 @@ function updateProfileImage(file) {
 
 // 이메일 중복 체크 함수 수정
 function checkEmailDuplicate() {
-    const email = $('#signup-email').val();
+    const email = $('#signup-email').val();  // id 수정
     const errorSpan = $('#email-error');
+    
+    console.log('Checking email:', email);  // 이메일 값 확인
+    console.log('Request URL:', `${path}/hike/checkEmail.do`);  // 요청 URL 확인
+    
     
     // 이메일 입력 확인
     if (!email) {
@@ -402,7 +434,7 @@ function checkEmailDuplicate() {
     }
 
     $.ajax({
-        url: path + '/checkEmail.do',  // .do 패턴 사용
+        url: path + '/hike/checkEmail.do',  // 경로 수정
         type: 'POST',
         data: { email: email },
         success: function(response) {
@@ -417,4 +449,9 @@ function checkEmailDuplicate() {
         }
     });
 }
+
+// 이메일 중복확인 버튼 클릭 이벤트
+$('#email-check-btn').click(checkEmailDuplicate);
+
+
 
