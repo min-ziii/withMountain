@@ -10,7 +10,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -33,7 +35,7 @@ public class CourseController {
     }
 
     @GetMapping("view")
-    public String view(Model model, String mtId) {
+    public String view(Model model) {
         // For Test
         // com.test.hike.dto.custom.MountainDTO result = dao.getAllRoadsWithCoordsByMtId(Integer.parseInt(mtId));
         //
@@ -54,6 +56,14 @@ public class CourseController {
             e.printStackTrace();
         }
 
+        return "course.view";
+    }
+
+    @PostMapping("view")
+    public String viewOk(@RequestParam int lines, @RequestParam double hikeTime, @RequestParam double hikeDistance, Model model) {
+        model.addAttribute("lines", lines);
+        model.addAttribute("hikeTime", hikeTime);
+        model.addAttribute("hikeDistance", hikeDistance);
 
         return "course.view";
     }

@@ -46,6 +46,11 @@
                         <div class="menu-option">
                         </div>
                     </li>
+                    <div style="text-align: left">
+                        <p>선택된 구간 수: ${lines} 개</p>
+                        <p>예상 등산 거리: ${hikeDistance} Km</p>
+                        <p>예상 등산 시간: ${hikeTime} 분</p>
+                    </div>
                 </ul>
 
                 <button class="save" type="submit">등산로 저장하기</button>
