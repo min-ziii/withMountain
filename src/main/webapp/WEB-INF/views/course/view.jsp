@@ -2,11 +2,13 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:set var="path" value="${pageContext.request.contextPath}"/>
+<c:set var="path" value="${pageContext.request.contextPath}"/>j
 
 <script>
     // For Test
     <%--const data = JSON.parse('${data}');--%>
+    // view.js에서 spotListJson을 사용하기 위한 작업
+    const spotListJson =  ${spotListJson};
 </script>
 
 <div id="view-map" class="course-map">

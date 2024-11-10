@@ -6,17 +6,16 @@
 <mapper namespace="com.test.hike.mapper.MapCustomMapper">
 	
 	<!-- MyBatis가 DB의 컬럼명과 DTO의 필드명을 잘 매핑할 수 있게 resultMap 명시. -->
-	<resultMap id="SpotDTOMap" type="SpotDTO">
+	<resultMap id="SpotDTOMap" type="HikingRoadSpotDTO">
 	    <result property="spotId" column="spot_id"/>
 	    <result property="mtId" column="mt_id"/>
 	    <result property="spotType" column="spot_type"/>
-	    <result property="mtName" column="mt_name"/>
 	    <result property="spotX" column="spot_x"/>
 	    <result property="spotY" column="spot_y"/>
 	</resultMap>
 	
 	<select id="getHikingRoadSpots" resultMap="SpotDTOMap">
-		SELECT spot_id, mt_id, spot_type, mt_name, spot_x, spot_y FROM HikingRoadSpot
+		SELECT spot_id, mt_id, spot_type, spot_x, spot_y FROM HikingRoadSpot
 	</select>
 
 	<resultMap id="MountainDTOMap" type="MountainDTO">
