@@ -452,19 +452,30 @@ function checkEmailDuplicate() {
     });
 }
 
-// 로그인 필요 여부 체크 함수
+// 로그인 필요 여부 체크 및 리디렉션 처리 함수
 function checkLoginRequired() {
-    // 현재 페이지 URL 가져오기
-    const currentPath = window.location.pathname;
+    // URL 파라미터 체크
+    const currentUrl = new URL(window.location.href);
+    const params = currentUrl.searchParams;
+    const targetParam = 'login-required';
     
-    // 로그인이 필요한 페이지 목록 (필요에 따라 수정)
+    if (params.has(targetParam, 'true')) {
+        // 로그인 필요 파라미터가 있으면 모달 표시
+        params.delete(targetParam);
+        const newUrl = currentUrl.origin + currentUrl.pathname + (params.toString() ? ('?' + params.toString()) : '');
+        window.history.replaceState({}, '', newUrl);
+        showLoginModal();
+        return;
+    }
+
+    // 보호된 경로 체크
+    const currentPath = window.location.pathname;
     const protectedPaths = [
         '/mypage',
         '/settings',
         // 추가적인 보호된 경로들...
     ];
     
-    // 현재 페이지가 보호된 경로인지 확인
     const requiresLogin = protectedPaths.some(path => 
         currentPath.startsWith(path + '/') || currentPath === path
     );
@@ -472,12 +483,12 @@ function checkLoginRequired() {
     if (requiresLogin) {
         // 서버에 로그인 상태 확인 요청
         $.ajax({
-            url: path + '/checkLoginStatus',  // 실제 서버의 엔드포인트로 수정 필요
+            url: path + '/checkLoginStatus',
             type: 'GET',
             success: function(response) {
                 if (!response.isLoggedIn) {
                     alert('로그인이 필요한 페이지입니다.');
-                    window.location.href = path + '/home';  // 또는 로그인 페이지로 리다이렉트
+                    window.location.href = path + '/home';
                 }
             },
             error: function() {
@@ -491,6 +502,4 @@ function checkLoginRequired() {
 
 // 이메일 중복확인 버튼 클릭 이벤트
 $('#email-check-btn').click(checkEmailDuplicate);
-
-
 
