@@ -456,4 +456,15 @@ function checkEmailDuplicate() {
 // 이메일 중복확인 버튼 클릭 이벤트
 $('#email-check-btn').click(checkEmailDuplicate);
 
-
+// 로그인 리디렉션 시 창 띄우기
+function checkLoginRequired() {
+    const currentUrl = new URL(window.location.href);
+    const params = currentUrl.searchParams;
+    const targetParam = 'login-required';
+    if (params.has(targetParam, 'true')) {
+        params.delete(targetParam);
+        const newUrl = currentUrl.origin + currentUrl.pathname + (params.toString() ? ('?' + params.toString()) : '');
+        window.history.replaceState({}, '', newUrl);
+        showLoginModal();
+    }
+}
