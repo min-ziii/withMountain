@@ -11,6 +11,7 @@
 		<typeAlias type="com.test.hike.dto.HikingRoadDTO" alias="RoadDTO"/>
 		<typeAlias type="com.test.hike.dto.ClubDTO" alias="ClubDTO"/>
 		<typeAlias type="com.test.hike.dto.ClubGalleryDTO" alias="ClubGalleryDTO"/>
+		<typeAlias type="com.test.hike.dto.MemberDTO" alias="MemberDTO"/>
 
 		<typeAlias type="com.test.hike.dto.UserInfoDTO" alias="UserInfoDTO"/> <!-- UserInfoDTO 추가 -->
 		<typeAlias type="com.test.hike.dto.CommunityBoardDTO" alias="CommunityBoardDTO"/>

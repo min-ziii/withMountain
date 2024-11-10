@@ -113,36 +113,36 @@
 	</div>
 
 	<c:forEach items="${clubList}" var="clubDTO">
-	<div class="recommendclub" onclick="location.href='/hike/club/view?club_id=${clubDTO.club_id}';">
-		<img class="joinclub-image"
-			src="${path}/resources/static/images/club-image.jpg" alt="산악회 대표사진">
-		<div class="recommendclub-content">
-			<div class="recommendclub-header">
-				<div>${clubDTO.name}</div>
-				<img class="useradd-logo"
-					src="${path}/resources/static/images/user-add.svg" alt="가입하기">
-			</div>
-			<div class="recommendclub-intro">${clubDTO.intro}</div>
-			<div class="recommendclub-tag">
-				<span class="recommendclub-tag-item"># 백숙</span> <span
-					class="recommendclub-tag-item"># 가을산</span> <span
-					class="recommendclub-tag-item"># 단풍명소</span>
-			</div>
-			<div class="recommendclub-footer">
-				<div>
-					<span><img class="clock-logo"
-						src="${path}/resources/static/images/clock.svg" alt="가입날짜"></span>
-					<span>${clubDTO.create_date}</span>
+		<div class="recommendclub" onclick="location.href='/hike/club/view?clubId=${clubDTO.clubId}';">
+			<img class="joinclub-image"
+				 src="${path}/resources/static/images/${clubDTO.clubImage}" alt="산악회 대표사진">
+			<div class="recommendclub-content">
+				<div class="recommendclub-header">
+					<div>${clubDTO.clubName}</div>
+					<img class="useradd-logo"
+						 src="${path}/resources/static/images/user-add.svg" alt="가입하기">
 				</div>
-				<div>
-					<span><img class="users-logo"
-						src="${path}/resources/static/images/users.svg" alt="멤버"></span> <span>6/${clubDTO.max_member}</span>
+				<div class="recommendclub-intro">${clubDTO.clubIntro}</div>
+				<div class="recommendclub-tag">
+					<span class="recommendclub-tag-item"># 백숙</span> <span
+						class="recommendclub-tag-item"># 가을산</span> <span
+						class="recommendclub-tag-item"># 단풍명소</span>
+				</div>
+				<div class="recommendclub-footer">
+					<div>
+                    <span><img class="clock-logo"
+							   src="${path}/resources/static/images/clock.svg" alt="가입날짜"></span>
+						<span>${clubDTO.clubCreateDate}</span>
+					</div>
+					<div>
+                    <span><img class="users-logo"
+							   src="${path}/resources/static/images/users.svg" alt="멤버"></span> <span>6/${clubDTO.clubMaxMember}</span>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</c:forEach>
-	
+
 </div>
 
 <!-- 4. 모임 플러스 버튼 -->

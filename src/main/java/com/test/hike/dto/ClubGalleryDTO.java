@@ -1,12 +1,17 @@
 package com.test.hike.dto;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+@Getter
+@Setter
+@ToString
 public class ClubGalleryDTO {
-	private String club_gallery_id;
-	private String club_id;
-	private String schedule_id;
-	private String gallery_date;
-	private String image;
+	private String clubGalleryId;
+	private String clubId;
+	private String scheduleId;
+	private String galleryDate;
+	private String galleryImage;
 }

@@ -19,7 +19,26 @@ document.addEventListener('DOMContentLoaded', function () {
         events: [
             {
                 title: '북한산 등반',
+                start: '2024-11-12'
+            },
+            {
+                title: '설악산 등반',
                 start: '2024-11-07'
+            },
+            {
+                title: '한라산 등반',
+                start: '2024-11-02'
+            },
+            {
+                title: '수리산 등반',
+                start: '2024-12-07'
+            },
+            {
+                title: '광교산 등반',
+                start: '2024-12-14'
+            },            {
+                title: '아차산 등반',
+                start: '2024-10-27'
             }
         ],
         //일정 추가하기 작업
@@ -160,20 +179,6 @@ function popupCloseAddGallery() {
     $('#popupAddGallery').css('display', 'none');
 }
 
-// 모임 사진첩 사진 첨부 ------------------------------------------------------
-    // 프로필 이미지 첨부
-document.getElementById('galleryImage').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-        // 기본 프로필 이미지의 src를 새로운 이미지로 변경
-        document.querySelector('.club-default-image').src = e.target.result;
-    }
-        reader.readAsDataURL(file);
-    }
-});
-
 
 // 사진첩 > 사진 클릭시 팝업창 ------------------------------------------------
 function showModalImage(imageSrc, galleryDate, galleryId) {
@@ -197,17 +202,4 @@ function ModalImageClose() {
     $('#popupImage').css('display', 'none');
 }
 
-// 모임 사진첩 사진 첨부
-    // 프로필 이미지 첨부
-    document.getElementById('gallery-image').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (file) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-    // 기본 프로필 이미지의 src를 새로운 이미지로 변경
-    document.querySelector('.club-default-image').src = e.target.result;
-}
-    reader.readAsDataURL(file);
-}
-});
 

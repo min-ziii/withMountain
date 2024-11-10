@@ -4,32 +4,103 @@
 <!-- mapper 파일의 역할? : SQL query 작성 -->
 <!-- mapper(java)파일의 경로와 함께 namespace에 파일명을 적는 것이 개발계의 관습. -->
 <mapper namespace="com.test.hike.mapper.ClubMapper">
-	<select id="clubList" resultType="ClubDTO">
-		select * from club order by club_id desc
+
+	<!-- 클럽 정보를 DTO에 매핑하기 위한 resultMap -->
+	<resultMap id="ClubDTOMap" type="ClubDTO">
+		<result property="clubId" column="club_id"/>
+		<result property="clubLocationId" column="location_id"/>
+		<result property="clubName" column="name"/>
+		<result property="clubIsPrivate" column="is_private"/>
+		<result property="clubMaxMember" column="max_member"/>
+		<result property="clubIntro" column="intro"/>
+		<result property="clubImage" column="image"/>
+		<result property="clubCreateDate" column="create_date"/>
+		<result property="clubCode" column="code"/>
+	</resultMap>
+
+	<select id="clubList"  resultMap="ClubDTOMap">
+		SELECT
+		c.club_id AS club_id,
+		c.location_id AS location_id,
+		c.name AS name,
+		c.is_private AS isPrivate,
+		c.max_member AS max_member,
+		c.intro AS intro,
+		c.image AS image,
+		c.create_date AS create_date,
+		c.code AS code,
+		l.name AS locationName
+		FROM club c JOIN location l ON c.location_id = l.location_id
+		order by club_id desc
 	</select>
 
-	<select id="clubView" parameterType="String" resultType="ClubDTO">
-		select * from club where club_id = #{club_id}
+<!-- 모임 프로필 정보 -->
+
+	<select id="clubView" parameterType="String" resultMap="ClubDTOMap">
+		SELECT * from club where club_id = #{clubId}
 	</select>
 
-	<select id="clubScheduler" parameterType="String" resultType="ClubDTO">
-		select * from club where club_id = #{club_id}
+	<select id="clubScheduler" parameterType="String" resultMap="ClubDTOMap">
+		select * from club where club_id = #{clubId}
 	</select>
 
-	<select id="clubHike" parameterType="String" resultType="ClubDTO">
-		select * from club where club_id = #{club_id}
+	<select id="clubHike" parameterType="String" resultMap="ClubDTOMap">
+		select * from club where club_id = #{clubId}
 	</select>
 
-	<select id="clubGallery" parameterType="String" resultType="ClubDTO">
-		select * from club where club_id = #{club_id}
+	<select id="clubGallery" parameterType="String" resultMap="ClubDTOMap">
+		select * from club where club_id = #{clubId}
 	</select>
 
-
-	<select id="galleryList" parameterType="String" resultType="ClubGalleryDTO">
-		select * from clubGallery where club_id = #{club_id}
+<!-- 모임 사진첩 리스트 -->
+	<select id="galleryList" parameterType="String" resultMap="ClubGalleryDTOMap">
+		select * from clubGallery where club_id = #{clubId}
 	</select>
 
-<!--	<insert id="clubGalleryAdd">-->
-<!--		insert into ClubGallery(club_gallery_id, club_id, schedule_id, gallery_date, image) values (seqClubGallery.nextVal, 1, null, sysdate, #{galleryImage})-->
-<!--	</insert>-->
+<!-- 모임원 정보 -->
+	<resultMap id="clubViewMemberInfo" type="ClubDTO">
+		<id property="clubId" column="club_id"/>
+
+		<association property="member" javaType="MemberDTO">
+			<id property="memberId" column="member_id"/>
+			<result property="userId" column="user_id"/>
+			<result property="regdate" column="regdate"/>
+
+			<association property="userInfo" javaType="UserInfoDTO">
+				<id property="userid" column="user_id"/>
+				<result property="userName" column="name"/>
+			</association>
+		</association>
+	</resultMap>
+
+	<!-- SQL 쿼리 -->
+	<select id="clubViewMember" parameterType="String" resultMap="clubViewMemberInfo">
+		select c.club_id as club_id,
+			m.member_id as member_id,
+			m.user_id as user_id,
+			m.regdate as regdate,
+			u.name as name,
+			u.profile_image as profile_image
+		from club c
+			inner join member m
+			on c.club_id = m.club_id
+				inner join userinfo u
+				on m.user_id = u.user_id
+		where c.club_id = #{clubId}
+	</select>
+
+<!--	사진첩 ResultMAp -->
+	<resultMap id="ClubGalleryDTOMap" type="ClubGalleryDTO">
+		<result property="clubGalleryId" column="club_gallery_id"/>
+		<result property="clubId" column="club_id"/>
+		<result property="scheduleId" column="schedule_id"/>
+		<result property="galleryDate" column="gallery_date"/>
+		<result property="galleryImage" column="image"/>
+	</resultMap>
+
+
+	<insert id="clubGalleryAdd" parameterType="ClubGalleryDTO">
+		insert into ClubGallery(club_gallery_id, club_id, schedule_id, gallery_date, image)
+			values (seqClubGallery.nextVal, 1, null, sysdate, #{galleryImage})
+	</insert>
 </mapper>

@@ -2,6 +2,7 @@ package com.test.hike.dao;
 
 import com.test.hike.dto.ClubDTO;
 import com.test.hike.dto.ClubGalleryDTO;
+import com.test.hike.dto.MemberDTO;
 import com.test.hike.mapper.ClubMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -20,37 +21,37 @@ public class ClubDAO {
 
     }
 
-    public ClubDTO clubView(String club_id) {
+    public ClubDTO clubView(String clubId) {
 
-        return mapper.clubView(club_id);
+        return mapper.clubView(clubId);
     }
 
-    public ClubDTO clubScheduler(String club_id) {
+    public ClubDTO clubScheduler(String clubId) {
 
-        return mapper.clubScheduler(club_id);
-    }
-
-
-    public ClubDTO clubHike(String club_id) {
-
-        return mapper.clubHike(club_id);
-    }
-
-    public ClubDTO clubGallery(String club_id) {
-
-        return mapper.clubGallery(club_id);
+        return mapper.clubScheduler(clubId);
     }
 
 
-    public List<ClubGalleryDTO> galleryList(String club_id) {
+    public ClubDTO clubHike(String clubId) {
 
-        return mapper.galleryList(club_id);
+        return mapper.clubHike(clubId);
+    }
+
+    public ClubDTO clubGallery(String clubId) {
+
+        return mapper.clubGallery(clubId);
+    }
+
+
+    public List<ClubGalleryDTO> galleryList(String clubId) {
+
+        return mapper.galleryList(clubId);
 
     }
 
-//    public int clubGalleryAdd (ClubGalleryDTO clubGalleryDTO) {
-//
-//        return mapper.clubGalleryAdd(clubGalleryDTO);
-//    }
+    public int clubGalleryAdd (ClubGalleryDTO clubGalleryDTO) {
+
+        return mapper.clubGalleryAdd(clubGalleryDTO);
+    }
 
 }
