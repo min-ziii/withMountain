@@ -3,7 +3,7 @@
 <configuration>
 	<!-- Type의 별칭을 지정할 수 있다. -->
 	<typeAliases>
-		<typeAlias type="com.test.hike.dto.HikingRoadSpotDTO" alias="SpotDTO"/>
+		<typeAlias type="com.test.hike.dto.HikingRoadSpotDTO" alias="HikingRoadSpotDTO"/>
 		<typeAlias type="com.test.hike.dto.MountainDTO" alias="MountainDTO"/>
 		<typeAlias type="com.test.hike.dto.custom.MountainDTO" alias="CustomMountainDTO"/>
 		<typeAlias type="com.test.hike.dto.custom.CoordDTO" alias="CustomCoordDTO"/>
@@ -11,6 +11,7 @@
 		<typeAlias type="com.test.hike.dto.HikingRoadDTO" alias="RoadDTO"/>
 		<typeAlias type="com.test.hike.dto.ClubDTO" alias="ClubDTO"/>
 		<typeAlias type="com.test.hike.dto.ClubGalleryDTO" alias="ClubGalleryDTO"/>
+		<typeAlias type="com.test.hike.dto.MemberDTO" alias="MemberDTO"/>
 
 		<typeAlias type="com.test.hike.dto.UserInfoDTO" alias="UserInfoDTO"/> <!-- UserInfoDTO 추가 -->
 		<typeAlias type="com.test.hike.dto.CommunityBoardDTO" alias="CommunityBoardDTO"/>

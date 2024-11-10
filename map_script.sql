@@ -45,13 +45,12 @@ CREATE TABLE HikingRoadSpot (
     spot_id number PRIMARY KEY NOT NULL,
     mt_id number,
     spot_type varchar2(200),
-    mt_name varchar2(50),
     spot_x number,
     spot_y number,
     FOREIGN KEY (mt_id) REFERENCES MountainList(mt_id)
 );
 
-INSERT INTO HikingRoadSpot (spot_id, mt_id, spot_type, mt_name, spot_x, spot_y) SELECT pmntn_spot, 13, detail_spo, mntn_nm, t.X, t.Y FROM ms, TABLE(SDO_UTIL.GETVERTICES(ms.GEOMETRY)) t ORDER BY pmntn_spot ASC;
+INSERT INTO HikingRoadSpot (spot_id, mt_id, spot_type, spot_x, spot_y) SELECT pmntn_spot, 13, detail_spo, t.X, t.Y FROM ms, TABLE(SDO_UTIL.GETVERTICES(ms.GEOMETRY)) t ORDER BY pmntn_spot ASC;
 
 SELECT * FROM HikingRoadSpot;
 

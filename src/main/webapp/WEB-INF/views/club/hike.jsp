@@ -4,8 +4,9 @@
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
+<%-- 일정이랑 연동 예정 --%>
 <!-- jsp작업 -->
-<input type="hidden" name="club_id" value="${clubDTO.club_id}">
+<input type="hidden" name="club_id" value="${clubDTO.clubId}">
 <div id="club-profile-background"></div>
 
 <!-- 모임 프로필 -->
@@ -18,12 +19,12 @@
         <div class="clubInfo">
 
             <div class="club-title">
-                <h1 class="clubName">${clubDTO.name}</h1>
+                <h1 class="clubName">${clubDTO.clubName}</h1>
                 <button type="button" onclick="location.href='${path}/club/edit'">
                     <img class="club-setting" src="${path}/resources/static/images/settings.svg" alt="모임 관리">
                 </button>
             </div>
-            <h2 class="clubCreateDate">개설 일자: ${clubDTO.create_date}</h2>
+            <h2 class="clubCreateDate">개설 일자: ${clubDTO.clubCreateDate}</h2>
 
         </div>
     </div>
@@ -41,10 +42,10 @@
 <header id="sub-menu">
     <nav>
         <ul>
-            <li><a href="${path}/club/view?club_id=${clubDTO.club_id}">정보</a></li>
-            <li><a href="${path}/club/scheduler?club_id=${clubDTO.club_id}" id="club-schedule">일정</a></li>
-            <li class="selected"><a href="${path}/club/hike?club_id=${clubDTO.club_id}" id="club-hike">등산 기록</a></li>
-            <li><a href="${path}/club/gallery?club_id=${clubDTO.club_id}" id="club-gallery">사진첩</a></li>
+            <li><a href="${path}/club/view?clubId=${clubDTO.clubId}">정보</a></li>
+            <li><a href="${path}/club/scheduler?clubId=${clubDTO.clubId}" id="club-schedule">일정</a></li>
+            <li class="selected"><a href="${path}/club/hike?clubId=${clubDTO.clubId}" id="club-hike">등산 기록</a></li>
+            <li><a href="${path}/club/gallery?clubId=${clubDTO.clubId}" id="club-gallery">사진첩</a></li>
         </ul>
     </nav>
 </header>

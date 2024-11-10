@@ -2,6 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <!-- 여기서부터 수정함 -->
@@ -237,7 +238,7 @@
     <a href="${path}/home">
         <img class="menu-logo" src="${path}/resources/static/images/logo.svg" alt="로고">
     </a>
-    
+
     <!-- 수정전 -->
     <%--
     <nav>
@@ -252,7 +253,7 @@
         </ul>
     </nav>
     --%>
-    
+
     <!-- 수정후 -->
     <!-- header 부분 수정 -->
 	<nav>
@@ -262,20 +263,17 @@
 	        <li id="nav-community"><a href="${path}/community">커뮤니티</a></li>
 	        <li id="nav-club"><a href="${path}/club">모임</a></li>
 	        <li id="nav-mypage"><a href="${path}/mypage">나의 등산</a></li>
-	        <c:choose>
-	            <c:when test="${empty sessionScope.loginMember}">
-	                <!-- 비로그인 상태 -->
-	                <li class="log-in">로그인</li>
-	            </c:when>
-	            <c:otherwise>
-	                <!-- 로그인 상태 -->
-	                <li class="log-out">로그아웃</li>
-	            </c:otherwise>
-	        </c:choose>
+
+            <sec:authorize access="isAuthenticated()">
+                <li class="log-out">로그아웃</li>
+            </sec:authorize>
+            <sec:authorize access="!isAuthenticated()">
+                <li class="log-in">로그인</li>
+            </sec:authorize>
 	    </ul>
 	</nav>
-   
-    
+
+
 </header>
 
 

@@ -16,6 +16,7 @@
 	    <result property="profileImage" column="PROFILE_IMAGE" />
 	    <result property="createDate" column="CREATE_DATE" />
 	</resultMap>
+
      <!-- 로그인 체크 -->
     <select id="loginCheck" parameterType="com.test.hike.dto.UserInfoDTO" 
             resultType="com.test.hike.dto.UserInfoDTO">
@@ -24,6 +25,13 @@
         WHERE email = #{email} 
         AND password = #{password}
     </select>
+
+	<select id="loadUser" parameterType="String" resultMap="userInfoDTOResultMap" resultType="com.test.hike.dto.UserInfoDTO">
+		SELECT
+			*
+		FROM UserInfo
+		WHERE email = #{username}
+	</select>
     
 	<!-- 이메일 중복 체크 -->
 	<select id="checkEmailExists" parameterType="string" resultType="int">
@@ -35,24 +43,39 @@
 	    WHERE email = #{email}
 	</select>
     
-    <!-- 회원 등록 -->
-    <insert id="insertUser" parameterType="com.test.hike.dto.UserInfoDTO">
-	   INSERT INTO UserInfo 
-	   VALUES(
-	       seqUserInfo.nextVal, 
-	       #{locationId}, 
-	       #{email}, 
-	       #{password},
-	       #{nickname},
-	       #{name},
-	       #{gender},
-	       #{birthday},
-	       #{intro, jdbcType=VARCHAR},
-	       #{profileImage, jdbcType=VARCHAR},
-	       sysdate
-	   )
+	<!-- 회원 등록 -->
+	<insert id="insertUser" parameterType="com.test.hike.dto.UserInfoDTO">
+        INSERT INTO UserInfo
+        VALUES (seqUserInfo.nextVal,
+                #{locationId},
+                #{email},
+                #{password},
+                #{nickname},
+                #{name},
+                #{gender},
+                #{birthday},
+                #{intro, jdbcType=VARCHAR},
+                #{profileImage, jdbcType=VARCHAR},
+                sysdate)
+    </insert>
+
+	<select id="getCurrentSeqUserInfo" resultType="int">
+		SELECT seqUserInfo.CURRVAL FROM dual
+	</select>
+
+
+	<!-- UserToken 등록 -->
+	<insert id="insertToken" parameterType="com.test.hike.dto.UserTokenDTO">
+		INSERT INTO UserToken (USER_TOKEN_ID, USER_ID, ACCESS_TOKEN, REFRESH_TOKEN, CREATE_TIME, EDIT_TIME, CATEGORY)
+		VALUES (seqUserToken.nextVal,
+				#{user_id},
+				#{access_token, jdbcType=VARCHAR},
+				#{refresh_token, jdbcType=VARCHAR},
+				sysdate,
+				sysdate,
+				#{category, jdbcType=VARCHAR})
 	</insert>
-    
+
     <!-- 프로필 이미지 업데이트 -->
     <update id="updateProfileImage" parameterType="com.test.hike.dto.UserInfoDTO">
 	    UPDATE UserInfo
@@ -68,8 +91,8 @@
         FROM LOCATION
         ORDER BY location_id
     </select>
-    
 
-    
+
+
     
 </mapper>

@@ -1,15 +1,23 @@
 package com.test.hike.dto;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+import java.util.List;
+
+@Getter
+@Setter
+@ToString
 public class MemberDTO {
-	private int memberId;
-	private int clubId;
-	private int userId;
-	private String type;
-	private String regdate;
-	private String outDate;
-	private String outStatus;
+
+	private String memberId;
+	private String clubId;
+	private String userId;
+	private String memberType;
+	private String memberRegdate;
+	private String memberOutDate;
+	private String memberOutStatus;
 	
 }

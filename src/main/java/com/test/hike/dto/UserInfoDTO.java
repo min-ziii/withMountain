@@ -2,13 +2,14 @@ package com.test.hike.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 @Getter
 @Setter
 public class UserInfoDTO {
-
-	private String userid;
-    private String locationId;    
+	private String userId;
+    private String locationId;
     private String email;
     private String password;
     private String nickname;
@@ -17,6 +18,6 @@ public class UserInfoDTO {
     private String birthday;
     private String intro;
     private String profileImage;  
-    private String createDate;    
-	
+    private String createDate;
+    private UserTokenDTO userToken;
 }

@@ -2,11 +2,13 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:set var="path" value="${pageContext.request.contextPath}"/>
+<c:set var="path" value="${pageContext.request.contextPath}"/>j
 
 <script>
     // For Test
     <%--const data = JSON.parse('${data}');--%>
+    // view.js에서 spotListJson을 사용하기 위한 작업
+    const spotListJson =  ${spotListJson};
 </script>
 
 <div id="view-map" class="course-map">
@@ -44,6 +46,11 @@
                         <div class="menu-option">
                         </div>
                     </li>
+                    <div style="text-align: left">
+                        <p>선택된 구간 수: ${lines} 개</p>
+                        <p>예상 등산 거리: ${hikeDistance} Km</p>
+                        <p>예상 등산 시간: ${hikeTime} 분</p>
+                    </div>
                 </ul>
 
                 <button class="save" type="submit">등산로 저장하기</button>

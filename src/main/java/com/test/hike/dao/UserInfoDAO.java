@@ -1,5 +1,6 @@
 package com.test.hike.dao;
 
+import com.test.hike.dto.UserTokenDTO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -7,12 +8,12 @@ import com.test.hike.dto.UserInfoDTO;
 
 @Repository
 public class UserInfoDAO {
-    
+
     @Autowired
     private SqlSession sqlSession;
-    
+
     private static final String NAMESPACE = "com.test.hike.mapper.UserMapper.";
-    
+
     // 로그인 확인
     public UserInfoDTO loginCheck(String email, String password) {
         try {
@@ -25,24 +26,33 @@ public class UserInfoDAO {
             return null;
         }
     }
-    
+
     // 회원가입
-	/*
-	 * public int insertUser(UserInfoDTO user) { try { return
-	 * sqlSession.insert(NAMESPACE + "insertUser", user); } catch (Exception e) {
-	 * e.printStackTrace(); return 0; } }
-	 */
-    public int insertUser(UserInfoDTO dto) {
-        return sqlSession.insert("com.test.hike.mapper.UserMapper.insertUser", dto);
+    /*
+     * public int insertUser(UserInfoDTO user) { try { return
+     * sqlSession.insert(NAMESPACE + "insertUser", user); } catch (Exception e) {
+     * e.printStackTrace(); return 0; } }
+     */
+
+    public String insertUser(UserInfoDTO userInfoDTO) {
+        sqlSession.insert(NAMESPACE + "insertUser", userInfoDTO);
+        return userInfoDTO.getUserId();
     }
-    
-    
+
+    public int insertToken(UserTokenDTO userTokenDTO) {
+        return sqlSession.insert(NAMESPACE + "insertToken", userTokenDTO);
+    }
+
+    public int getSeqUserInfo() {
+       return sqlSession.selectOne(NAMESPACE + "getCurrentSeqUserInfo");
+    }
+
     // 이메일 중복 체크
     public int checkEmailExists(String email) {  // 메서드명 변경
         return sqlSession.selectOne("com.test.hike.mapper.UserMapper.checkEmailExists", email);
     }
-    
-    
+
+
     // 프로필 이미지 업데이트
     public int updateProfileImage(UserInfoDTO user) {
         try {
