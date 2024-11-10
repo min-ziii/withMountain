@@ -465,40 +465,8 @@ function checkLoginRequired() {
         const newUrl = currentUrl.origin + currentUrl.pathname + (params.toString() ? ('?' + params.toString()) : '');
         window.history.replaceState({}, '', newUrl);
         showLoginModal();
-        return;
-    }
-
-    // 보호된 경로 체크
-    const currentPath = window.location.pathname;
-    const protectedPaths = [
-        '/mypage',
-        '/settings',
-        // 추가적인 보호된 경로들...
-    ];
-    
-    const requiresLogin = protectedPaths.some(path => 
-        currentPath.startsWith(path + '/') || currentPath === path
-    );
-    
-    if (requiresLogin) {
-        // 서버에 로그인 상태 확인 요청
-        $.ajax({
-            url: path + '/checkLoginStatus',
-            type: 'GET',
-            success: function(response) {
-                if (!response.isLoggedIn) {
-                    alert('로그인이 필요한 페이지입니다.');
-                    window.location.href = path + '/home';
-                }
-            },
-            error: function() {
-                console.error('로그인 상태 확인 중 오류 발생');
-                window.location.href = path + '/home';
-            }
-        });
     }
 }
-
 
 // 이메일 중복확인 버튼 클릭 이벤트
 $('#email-check-btn').click(checkEmailDuplicate);
