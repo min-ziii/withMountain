@@ -16,6 +16,7 @@
 	    <result property="profileImage" column="PROFILE_IMAGE" />
 	    <result property="createDate" column="CREATE_DATE" />
 	</resultMap>
+
      <!-- 로그인 체크 -->
     <select id="loginCheck" parameterType="com.test.hike.dto.UserInfoDTO" 
             resultType="com.test.hike.dto.UserInfoDTO">
@@ -24,6 +25,13 @@
         WHERE email = #{email} 
         AND password = #{password}
     </select>
+
+	<select id="loadUser" parameterType="int" resultType="com.test.hike.dto.UserInfoDTO">
+		SELECT
+			*
+		FROM UserInfo
+		WHERE user_id = #{username}
+	</select>
     
 	<!-- 이메일 중복 체크 -->
 	<select id="checkEmailExists" parameterType="string" resultType="int">
@@ -67,7 +75,7 @@
 				sysdate,
 				#{category, jdbcType=VARCHAR})
 	</insert>
-    
+
     <!-- 프로필 이미지 업데이트 -->
     <update id="updateProfileImage" parameterType="com.test.hike.dto.UserInfoDTO">
 	    UPDATE UserInfo
@@ -83,8 +91,8 @@
         FROM LOCATION
         ORDER BY location_id
     </select>
-    
 
-    
+
+
     
 </mapper>
