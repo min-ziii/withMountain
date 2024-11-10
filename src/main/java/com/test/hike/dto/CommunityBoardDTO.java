@@ -1,6 +1,7 @@
 package com.test.hike.dto;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import lombok.Data;
 
@@ -23,5 +24,8 @@ public class CommunityBoardDTO {
 	
 	//좋아요
 	private int board_like_id;
+	
+	//댓글
+	private List<CommentsDTO> comments;
 	
 }

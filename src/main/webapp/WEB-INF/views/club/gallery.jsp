@@ -18,7 +18,7 @@
         <%-- 팝업 내용 여기 안에서 작업--%>
         <div class="window-title">사진 추가하기</div>
 
-        <form method="POST" action="">
+        <form method="POST" action="/club/galleryok" enctype="multipart/form-data">
         <table class="window-content">
             <tr>
                 <th>산 이름: </th>
@@ -69,24 +69,14 @@
         </div>
 
         <%-- 팝업 내용 여기 안에서 작업--%>
-            <img class="club-image" src="${path}/resources/static/images/club/club-gallery-image3.jpg" alt="모임 사진첩 사진 리스트">
+<%--            <img class="club-image" src="${path}/resources/static/images/club/${galleryDTO.image}.jpg" alt="모임 사진첩 사진 리스트">--%>
+            <img class="club-image" src="" alt="모임 사진첩 사진 리스트">
             <div class="club-image-content">
                 <div class="club-image-title"><span>북한산</span> 등반</div>
                 <div class="club-image-user">한사랑</div>
-                <div class="club-image-date">2024-11-07</div>
+                <div class="club-image-date">${galleryDTO.gallery_date}</div>
             </div>
-
-    </div>
-</div>
-
-<div id="popupImage">
-    <div class="window">
-
-        <div class="popup-close">
-            <button type="button" class="popup-close-btn" onclick='ModalImageClose();'>
-                <img class="close-logo" src="${path}/resources/static/images/close.svg" alt="닫기">
-            </button>
-        </div>
+        <input type="hidden" class="gallery-id" value="${galleryDTO.club_gallery_id}">
 
     </div>
 </div>
@@ -128,10 +118,10 @@
 <header id="sub-menu">
     <nav>
         <ul>
-            <li><a href="${path}/club/view">정보</a></li>
-            <li><a href="${path}/club/scheduler">일정</a></li>
-            <li><a href="${path}/club/hike">등산 기록</a></li>
-            <li class="selected"><a href="${path}/club/gallery">사진첩</a></li>
+            <li><a href="${path}/club/view?club_id=${clubDTO.club_id}">정보</a></li>
+            <li><a href="${path}/club/scheduler?club_id=${clubDTO.club_id}" id="club-schedule">일정</a></li>
+            <li><a href="${path}/club/hike?club_id=${clubDTO.club_id}" id="club-hike">등산 기록</a></li>
+            <li class="selected"><a href="${path}/club/gallery?club_id=${clubDTO.club_id}" id="club-gallery">사진첩</a></li>
         </ul>
     </nav>
 </header>
@@ -147,17 +137,20 @@
 
 </div>
 
+<%--    <div id="club-gallery-list">--%>
+<%--    <c:forEach items="${galleryList}" var="galleryDTO">--%>
+<%--        <div class="club-gallery"><img src="${path}/resources/static/images/club/${galleryDTO.image}.jpg" alt="모임 사진첩 사진" onclick="showModalImage();"> </div>--%>
+<%--    </c:forEach>--%>
+<%--    </div>--%>
+
 <div id="club-gallery-list">
-    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image3.jpg" alt="모임 사진첩 사진" onclick="showModalImage();"> </div>
-    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image2.jpg" alt="모임 사진첩 사진"> </div>
-    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
-    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
-    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
-    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
-    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
-    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
-    <div class="club-gallery"><img src="${path}/resources/static/images/club/club-gallery-image.jpg" alt="모임 사진첩 사진"> </div>
+    <c:forEach items="${galleryList}" var="galleryDTO">
+        <div class="club-gallery">
+            <img src="${path}/resources/static/images/club/${galleryDTO.image}.jpg" alt="모임 사진첩 사진" onclick="showModalImage('${path}/resources/static/images/club/${galleryDTO.image}.jpg', '${galleryDTO.gallery_date}', '${galleryDTO.image}', '${galleryDTO.club_gallery_id}');">
+        </div>
+    </c:forEach>
 </div>
+
 
     <script>
     document.getElementById('gallery-image').addEventListener('change', function(e) {

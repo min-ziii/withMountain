@@ -34,8 +34,41 @@
 	</div>
 </div>
 
-
+<!-- 프로필 사진 불러오기 컬럼 X/ location 장소 불러오기 ? 어떻게 해야하는지/ 좋아요, 댓글 수 -->
 <div class="total">
+<!-- 사진 게시판 view -->
+<!-- 게시물 반복문 -->
+    <c:forEach var="board" items="${boardList}">
+        <div class="photo-post">
+            <div class="photo-profile">
+                <img src="${path}/resources/static/images/default-profile.svg" alt="프로필 사진" class="profile-pic">
+                <div class="p-details">
+                    <span class="p-nickname">${board.user_id}</span>
+                    <div class="p-post-time">
+                        <span class="date">${board.create_time}</span> <!-- 게시물 작성일 -->
+                    </div>
+                </div>
+            </div>
+            <div class="photo-picture">
+                <img src="${board.image}" alt="첨부사진" class="p-photo-pic">
+            </div>
+            <div class="photo-content">
+                <a href="${path}/community/view?board=${board.cm_board_id}">${board.title}</a>
+            </div>
+            
+            <!-- 좋아요, 댓글 -->
+            <div class="p-post-action">
+                <div class="icon-item">
+                    <img src="${path}/resources/static/images/heart.svg" alt="좋아요" class="like-icon">
+                    <span class="like-count">${board.likeCount}</span> <!-- 좋아요 수 -->
+                </div>
+                <div class="icon-item">
+                    <img src="${path}/resources/static/images/comment.svg" alt="댓글" class="comment-icon">
+                    <span class="comment-count">${board.commentCount}</span> <!-- 댓글 수 -->
+                </div>
+            </div>
+        </div>
+    </c:forEach>
 <!-- 사진 게시판 view -->
 <div class="photo-post">
     <div class="photo-profile">

@@ -15,7 +15,7 @@
 
 	<!-- <h2>Member <small>logout</small></h2> -->
 	
-	<form method="POST" action="/hike/logout.do">
+	<form method="POST" action="${path}/logout">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	<div>
 		<button class="out">로그아웃</button> <!-- 이건 상단 바 눌렀을 떄 해야함 -->

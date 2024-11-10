@@ -26,7 +26,7 @@
         
         <!-- 로그인 설정 -->
         <security:form-login
-            login-page="/login"
+            login-page="/login-page"
             username-parameter="email"
             password-parameter="password"
             login-processing-url="/login"

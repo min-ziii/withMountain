@@ -141,14 +141,3 @@
 <%--</div>--%>
 
 <div id="calendar"></div>
-
-<script>
-// 현재 페이지 URL에서 쿼리 스트링 값 읽기
-const urlParams = new URLSearchParams(window.location.search);
-
-// 특정 파라미터 값을 추출
-const clubId = urlParams.get('club_id');  // 'club_id' 값 추출
-
-// 값 확인 (console로 출력)
-console.log('club_id:', clubId);  // 123
-</script>

@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class ClubGalleryDTO {
-	private int clubGalleryId;
-	private int clubId;
-	private int scheduleId;
-	private String galleryDate;
+	private String club_gallery_id;
+	private String club_id;
+	private String schedule_id;
+	private String gallery_date;
 	private String image;
 }

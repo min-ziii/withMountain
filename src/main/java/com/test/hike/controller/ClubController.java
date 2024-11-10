@@ -2,11 +2,14 @@ package com.test.hike.controller;
 
 import com.test.hike.dao.ClubDAO;
 import com.test.hike.dto.ClubDTO;
+import com.test.hike.dto.ClubGalleryDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -55,15 +58,50 @@ public class ClubController {
 		return "club.scheduler";
 	}
 
+
 	@GetMapping("/hike")
-	public String hike() {
+	public String hike(Model model, String club_id) {
+
+		ClubDTO clubDTO = dao.clubHike(club_id);
+		model.addAttribute("clubDTO", clubDTO);
+
 		return "club.hike";
 	}
 
 	@GetMapping("/gallery")
-	public String gallery() {
+	public String gallery(Model model,
+						  @RequestParam String club_id) {
+
+		ClubDTO clubDTO = dao.clubGallery(club_id);
+		model.addAttribute("clubDTO", clubDTO);
+
+
+		List<ClubGalleryDTO> galleryList = dao.galleryList(club_id);
+		model.addAttribute("galleryList", galleryList);
+
 		return "club.gallery";
 	}
+
+//	@GetMapping("/gallery")
+//	public String galleryList(Model model) {
+//
+//		List<ClubGalleryDTO> galleryList = dao.galleryList();
+//		model.addAttribute("galleryList", galleryList);
+//
+//		return "club.gallery";
+//	}
+
+//	@PostMapping ("/galleryok")
+//	public String galleryok(Model model, ClubGalleryDTO clubGalleryDTO) {
+//
+//		int result = dao.clubGalleryAdd(clubGalleryDTO);
+//
+//		if(result == 1) {
+//			return "redirect:/club/gallery";
+//		} else {
+//			return "redirect:/club/gallery";
+//		}
+//	}
 
 	@GetMapping("/member")
 	public String member() {

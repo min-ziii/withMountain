@@ -27,7 +27,6 @@ import com.test.hike.service.LocationService;
 import com.test.hike.service.UserService;
 
 @Controller
-@RequestMapping("/hike")  // 기본 경로 추가
 public class UserController {
 	
     @Autowired
@@ -45,18 +44,25 @@ public class UserController {
     }
     
     // GET mapping도 .do로 변경
-    @GetMapping("/login.do")
-    public String loginPage(
-        @RequestParam(value = "error", required = false) String error,
-        Model model
-    ) {
-        if (error != null) {
-            model.addAttribute("loginError", "이메일 또는 비밀번호가 올바르지 않습니다.");
-        }
-        return "redirect:/";
+    // @GetMapping("/login")
+    // public String loginPage(
+    //     @RequestParam(value = "error", required = false) String error,
+    //     Model model
+    // ) {
+    //     if (error != null) {
+    //         model.addAttribute("loginError", "이메일 또는 비밀번호가 올바르지 않습니다.");
+    //     }
+    //     return "redirect:/";
+    // }
+
+    @GetMapping("/login-page")
+    public String loginPage() {
+
+        return "login-page";
     }
 
-    @PostMapping("/login.do")  // /login에서 /login.do로 변경
+
+    @PostMapping("/login")
     @ResponseBody
     public Map<String, Object> login(
         @RequestParam String email, 
@@ -159,7 +165,7 @@ public class UserController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/";
+        return "redirect:/home";
     }
 
     // 프로필 이미지 저장하는 메서드
