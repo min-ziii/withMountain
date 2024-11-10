@@ -8,7 +8,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.test.hike.dto.UserTokenDTO;
+import com.test.hike.enums.TokenCategory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,21 +31,22 @@ import com.test.hike.service.UserService;
 
 @Controller
 public class UserController {
-	
+
     @Autowired
     private UserInfoDAO userDAO;
-    
     @Autowired
     private LocationService locationService;
-    
-    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+
     @GetMapping("/getLocations")
     @ResponseBody
     @CrossOrigin
     public List<LocationDTO> getLocations() {
         return locationService.getAllLocations();
     }
-    
+
     // GET mapping도 .do로 변경
     // @GetMapping("/login")
     // public String loginPage(
@@ -65,17 +69,17 @@ public class UserController {
     @PostMapping("/login")
     @ResponseBody
     public Map<String, Object> login(
-        @RequestParam String email, 
-        @RequestParam String password,
-        HttpSession session
+            @RequestParam String email,
+            @RequestParam String password,
+            HttpSession session
     ) {
         Map<String, Object> response = new HashMap<>();
-        
+
         try {
             System.out.println("POST 로그인 시도 - 이메일: " + email);
             UserInfoDTO user = userDAO.loginCheck(email, password);
-            
-            if(user != null) {
+
+            if (user != null) {
                 session.setAttribute("loginMember", user);
                 response.put("success", true);
                 System.out.println("로그인 성공");
@@ -90,36 +94,36 @@ public class UserController {
             response.put("success", false);
             response.put("message", "로그인 처리 중 오류가 발생했습니다.");
         }
-        
+
         return response;
     }
-    
-
 
     // 회원가입 처리
     @PostMapping("/signup.do")
     @ResponseBody
     public Map<String, Object> signup(@ModelAttribute UserInfoDTO user,
-                                    @RequestParam(required = false) MultipartFile profileImage,
-                                    @RequestParam Long locationId,
-                                    HttpServletRequest request) {
+                                      @ModelAttribute UserTokenDTO userToken,
+                                      @RequestParam(required = false) MultipartFile profileImage,
+                                      @RequestParam Long locationId,
+                                      HttpServletRequest request) {
         Map<String, Object> response = new HashMap<>();
         Map<String, String> errors = new HashMap<>();
 
+
         // checkEmailExists 메서드 사용
-        if(userDAO.checkEmailExists(user.getEmail()) > 0) {  // isEmailExists를 checkEmailExists로 변경
+        if (userDAO.checkEmailExists(user.getEmail()) > 0) {  // isEmailExists를 checkEmailExists로 변경
             errors.put("email", "이미 사용중인 이메일입니다.");
         }
-        
+
         if (locationId == null || locationId < 1) {
             errors.put("locationId", "활동 지역을 선택해주세요.");
         }
-        
+
         // 프로필 이미지 처리
-        if(profileImage != null && !profileImage.isEmpty()) {
+        if (profileImage != null && !profileImage.isEmpty()) {
             // 회원가입 시 이미지 저장
             String savedFileName = saveFile(profileImage, request);
-            if(savedFileName != null) {
+            if (savedFileName != null) {
                 user.setProfileImage("/resources/static/images/profile/" + savedFileName);
             } else {
                 errors.put("profileImage", "프로필 이미지 저장에 실패했습니다.");
@@ -128,14 +132,23 @@ public class UserController {
             // 기본 프로필 이미지 설정
             user.setProfileImage("/resources/static/images/default-profile.svg");
         }
-        
-        if(errors.isEmpty()) {
+
+        if (errors.isEmpty()) {
             try {
                 user.setLocationId(String.valueOf(locationId));
+                user.setPassword(passwordEncoder.encode(user.getPassword()));
+
                 userDAO.insertUser(user);
+
+                int userId = userDAO.getSeqUserInfo();
+                userToken.setCategory(TokenCategory.EMAIL);
+                userToken.setUser_id(String.valueOf(userId));
+                userDAO.insertToken(userToken);
+
                 response.put("success", true);
                 response.put("message", "회원가입이 완료되었습니다.");
-            } catch(Exception e) {
+            } catch (Exception e) {
+                e.printStackTrace();
                 response.put("success", false);
                 response.put("message", "회원가입 처리 중 오류가 발생했습니다.");
             }
@@ -150,7 +163,7 @@ public class UserController {
     // 이메일 중복 확인
     @Autowired
     private UserService userService;
-    
+
     @PostMapping("/checkEmail.do")
     @ResponseBody
     public Map<String, Boolean> checkEmail(@RequestParam String email) {
@@ -159,8 +172,8 @@ public class UserController {
         response.put("exists", exists);
         return response;
     }
-    
-    
+
+
     // 로그아웃
     @GetMapping("/logout")
     public String logout(HttpSession session) {
@@ -173,7 +186,7 @@ public class UserController {
         try {
             // 실제 파일 저장 경로 설정
             String uploadPath = request.getServletContext().getRealPath("/resources/static/images/profile/");
-            
+
             // 디렉토리가 없으면 생성
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) {
@@ -183,20 +196,20 @@ public class UserController {
             // 파일명 생성 (timestamp_originalfilename)
             String originalFileName = file.getOriginalFilename();
             String savedFileName = System.currentTimeMillis() + "_" + originalFileName;
-            
+
             // 파일 저장
             File destFile = new File(uploadPath + savedFileName);
             file.transferTo(destFile);
-            
+
             return savedFileName;
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
-    
-    
+
+
     // 프로필 이미지 업데이트 (로그인 상태에서만 호출)
     @PostMapping("/updateProfile")
     @ResponseBody
@@ -204,24 +217,24 @@ public class UserController {
             @RequestParam("profileImage") MultipartFile profileImage,
             HttpServletRequest request,
             HttpSession session) {
-        
+
         Map<String, Object> response = new HashMap<>();
-        
+
         try {
             UserInfoDTO loginMember = (UserInfoDTO) session.getAttribute("loginMember");
-            
+
             if (loginMember != null) {
                 String savedFileName = saveFile(profileImage, request);
                 if (savedFileName != null) {
                     String imagePath = "/resources/static/images/profile/" + savedFileName;
-                    
+
                     // DB에 새 이미지 경로 업데이트
                     loginMember.setProfileImage(imagePath);
                     userDAO.updateProfileImage(loginMember);
-                    
+
                     // 세션 업데이트
                     session.setAttribute("loginMember", loginMember);
-                    
+
                     response.put("success", true);
                     response.put("newImageUrl", imagePath);
                 } else {
@@ -237,10 +250,9 @@ public class UserController {
             response.put("success", false);
             response.put("message", "프로필 이미지 업데이트 중 오류가 발생했습니다.");
         }
-        
+
         return response;
     }
 
-     
-    
+
 }

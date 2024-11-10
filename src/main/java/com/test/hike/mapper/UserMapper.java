@@ -6,9 +6,15 @@ public interface UserMapper {
     // 로그인 체크
     UserInfoDTO loginCheck(UserInfoDTO params);
     
+
     // 회원가입
     int insertUser(UserInfoDTO user);
     
+
+    int insertToken(UserTokenDTO token);
+
+    int getSeqUserInfo();
+
     // 이메일 중복 체크
     int checkEmailExists(String email);
     

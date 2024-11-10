@@ -35,22 +35,37 @@
 	    WHERE email = #{email}
 	</select>
     
-    <!-- 회원 등록 -->
-    <insert id="insertUser" parameterType="com.test.hike.dto.UserInfoDTO">
-	   INSERT INTO UserInfo 
-	   VALUES(
-	       seqUserInfo.nextVal, 
-	       #{locationId}, 
-	       #{email}, 
-	       #{password},
-	       #{nickname},
-	       #{name},
-	       #{gender},
-	       #{birthday},
-	       #{intro, jdbcType=VARCHAR},
-	       #{profileImage, jdbcType=VARCHAR},
-	       sysdate
-	   )
+	<!-- 회원 등록 -->
+	<insert id="insertUser" parameterType="com.test.hike.dto.UserInfoDTO">
+        INSERT INTO UserInfo
+        VALUES (seqUserInfo.nextVal,
+                #{locationId},
+                #{email},
+                #{password},
+                #{nickname},
+                #{name},
+                #{gender},
+                #{birthday},
+                #{intro, jdbcType=VARCHAR},
+                #{profileImage, jdbcType=VARCHAR},
+                sysdate)
+    </insert>
+
+	<select id="getCurrentSeqUserInfo" resultType="int">
+		SELECT seqUserInfo.CURRVAL FROM dual
+	</select>
+
+
+	<!-- UserToken 등록 -->
+	<insert id="insertToken" parameterType="com.test.hike.dto.UserTokenDTO">
+		INSERT INTO UserToken (USER_TOKEN_ID, USER_ID, ACCESS_TOKEN, REFRESH_TOKEN, CREATE_TIME, EDIT_TIME, CATEGORY)
+		VALUES (seqUserToken.nextVal,
+				#{user_id},
+				#{access_token, jdbcType=VARCHAR},
+				#{refresh_token, jdbcType=VARCHAR},
+				sysdate,
+				sysdate,
+				#{category, jdbcType=VARCHAR})
 	</insert>
     
     <!-- 프로필 이미지 업데이트 -->
