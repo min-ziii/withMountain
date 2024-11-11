@@ -16,6 +16,7 @@
 		<result property="clubImage" column="image"/>
 		<result property="clubCreateDate" column="create_date"/>
 		<result property="clubCode" column="code"/>
+		<result property="clubMemberCount" column="clubMemberCount"/>
 	</resultMap>
 
 	<select id="clubList"  resultMap="ClubDTOMap">
@@ -23,15 +24,16 @@
 		c.club_id AS club_id,
 		c.location_id AS location_id,
 		c.name AS name,
-		c.is_private AS isPrivate,
+		c.is_private AS is_private,
 		c.max_member AS max_member,
 		c.intro AS intro,
 		c.image AS image,
 		c.create_date AS create_date,
 		c.code AS code,
 		l.name AS locationName
+		,(SELECT COUNT(*) FROM Member m WHERE m.club_id = c.club_id) AS clubMemberCount
 		FROM club c JOIN location l ON c.location_id = l.location_id
-		order by club_id desc
+		ORDER BY c.club_id DESC
 	</select>
 
 <!-- 모임 프로필 정보 -->
@@ -103,4 +105,11 @@
 		insert into ClubGallery(club_gallery_id, club_id, schedule_id, gallery_date, image)
 			values (seqClubGallery.nextVal, 1, null, sysdate, #{galleryImage})
 	</insert>
+
+	<!-- 모임 추가하기 -->
+	<insert id="clubAdd" parameterType="String">
+		INSERT INTO Club(club_id, location_id, name, is_private, max_member, intro, image, create_date, code)
+		VALUES(seqClub.nextVal, #{clubLocationId}, #{clubName}, #{clubIsPrivate}, #{clubMaxMember}, #{clubIntro}, default, sysdate, #{clubCode})
+	</insert>
+
 </mapper>

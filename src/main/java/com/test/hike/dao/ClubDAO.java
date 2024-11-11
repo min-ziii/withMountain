@@ -2,7 +2,6 @@ package com.test.hike.dao;
 
 import com.test.hike.dto.ClubDTO;
 import com.test.hike.dto.ClubGalleryDTO;
-import com.test.hike.dto.MemberDTO;
 import com.test.hike.mapper.ClubMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -54,4 +53,9 @@ public class ClubDAO {
         return mapper.clubGalleryAdd(clubGalleryDTO);
     }
 
+    public int clubAdd(ClubDTO dto) {
+
+        return mapper.clubAdd(dto);
+    }
+    
 }

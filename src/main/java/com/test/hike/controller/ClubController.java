@@ -3,20 +3,18 @@ package com.test.hike.controller;
 import com.test.hike.dao.ClubDAO;
 import com.test.hike.dto.ClubDTO;
 import com.test.hike.dto.ClubGalleryDTO;
-import com.test.hike.dto.MemberDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Member;
 import java.util.List;
 
 @Controller
@@ -165,6 +163,32 @@ public class ClubController {
 	@GetMapping("/edit")
 	public String edit() {
 		return "club.edit";
+	}
+
+	@PostMapping("/addok.do")
+	public String addClub(HttpServletRequest request, Model model) {
+
+		ClubDTO dto = new ClubDTO();
+
+		// 요청 파라미터를 DTO에 설정
+		dto.setClubId(request.getParameter("clubId"));
+		dto.setClubLocationId(request.getParameter("clubLocationId")); // 수정된 필드 이름
+		dto.setClubName(request.getParameter("clubName")); // 수정된 필드 이름
+		dto.setClubIsPrivate(request.getParameter("clubIsPrivate")); // 수정된 필드 이름
+		dto.setClubMaxMember(request.getParameter("clubMaxMember")); // 수정된 필드 이름
+		dto.setClubIntro(request.getParameter("clubIntro")); // 수정된 필드 이름
+		dto.setClubImage(request.getParameter("clubImage")); // 파일 경로 처리 필요
+		dto.setClubCode(request.getParameter("clubCode")); // 수정된 필드 이름
+
+		int result = dao.clubAdd(dto);
+
+		if (result > 0) {
+//            model.addAttribute("성공했습니다.");
+			return "redirect:/home"; // 성공 시 리다이렉트
+		} else {
+			model.addAttribute("error", "모임 생성에 실패했습니다.");
+			return "redirect:/add"; // 실패 시 다시 폼으로
+		}
 	}
 
 }

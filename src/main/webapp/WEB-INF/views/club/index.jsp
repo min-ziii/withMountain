@@ -48,27 +48,27 @@
 </div>
 <div id="clublist-joinlist">
 
-	<c:forEach begin="1" end="7">
-	<div class="joinclub">
-		<img class="joinclub-image" src="${path}/resources/static/images/club-image.jpg" alt="산악회 대표사진">
-		<div class="joinclub-content">
-			<div class="joinclub-header">
-				<div>한사랑 산악회</div>
-				<div>열정 가득한 가을 북한산 등반</div>
-			</div>
-			<div class="joinclub-footer">
-				<div>
-					<span><img class="clock-logo" src="${path}/resources/static/images/clock.svg" alt="가입날짜"></span>
-					<span>2024-11-05</span>
+<%--	<c:forEach items="${clubList}" var="clubDTO">--%>
+		<div class="joinclub" onclick="location.href='/hike/club/view?clubId=11';">
+			<img class="joinclub-image" src="${path}/resources/static/images/club-image.jpg" alt="산악회 대표사진">
+			<div class="joinclub-content">
+				<div class="joinclub-header">
+					<div>한사랑 산악회</div>
+					<div>열정 가득한 가을 북한산 등반</div>
 				</div>
-				<div>
-					<span><img class="users-logo" src="${path}/resources/static/images/users.svg" alt="멤버"></span>
-					<span>6/50</span>
+				<div class="joinclub-footer">
+					<div>
+						<span><img class="clock-logo" src="${path}/resources/static/images/clock.svg" alt="가입날짜"></span>
+						<span>2024-11-05 22:35:00</span>
+					</div>
+					<div>
+						<span><img class="users-logo" src="${path}/resources/static/images/users.svg" alt="멤버"></span>
+						<span>6/30</span>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	</c:forEach>	
+<%--	</c:forEach>	--%>
 	
 </div>
 
@@ -94,15 +94,15 @@
 				산악인들의 마음을 한껏 부풀어오르게 만드는 아름다운 단풍이 곱게 피어나는 10월입니다. 이 좋은 가을날, 또 한번의 멋진
 				산행을 위해서 이렇게 올해의 ○○번째 모임을 갖게 되었습니다. 저희 모임에 오셔서 즐거운 산행 이어 갑시다</div>
 			<div class="recommendclub-tag">
-				<span class="recommendclub-tag-item"># 백숙</span> <span
-					class="recommendclub-tag-item"># 가을산</span> <span
-					class="recommendclub-tag-item"># 단풍명소</span>
+				<span class="recommendclub-tag-item"># 백숙</span>
+				<span class="recommendclub-tag-item"># 가을산</span>
+				<span class="recommendclub-tag-item"># 단풍명소</span>
 			</div>
 			<div class="recommendclub-footer">
 				<div>
 					<span><img class="clock-logo"
 						src="${path}/resources/static/images/clock.svg" alt="가입날짜"></span>
-					<span>2024-11-05</span>
+					<span>2024-11-05 22:35:00</span>
 				</div>
 				<div>
 					<span><img class="users-logo"
@@ -115,7 +115,7 @@
 	<c:forEach items="${clubList}" var="clubDTO">
 		<div class="recommendclub" onclick="location.href='/hike/club/view?clubId=${clubDTO.clubId}';">
 			<img class="joinclub-image"
-				 src="${path}/resources/static/images/${clubDTO.clubImage}" alt="산악회 대표사진">
+				 src="${path}/resources/static/images/club/${clubDTO.clubImage}" alt="산악회 대표사진">
 			<div class="recommendclub-content">
 				<div class="recommendclub-header">
 					<div>${clubDTO.clubName}</div>
@@ -130,13 +130,13 @@
 				</div>
 				<div class="recommendclub-footer">
 					<div>
-                    <span><img class="clock-logo"
+					<span><img class="clock-logo"
 							   src="${path}/resources/static/images/clock.svg" alt="가입날짜"></span>
 						<span>${clubDTO.clubCreateDate}</span>
 					</div>
 					<div>
-                    <span><img class="users-logo"
-							   src="${path}/resources/static/images/users.svg" alt="멤버"></span> <span>6/${clubDTO.clubMaxMember}</span>
+					<span><img class="users-logo"
+							   src="${path}/resources/static/images/users.svg" alt="멤버"></span> <span>${clubDTO.clubMemberCount}/${clubDTO.clubMaxMember}</span>
 					</div>
 				</div>
 			</div>

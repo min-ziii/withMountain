@@ -2,7 +2,6 @@ package com.test.hike.mapper;
 
 import com.test.hike.dto.ClubDTO;
 import com.test.hike.dto.ClubGalleryDTO;
-import com.test.hike.dto.MemberDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -25,5 +24,7 @@ public interface ClubMapper {
 	List<ClubGalleryDTO> galleryList(String clubId);
 
 	int clubGalleryAdd(ClubGalleryDTO clubGalleryDTO);
+
+	int clubAdd(ClubDTO dto);
 }
 
