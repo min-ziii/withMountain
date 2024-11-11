@@ -229,7 +229,9 @@
                 </div>
 
             </div>
-            <button type="submit" id="signup-btn">회원가입</button>
+            <div class="signup-btn-tool">
+            	<button type="submit" id="signup-btn">회원가입</button>
+            </div>
         </form>
     </div>
 </div>

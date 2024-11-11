@@ -22,4 +22,8 @@ public interface UserMapper {
 
     // 로그인 유저 정보 가져오기
     UserInfoDTO loadUser(String username);
+    
+    //나의 등산 환경 설정 정보 수정
+    int updateUserInfo(UserInfoDTO user);
+    
 }

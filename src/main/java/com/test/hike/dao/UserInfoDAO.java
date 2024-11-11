@@ -1,10 +1,11 @@
 package com.test.hike.dao;
 
-import com.test.hike.dto.UserTokenDTO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.test.hike.dto.UserInfoDTO;
+import com.test.hike.dto.UserTokenDTO;
 
 @Repository
 public class UserInfoDAO {
@@ -62,4 +63,27 @@ public class UserInfoDAO {
             return 0;
         }
     }
+    
+    /* 사용자 정보 업데이트 */
+    public int updateUserInfo(UserInfoDTO user) {
+        try {
+            return sqlSession.update(NAMESPACE + "updateUserInfo", user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    
+    /* 사용자 정보 조회 */
+    public UserInfoDTO loadUser(String username) {
+        try {
+            return sqlSession.selectOne(NAMESPACE + "loadUser", username);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    
+    
 }

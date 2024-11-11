@@ -151,21 +151,23 @@
 }
 
 /* 스크롤바 스타일링 (선택사항) */
-.photo-grid::-webkit-scrollbar {
-    width: 8px;
-}
-
-.photo-grid::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-.photo-grid::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-}
-
-.photo-grid::-webkit-scrollbar-thumb:hover {
+.board-grid::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+/* 스크롤바 스타일링 */
+.board-grid::-webkit-scrollbar {
+    width: 6px;
+}
+
+.board-grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.board-grid::-webkit-scrollbar-thumb {
+    background: var(--gray05);
+    border-radius: 3px;
 }
 
 .board-grid {
@@ -186,67 +188,7 @@
 
 
 /* --------------회원가입 틀 가져와서 수정중------------------ */
-.auth-overlay {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: rgba(0, 0, 0, .5);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-}
 
-
-#infoedit-container {
-    background-color: var(--white);
-    border: 1px solid var(--gray06);
-    width: 334px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;	/* 중앙 정렬로 변경 */
-    padding-top: 15px;
-    box-sizing: border-box;
-    border-radius: 10px;
-}
-
-
-#infoedit-containerSon {
-	width: 100%;  /* 내부 컨테이너 너비 설정 */
-	padding: 10px;
-    margin: 0 auto;  /* 좌우 마진을 auto로 설정하여 중앙 정렬 */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;  /* 내부 요소들은 왼쪽 정렬 */
-    max-height: calc(90vh - 200px);  /* 뷰포트 높이의 90%에서 헤더/버튼 공간을 뺀 값 */
-    overflow-y: auto;
-    position: relative;  /* 스크롤바 위치 기준점 */
-    box-sizing: border-box;  /* 패딩을 너비에 포함 */
-}
-
-/* 회원가입 스크롤 추가기능 */
-#infoedit-containerSon::-webkit-scrollbar {
-    width: 6px;
-    height: 5px;
-    position: absolute;  /* 위치 고정 */
-    right: 0;
-    top: 0;
-}
-
-/* 스크롤바 트랙(배경) */
-#infoedit-containerSon::-webkit-scrollbar-track {
-    background: transparent;  /* 배경을 투명하게 */
-    border-radius: 3px;     /* 모서리 둥글게 */
-}
-
-/* 스크롤바 핸들(움직이는 부분) */
-#infoedit-containerSon::-webkit-scrollbar-thumb {
-    background: var(--gray06);
-    border-radius: 3px;
-    min-height: 30px;  /* 최소 높이 설정 */
-}
-
-/* ----여기까지----- */
 
 #infoedit-container h1 {
     text-align: center;
@@ -283,7 +225,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 110%;
     background-color: rgba(0, 0, 0, 0.5);
     display: none;
     justify-content: center;
@@ -291,30 +233,21 @@
     z-index: 1000;
 }
 
-#popup .window {
-    background-color: var(--white);
-    position: relative;
-    width: auto;
-    min-width: 300px;
-    max-width: 500px;
-    height: auto;  /* 내용물 높이에 맞춤 */
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
 
+/* 폼 컨테이너 */
 #infoedit-container {
     background-color: var(--white);
-	border: 1px solid var(--gray06);
-	width: 334px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;	/* 중앙 정렬로 변경 */
-	padding: 20px;
-	border-radius: 10px;
-	box-sizing: border-box;
-	max-height: 90vh;  /* 뷰포트 높이의 90% */
-    overflow: hidden;  /* 내부 스크롤만 동작하도록 */
+    border: 1px solid var(--gray06);
+    width: 334px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;	/* 중앙 정렬로 변경 */
+    padding-top: 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    
 }
+
 
 #infoedit-containerSon {
     width: 100%;  /* 내부 컨테이너 너비 설정 */
@@ -322,21 +255,44 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;  /* 내부 요소들은 왼쪽 정렬 */
-    max-height: calc(90vh - 200px);  /* 뷰포트 높이의 90%에서 헤더/버튼 공간을 뺀 값 */
-    overflow-y: auto;
+    max-height: 80vh;  /* 뷰포트 높이의 90%에서 헤더/버튼 공간을 뺀 값 */
     position: relative;  /* 스크롤바 위치 기준점 */
     box-sizing: border-box;  /* 패딩을 너비에 포함 */
-    padding: 0px 50px 30px 50px;
+    padding: 0px 50px;
+    overflow-y: hidden; /* 세로 스크롤 활성화 */
 }
 
-#infoedit-containerSon {
-    overflow-y: auto; /* 세로 방향 스크롤 활성화 */
-    scrollbar-width: none; /* Firefox에서 스크롤바 숨기기 */
+#popup .window {
+    background-color: var(--white);
+    border-radius: 10px;
+    width: 334px; /* auto 대신 100% 사용 */
+    height: 700px;
+    position: relative;
+    display: flex;
+    overflow-x: hidden; /* 가로 스크롤 숨김 */
+    overflow-y: auto; /* 세로 스크롤은 필요할 때만 표시 */
 }
 
-#infoedit-containerSon::-webkit-scrollbar {
-    display: none; /* Webkit 기반 브라우저(Chrome, Safari)에서 스크롤바 숨기기 */
+/* 스크롤바 스타일 */
+#popup .window::-webkit-scrollbar {
+   width: 6px;
+   height: 5px;
+   position: absolute;
+   right: 0;
+   top: 0;
 }
+
+#popup .window::-webkit-scrollbar-track {
+   background: transparent;
+   border-radius: 3px;
+}
+
+#popup .window::-webkit-scrollbar-thumb {
+   background: var(--gray06);
+   border-radius: 3px;
+   min-height: 30px;
+}
+
 
 #popup .window .header {
     display: flex;
@@ -375,8 +331,17 @@
     display: block; /* 블록 레벨 요소로 변경 */
     margin-left: 55px; /* 수평 방향 오른쪽 정렬 */
     margin-top: 5px; /* 상단 여백 추가 */
+    margin-bottom: 15px;
 }
 
 .profile-upload {
 	margin-top: 20px;
 }
+
+
+
+.board-grid{
+	/* overflow-y: hidden; */
+}
+
+

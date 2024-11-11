@@ -22,14 +22,14 @@
 	
 	<div id="profile-info">
 		<div class="profile-image">
-			<img src="${path}/resources/static/images/club-image.jpg" alt="모임 프로필 사진">
+			<img src="${path}/resources/static/images/club/memberProfie.jpg" alt="프로필 사진">
 		</div>
 		<div class="clubInfo">
 		
 			<div class="club-title">
 				<h1 class="clubName">이택조</h1>
 			</div>
-				<h2 class="clubCreateDate">가입 일자: 2024년 11월 01일</h2>
+				<h2 class="clubCreateDate">가입 일자: 2024년 09월 01일</h2>
 		</div>
 	</div>
 
@@ -138,10 +138,6 @@
 <div id="schedule" class="myscheduler">
 <div id="scheduler-sub-head">
 <div class="mypagetitle">일정</div>
-    <button type="button" class="scheduler-add-btn" onclick="location.href=''">
-        <img class="plus-logo" src="${path}/resources/static/images/plus.svg" alt="플러스 로고">
-        <span>추가하기</span>
-    </button>
 </div>
 
 <div id="calendar"></div>
@@ -201,13 +197,13 @@
 <div class="myactivities"> <!-- 나의 활동기록 내용 -->
 
 <div class="tab-container">
-    <button class="tab-button" data-tab="free">자유 게시판</button>
+    <button class="tab-button active" data-tab="free">자유 게시판</button>
     <button class="tab-button" data-tab="photo">사진 게시판</button>
     <button class="tab-button" data-tab="qna">QnA</button>
 </div>
 
 <div class="tab-content">
-    <div class="tab-pane" id="free"></div>
+    <div class="tab-pane active" id="free"></div>
     <div class="tab-pane" id="photo"></div>
     <div class="tab-pane" id="qna"></div>
 </div>

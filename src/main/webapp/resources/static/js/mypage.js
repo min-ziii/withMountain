@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeCalendar();
 });
 
-// 환경설정 팝업 초기화
+
+// 환경설정 팝업 초기화 함수 수정
 function initializePreferencePopup() {
     if (document.querySelector('.pref-btn')) {
         $('.pref-btn').on('click', function () {
@@ -26,21 +27,16 @@ function initializePreferencePopup() {
                     console.log('AJAX 응답 받음');
                     
                     if (response && response.trim().length > 0) {
-                        // 전체 응답을 jQuery 객체로 변환
                         const parsedHtml = $(response);
-                        // infoedit-container를 직접 찾기
                         const container = parsedHtml.filter('#infoedit-container');
                         
                         if (container.length > 0) {
-                            // 컨테이너를 찾았을 경우
                             $('#popup-content').empty().append(container);
-                            $('#popup').css('display', 'flex');
+                            showPopup();
                             
-                            // 초기화 함수 호출
                             initializeProfileAndPassword();
                             loadLocationOptions();
                         } else {
-                            // 응답에서 직접 infoedit-container를 문자열로 찾기
                             const htmlString = response.toString();
                             const startIndex = htmlString.indexOf('<div id="infoedit-container">');
                             const endIndex = htmlString.indexOf('</div>    <script>') + 6;
@@ -48,9 +44,8 @@ function initializePreferencePopup() {
                             if (startIndex !== -1 && endIndex !== -1) {
                                 const containerHtml = htmlString.substring(startIndex, endIndex);
                                 $('#popup-content').empty().html(containerHtml);
-                                $('#popup').css('display', 'flex');
+                                showPopup();
                                 
-                                // 초기화 함수 호출
                                 initializeProfileAndPassword();
                                 loadLocationOptions();
                             } else {
@@ -65,25 +60,72 @@ function initializePreferencePopup() {
                 },
                 error: function (xhr, status, error) {
                     console.error('AJAX 에러:', error);
-                    console.error('상태:', xhr.status);
-                    console.error('응답:', xhr.responseText);
                     alert('설정을 불러오는데 실패했습니다.');
                 }
             });
         });
 
-        // 팝업 닫기 이벤트
-        $(document).on('click', '.popup-close, #exit', function() {
-            $('#popup').css('display', 'none');
+        // 팝업 닫기 이벤트들
+        $(document).on('click', '.edit-exitImage, #exit', function() {
+            closePopup();
         });
 
         $('#popup').on('click', function(e) {
             if (e.target === this) {
-                $(this).css('display', 'none');
+                closePopup();
+            }
+        });
+
+        // ESC 키로 팝업 닫기
+        $(document).on('keydown', function(e) {
+            if (e.key === 'Escape' && $('#popup').is(':visible')) {
+                closePopup();
             }
         });
     }
 }
+
+// 팝업 표시 함수
+function showPopup() {
+    const $popup = $('#popup');
+    const $body = $('body');
+    
+    // 현재 스크롤 위치 저장
+    const scrollY = window.scrollY;
+    
+    // 팝업 표시
+    $popup.css('display', 'flex').fadeIn(300);
+    
+    // 배경 스크롤 막기
+    $body.css({
+        position: 'fixed',
+        top: `-${scrollY}px`,
+        width: '100%',
+        overflow: 'hidden'
+    }).data('scroll-position', scrollY);
+}
+
+// 팝업 닫기 함수
+function closePopup() {
+    const $popup = $('#popup');
+    const $body = $('body');
+    
+    // 팝업 숨기기
+    $popup.fadeOut(300);
+    
+    // 스크롤 위치 복원
+    const scrollY = $body.data('scroll-position');
+    $body.css({
+        position: '',
+        top: '',
+        width: '',
+        overflow: ''
+    });
+    
+    window.scrollTo(0, scrollY);
+}
+
+
 
 
 
@@ -243,13 +285,45 @@ function loadFreeBoard() {
     // 가상의 게시글 데이터
     const posts = [
         {
-            title: '안녕하세요! 방금 가입했습니다~',
-            content: '등산 좋아하는 등산러입니다.\n새롭게 가입했어요~ 잘부탁 드려요',
-            nickname: '맛동산',
-            date: '2024-11-05',
-            likes: 2,
-            comments: 4
-        }
+       title: '안녕하세요! 방금 가입했습니다~',
+       content: '등산 좋아하는 등산러입니다.\n새롭게 가입했어요~ 잘부탁 드려요',
+       nickname: '멋진남자',
+       date: '2024-11-05',
+       likes: 2,
+       comments: 4
+   },
+   {
+       title: '지난 주말 북한산 다녀왔어요!',
+       content: '날씨도 좋고 단풍도 예뻐서 정말 좋은 등산이었습니다.\n사진 몇 장 찍어왔는데 다음에 공유해볼게요~',
+       nickname: '멋진남자',
+       date: '2024-11-04',
+       likes: 15,
+       comments: 8
+   },
+   {
+       title: '등산 시작한지 1년!',
+       content: '작년 이맘때 등산을 시작했는데 벌써 1년이 됐네요.\n덕분에 건강해진 것 같아서 정말 기쁩니다 ㅎㅎ\n앞으로도 열심히 할게요~',
+       nickname: '멋진남자',
+       date: '2024-11-03',
+       likes: 23,
+       comments: 12
+   },
+   {
+       title: '등산 친구 구해요~',
+       content: '주말마다 등산하는 30대 직장인입니다.\n저처럼 주말 등산 좋아하시는 분들 같이 등산해요!\n관심있으신 분들 댓글 부탁드립니다.',
+       nickname: '멋진남자',
+       date: '2024-11-02',
+       likes: 8,
+       comments: 15
+   },
+   {
+       title: '오늘 날씨 진짜 등산하기 좋네요',
+       content: '일교차도 적당하고 구름 한 점 없이 맑아서 등산하기 딱이에요!\n다들 오늘 산행 어떠셨나요~?',
+       nickname: '멋진남자',
+       date: '2024-11-01',
+       likes: 12,
+       comments: 6
+   }
         // 필요한 만큼 데이터 추가
     ];
 
@@ -295,15 +369,57 @@ function loadPhotoBoard() {
     const photoList = [
         {
             id: 1,
-            imageUrl: './resources/static/images/club-image.jpg',
+            imageUrl: './resources/static/images/profile/takjo1.jpg',
             title: '등산 풍경',
             date: '2024-11-05'
         },
         {
-            id: 2,
-            imageUrl: './resources/static/images/club-image.jpg',
-            title: '산 정상',
-            date: '2024-11-06'
+            id: 1,
+            imageUrl: './resources/static/images/profile/takjo2.jpg',
+            title: '등산 풍경',
+            date: '2024-11-05'
+        },
+        {
+            id: 1,
+            imageUrl: './resources/static/images/profile/takjo3.jpg',
+            title: '등산 풍경',
+            date: '2024-11-05'
+        },
+        {
+            id: 1,
+            imageUrl: './resources/static/images/profile/takjo4.png',
+            title: '등산 풍경',
+            date: '2024-11-05'
+        },
+        {
+            id: 1,
+            imageUrl: './resources/static/images/profile/takjo5.jpg',
+            title: '등산 풍경',
+            date: '2024-11-05'
+        },
+        {
+            id: 1,
+            imageUrl: './resources/static/images/profile/takjo6.jpg',
+            title: '등산 풍경',
+            date: '2024-11-05'
+        },
+        {
+            id: 1,
+            imageUrl: './resources/static/images/profile/takjo7.jpg',
+            title: '등산 풍경',
+            date: '2024-11-05'
+        },
+        {
+            id: 1,
+            imageUrl: './resources/static/images/profile/takjo8.jpg',
+            title: '등산 풍경',
+            date: '2024-11-05'
+        },
+        {
+            id: 1,
+            imageUrl: './resources/static/images/profile/takjo9.jpg',
+            title: '등산 풍경',
+            date: '2024-11-05'
         }
         // 필요한 만큼 데이터 추가
     ];
@@ -343,12 +459,68 @@ function loadQnA() {
     // 가상의 Q&A 데이터
     const qnaPosts = [
         {
-            title: '등산복 추천해주세요!!!',
-            content: '얼마전 등산을 시작한 등린이입니다!\n적당한 가격의 입문용 등산복 뭐가 괜찮을까요??',
-            nickname: '맛동산',
-            date: '2024-11-05',
-            comments: 4
-        }
+        title: '등산복 추천해주세요!!!',
+        content: '얼마전 등산을 시작한 등린이입니다!\n적당한 가격의 입문용 등산복 뭐가 괜찮을까요??',
+        nickname: '멋진남자',
+        date: '2024-11-05',
+        comments: 4
+    },
+    {
+        title: '북한산 등산코스 문의드립니다',
+        content: '주말에 북한산 처음 가보려고 하는데 초보자도 할만한 코스 추천해주실 분 있나요?',
+        nickname: '멋진남자',
+        date: '2024-11-04',
+        comments: 7
+    },
+    {
+        title: '등산스틱 고민됩니다.',
+        content: '등산스틱 처음 사보려고 하는데 브랜드 추천 부탁드립니다! 가성비 좋은 제품으로요~',
+        nickname: '멋진남자',
+        date: '2024-11-03',
+        comments: 5
+    },
+    {
+        title: '겨울 등산 준비물 체크리스트',
+        content: '다음주에 설산 등반 처음 가보는데 꼭 필요한 준비물 알려주세요!',
+        nickname: '멋진남자',
+        date: '2024-11-02',
+        comments: 12
+    },
+    {
+        title: '등산화 사이즈 문의',
+        content: '등산화는 평소 신발보다 반 사이즈 크게 사는게 좋나요? 발볼이 넓은 편인데 추천해주세요.',
+        nickname: '멋진남자',
+        date: '2024-11-01',
+        comments: 6
+    },
+    {
+        title: '혼자 등산 어떠신가요?',
+        content: '처음으로 혼자 등산을 가보려고 하는데 안전상 주의할 점이나 팁 있으실까요?',
+        nickname: '멋진남자',
+        date: '2024-10-31',
+        comments: 15
+    },
+    {
+        title: '등산 앱 추천해주세요',
+        content: '등산할 때 코스랑 거리 기록하는 앱 추천 부탁드립니다! 무료면 더 좋고요~',
+        nickname: '멋진남자',
+        date: '2024-10-30',
+        comments: 8
+    },
+    {
+        title: '등산 식량 추천',
+        content: '등산할 때 간단하게 먹기 좋은 간식이나 식사 추천해주세요! 체력보충 되는걸로요',
+        nickname: '멋진남자',
+        date: '2024-10-29',
+        comments: 9
+    },
+    {
+        title: '등산모임 처음인데 팁좀요',
+        content: '이번 주말에 처음으로 등산모임 나가는데 준비할 것이나 참고할 점 있을까요?',
+        nickname: '멋진남자',
+        date: '2024-10-28',
+        comments: 11
+    }
         // 필요한 만큼 데이터 추가
     ];
 
@@ -525,3 +697,6 @@ function popupCloseSchedule() {
     });
     $('#popupAddSchedule').css('display', 'none');
 }
+
+
+

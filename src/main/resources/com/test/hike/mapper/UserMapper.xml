@@ -92,7 +92,21 @@
         ORDER BY location_id
     </select>
 
-
+	<update id="updateUserInfo" parameterType="com.test.hike.dto.UserInfoDTO">
+        UPDATE UserInfo
+        SET 
+            <if test="password != null and password != ''">
+                PASSWORD = #{password},
+            </if>
+            NICKNAME = #{nickname},
+            GENDER = #{gender},
+            LOCATION_ID = #{locationId},
+            INTRO = #{intro} 
+            <if test="profileImage != null and profileImage != ''">
+                , PROFILE_IMAGE = #{profileImage}
+            </if>
+        WHERE EMAIL = #{email}
+    </update>
 
     
 </mapper>

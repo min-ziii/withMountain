@@ -27,7 +27,7 @@
                     <div class="profile-upload">
                         <input type="file" name="profileImage" id="profileImage" accept="image/*" style="display: none;">
                         <label for="profileImage">
-                            <img class="defaultprofile" src="${path}/resources/static/images/default-profile.svg" alt="기본프로필">
+                            <img class="defaultprofile" src="${path}/resources/static/images/club/memberProfie.jpg" alt="기본프로필">
                             <img class="edit_icon" src="${path}/resources/static/images/edit_icon.svg" alt="편집아이콘">  <!-- 추가된 편집 아이콘입니당 건들지 마세요. -->
                         </label>
                     </div>
@@ -86,7 +86,7 @@
                     <div><label>성별</label></div>
                     <div class="radio-gender">
                         <label class="chk_round">
-                            <input type="radio" name="gender" value="M" required>
+                            <input type="radio" name="gender" value="M" required checked>
                             <span class="radio-btn"></span>
                             <span class="label">남자</span>
                         </label>

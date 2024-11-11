@@ -132,17 +132,24 @@ function loginToSignUp() {
 
 // 스크롤 제어
 function lockScroll() {
+    const scrollY = window.scrollY;
     $('html, body').css({
         overflow: 'hidden',
-        height: '100%'
-    });
+        height: '100%',
+        position: 'fixed',
+        width: '100%'
+    }).data('scroll-position', scrollY);
 }
 
 function unlockScroll() {
+    const scrollY = $('html, body').data('scroll-position') || 0;
     $('html, body').css({
         overflow: 'auto',
-        height: 'auto'
+        height: 'auto',
+        position: '',
+        width: ''
     });
+    window.scrollTo(0, scrollY);
 }
 
 // 비밀번호 토글 초기화
