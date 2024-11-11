@@ -13,6 +13,7 @@ $(document).ready(async function () {
     const mtY = urlParams.get('mtY');
     const mtX = urlParams.get('mtX');
 
+    // 1. 그려질 지도의 크기와 설정을 사전 정의
     const map = initMap(
         '#view-map',
         parseFloat(mtY),
@@ -20,6 +21,7 @@ $(document).ready(async function () {
         MIN_ZOOM_LEVEL,
         MAX_ZOOM_LEVEL);
 
+    // 2. 프로그램으로 JSON 데이터 가져오기
     async function loadJSON() {
         try {
             const jsonPath = new URL('resources/static/data/mountain.json', 'http://localhost:8090/hike/');
@@ -34,7 +36,7 @@ $(document).ready(async function () {
     }
 
     // JSON형 데이터 data의 좌표값에 접근
-    //console.log(data);
+    console.log(data);
     //console.log(data["roadList"].length); // = 등산로 구간, 296
     //console.log(data["roadList"][0].coordList.length); // 구간 하나의 xy 좌표 수
     //console.log(data["roadList"][0].coordList[0].roadY);
@@ -42,7 +44,7 @@ $(document).ready(async function () {
     //console.log(spotListJson[0].spotId); // 지점 데이터의 spotId
     //console.log(spotListJson);
 
-    // 지점(Marker) 그리기
+    // 3-1. 지점(Marker) 그리기
     let pointStartEnd = [];
     let pointJunction = [];
     function dividePointsBySpotType() {
@@ -57,7 +59,7 @@ $(document).ready(async function () {
     }
     dividePointsBySpotType();
     
-    // 지점(시종점) 그리기
+    // 3-2. 지점(시종점) 그리기
     for (var i = 0; i < pointStartEnd.length; i++) {
         var imgSrcSE = '/hike/resources/static/images/spot-startend.svg';
         var imgSizeSE = new kakao.maps.Size(16, 16);
@@ -68,7 +70,7 @@ $(document).ready(async function () {
             image: markerImg
         });
     }
-    // 지점(분기점) 그리기
+    // 3-3. 지점(분기점) 그리기
     for (var i = 0; i < pointJunction.length; i++) {
         var imgSrcJ = '/hike/resources/static/images/point.svg';
         var imgSizeJ = new kakao.maps.Size(8, 8);
@@ -80,11 +82,12 @@ $(document).ready(async function () {
         });
     }
 
-    // 구간 그리기
+    // 4. 구간 그리기
     let lineNo = 27058; // data의 북한산 구간 번호가 27058부터 시작
     let lines = 0; // 선택된 구간의 개수
     let hikeTime = 0; // 구간 소요 시간: (상행시간 + 하행시간) / 2
     let hikeDistance = 0; // 구간 거리
+    let hikeLevel = []; // 구간 난이도
     let road = [];
 
     for (var i = 0; i < data["roadList"].length; i++) { // 296
@@ -101,13 +104,15 @@ $(document).ready(async function () {
             strokeStyle: 'solid',
             lineNum: lineNo,
             hikeDistance: hikeDistance,
-            hikeTime: hikeTime
+            hikeTime: hikeTime,
+            hikeLevel: hikeLevel
         });
 
         polyline.setMap(map);
 
         let isClicked = false;
 
+        // 5-1. 마우스 이벤트 리스너
         kakao.maps.event.addListener(polyline, 'mouseover', function(mouseEvent) {
             if (!isClicked) {
                 this.setOptions({
@@ -125,6 +130,7 @@ $(document).ready(async function () {
             }
         });
 
+        // 5-2. 마우스 이벤트 리스너
         kakao.maps.event.addListener(polyline, 'click', (function(lineNo, i) {
             return function(mouseEvent) {
                 if (isClicked) {
@@ -137,7 +143,7 @@ $(document).ready(async function () {
                     lines--;
                     console.log('현재 선택된 구간 수는 ' + lines + ' 개 입니다.');
 
-                    hikeDistance -= data["roadList"][i].roadKm;
+                    hikeDistance -= parseFloat(data["roadList"][i].roadKm.toFixed(2));
                     if (lines == 0) { hikeDistance = 0; }
                     console.log('구간 예상 거리: ' + hikeDistance + ' km');
 
@@ -155,7 +161,8 @@ $(document).ready(async function () {
                     lines++;
                     console.log('현재 선택된 구간 수는 ' + lines + ' 개 입니다.');
 
-                    hikeDistance += data["roadList"][i].roadKm;
+                    //소수점 2자리를 기준으로 반올림해서 문자열로 반환된 거리값을 parseFloat를 이용해 숫자로 변환
+                    hikeDistance += parseFloat(data["roadList"][i].roadKm.toFixed(2));
                     console.log('구간 예상 거리: ' + hikeDistance + ' km');
 
                     hikeTime += ((data["roadList"][i].roadTimeUp + data["roadList"][i].roadTimeDown) / 2);
@@ -168,21 +175,36 @@ $(document).ready(async function () {
         lineNo++;
     }
 
+    // 5-3. 함수
     function roadData() {
+
+        const token = $("meta[name='_csrf']").attr("content")
+        const header = $("meta[name='_csrf_header']").attr("content");
+
         $.ajax({
-            url: 'course/view',
+            url: 'view',
             type: 'POST',
             data: {
                 lines: lines,
                 hikeTime: hikeTime,
                 hikeDistance: hikeDistance
             },
+            // ajax용 CSRF 토큰
+            //beforeSend : function(xhr) {
+            //    xhr.setRequestHeader(header, token);
+            //},
             success: function (response) {
-                console.log('서버로 roadData 전송 성공', response);
+                console.log('roadData 전송 성공');
+                $('#hike-lines span').text(lines);
+                    $('#hike-distance span').text(hikeDistance);
+                $('#hike-time span').text(hikeTime);
             },
             error: function (error) {
-                console.error('서버로 roadData 전송 실패', error);
+                console.error('roadData 전송 실패', error);
             }
         });
     }
+    $('.switch-mode').click(() => {
+        alert('추후 업데이트 예정입니다.');
+    });
 });

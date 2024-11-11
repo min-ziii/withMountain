@@ -2,6 +2,7 @@ package com.test.hike.dao;
 
 import java.util.List;
 
+import com.test.hike.dto.CustomCourseDTO;
 import com.test.hike.dto.MountainDTO;
 import org.springframework.stereotype.Repository;
 
@@ -30,5 +31,9 @@ public class MapCustomDAO {
 
 	public com.test.hike.dto.custom.MountainDTO getAllRoadsWithCoordsByMtId(int mtId) {
 		return mapper.getAllRoadsWithCoordsByMtId(mtId);
+	}
+
+	public List<CustomCourseDTO> addCourseData() {
+		return mapper.addCourseData();
 	}
 }

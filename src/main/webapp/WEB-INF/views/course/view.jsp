@@ -10,13 +10,14 @@
     // view.js에서 spotListJson을 사용하기 위한 작업
     const spotListJson =  ${spotListJson};
 </script>
-
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 <div id="view-map" class="course-map">
     <div class="zoom-button-area">
         <button class="zoom-in" type="button">
             <img src="${path}/resources/static/images/plus-small.svg" alt="확대">
         </button>
-        <button class="zoom-out" type="button" disabled>
+        <button class="zoom-out" type="button">
             <img src="${path}/resources/static/images/minus-small.svg" alt="축소">
         </button>
     </div>
@@ -47,9 +48,13 @@
                         </div>
                     </li>
                     <div style="text-align: left">
-                        <p>선택된 구간 수: ${lines} 개</p>
-                        <p>예상 등산 거리: ${hikeDistance} Km</p>
-                        <p>예상 등산 시간: ${hikeTime} 분</p>
+                        <hr>
+                        <p id="hike-lines">선택된 구간 수:   <span></span> 개</p>
+                        <hr>
+                        <p id="hike-distance">예상 등산 거리:   <span></span> Km</p>
+                        <hr>
+                        <p id="hike-time">예상 등산 시간:   <span></span> 분</p>
+                        <hr>
                     </div>
                 </ul>
 

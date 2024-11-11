@@ -3,6 +3,7 @@ package com.test.hike.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.test.hike.dao.MapCustomDAO;
+import com.test.hike.dto.CustomCourseDTO;
 import com.test.hike.dto.HikingRoadSpotDTO;
 import com.test.hike.dto.MountainDTO;
 import com.test.hike.mapper.MapCustomMapper;
@@ -67,4 +68,11 @@ public class CourseController {
 
         return "course.view";
     }
+    @PostMapping("addCourseData")
+    public String addCourseData() {
+        List<CustomCourseDTO> customCourseList = dao.addCourseData();
+
+        return "redirect:/course/view";
+    }
+
 }

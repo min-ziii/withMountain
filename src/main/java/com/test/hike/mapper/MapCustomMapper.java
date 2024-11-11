@@ -2,11 +2,13 @@ package com.test.hike.mapper;
 
 import java.util.List;
 
+import com.test.hike.dto.CustomCourseDTO;
 import com.test.hike.dto.MountainDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.test.hike.dto.HikingRoadDTO;
 import com.test.hike.dto.HikingRoadSpotDTO;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface MapCustomMapper {
@@ -20,4 +22,5 @@ public interface MapCustomMapper {
 
 	com.test.hike.dto.custom.MountainDTO getAllRoadsWithCoordsByMtId(int mtId);
 
+	List<CustomCourseDTO> addCourseData();
 }
