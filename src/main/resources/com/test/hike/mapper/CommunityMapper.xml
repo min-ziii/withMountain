@@ -64,9 +64,9 @@
 
     <!-- 글 추가 -->
     <insert id="boardAdd" parameterType="com.test.hike.dto.CommunityBoardDTO">
-    	insert into CommunityBoard (user_id, title, content, create_time, type, image)
-    	values (#{user_id}, #{title}, #{content}, sysdate, #{type, jdbcType=VARCHAR}, #{image, jdbcType=VARCHAR})
-	</insert>
+        INSERT INTO CommunityBoard (user_id, title, content, create_time, type, image)
+        VALUES (#{user_id}, #{title}, #{content}, SYSDATE, #{type}, #{image})
+    </insert>
 	
 
 

@@ -4,9 +4,10 @@
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
+<div class="total">
 <!-- 커뮤니티 수정하기 -->
 
-<div class="header">
+<div class="community-header">
 <div class="back-page">
     <img src="${path}/resources/static/images/arrow_back.svg" class="back">
     <a onclick="location.href='${path}/community'">이전 페이지</a>
@@ -38,6 +39,8 @@
         <button type="submit" class="edit-post">수정하기</button>
     </div>
 </form>
+
+</div>
 
 
 

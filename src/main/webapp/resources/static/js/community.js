@@ -50,33 +50,22 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-// ----------좋아요 기능
-document.getElementById('like-icon').addEventListener('click', function() {
-    // data-cm_board_id 속성에서 게시글 ID 가져오기
-    var cm_board_id = this.getAttribute('data-cm_board_id');  // 게시글 ID 가져오기
 
-    // AJAX 요청을 보내서 좋아요 수 증가시키기
-    fetch(`/hike/community/like?cm_board_id=${cm_board_id}`, {  // 백틱을 사용해 cm_board_id를 동적으로 삽입
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        // 서버에서 좋아요 수를 받은 후 화면에 반영
-        document.getElementById('like-count').textContent = data.likeCount;
-    })
-    .catch(error => console.error('Error:', error));  // 에러 처리
+// confirmDelete 삭제 함수
+document.addEventListener('DOMContentLoaded', function () {
+    const deleteButton = document.getElementById('deleteBtn');
+    
+    deleteButton.addEventListener('click', confirmDelete); // click 이벤트를 JavaScript로 처리
 });
 
-//----------삭제 알림창 띄우기
 function confirmDelete() {
-    // 알림창 띄우기
-    alert("정말 삭제하시겠습니까?"); // 알림창에서 "확인" 버튼을 누르면 아래 코드 실행
-    
-    window.location.href = `${path}/community/del`;  // 해당 URL로 이동하여 서버에서 삭제 처리
+    if (confirm("정말 삭제하시겠습니까?")) {
+        console.log("삭제되었습니다.");
+    } else {
+        console.log("삭제 취소됨");
+    }
 }
+
 
     // 댓글 등록
     function submitComment() {

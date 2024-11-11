@@ -18,7 +18,7 @@
 <!-- 커뮤니티 자유 게시판 -->
 
 <!-- 글 분류 셀렉트 박스 -->
-<div class="header">
+<div class="community-header">
 	<div class="sort-container">
 		<select id="sort" class="sort-select">
 			<option value="latest">최신 순</option>

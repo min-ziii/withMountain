@@ -6,7 +6,7 @@
 }
 
 /* 최신, 댓글, 좋아요 순서 셀렉트 박스 */
-.header {
+.community-header {
   display: flex;
   justify-content: space-between; 
   align-items: center; 
@@ -15,6 +15,7 @@
 
 .sort-container {
   flex: 1; 
+  
 }
 
 .sort-select {
