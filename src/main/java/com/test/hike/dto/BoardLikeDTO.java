@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class BoardLikeDTO {
-	private int boardLikeId;
-	private int cmBoardId;
-	private int userId;
+	private int board_like_id;
+	private int cm_board_id;
+	private int user_id;
 }

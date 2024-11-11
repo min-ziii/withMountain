@@ -3,6 +3,7 @@
 // community.js
 
 //----------글쓰기 툴 라이브러리
+// MutationObserver를 이용한 DOM 변화 감지 예시
 document.addEventListener("DOMContentLoaded", function() {
     // Quill 에디터 초기화
     var quill = new Quill('#content-container', {
@@ -17,15 +18,32 @@ document.addEventListener("DOMContentLoaded", function() {
         placeholder: '내용을 작성해주세요.' // Quill 에디터의 placeholder 설정
     });
 
+    // MutationObserver 예시 (DOM 변경을 감지하고 실행)
+    const observer = new MutationObserver(function(mutationsList, observer) {
+        for (let mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+                console.log('DOM 변경 발생:', mutation);
+                // 여기서 DOM 변화가 있을 때 할 작업을 넣어줍니다.
+            }
+        }
+    });
+
+    // 감시할 대상 (예: #content-container)
+    const contentContainer = document.getElementById('content-container');
+    if (contentContainer) {
+        observer.observe(contentContainer, { childList: true, subtree: true });
+    }
+
     // 폼 제출 시 Quill 에디터 내용 textarea로 복사
     const form = document.querySelector('form');
     const contentTextarea = document.querySelector('#content');
     
     if (form && contentTextarea) {
-        form.onsubmit = function() {
+        // 폼 제출 시 이벤트 리스너
+        form.addEventListener('submit', function(event) {
             // Quill 에디터의 내용을 textarea에 복사
             contentTextarea.value = quill.root.innerHTML;
-        };
+        });
     } else {
         console.error("폼 또는 텍스트 영역(#content)가 존재하지 않습니다.");
     }
@@ -33,65 +51,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 // ----------좋아요 기능
-/*document.addEventListener('DOMContentLoaded', function() {
-    const likeIcons = document.querySelectorAll('.like-icon');
-    
-    likeIcons.forEach(icon => {
-        icon.addEventListener('click', function() {
-            const postId = this.closest('.p-post-action').dataset.postId;
-            const path = '/hike';  // path를 각 클릭 이벤트 내에서 정의
-            handleLike(postId, this, path);
+document.getElementById('like-icon').addEventListener('click', function() {
+    // data-cm_board_id 속성에서 게시글 ID 가져오기
+    var cm_board_id = this.getAttribute('data-cm_board_id');  // 게시글 ID 가져오기
 
-//----------좋아요 기능
-document.addEventListener('DOMContentLoaded', function() {
-    // 모든 like-icon 요소 선택
-    const likeIcons = document.querySelectorAll('.like-icon');
-    const likeCounts = document.querySelectorAll('.like-count');
-
-    // 각 like-icon에 클릭 이벤트 추가
-    likeIcons.forEach((likeIcon, index) => {
-        let count = parseInt(likeCounts[index].textContent);  // 해당 게시글의 좋아요 수 (index로 매칭)
-        
-        // 좋아요 아이콘 클릭 이벤트
-        likeIcon.addEventListener('click', function() {
-            const basePath = window.location.origin;  // 현재 페이지의 기본 URL
-
-            // 좋아요 아이콘 색 유무
-            if (likeIcon.src.includes('heart.svg')) {
-                likeIcon.src = `${path}/resources/static/images/heart-fill.svg`; 
-                count += 1; 
-            } else {
-                likeIcon.src = `${path}/resources/static/images/heart.svg`; 
-                count -= 1; 
-            }
-
-            // 좋아요 수 텍스트 숫자 업데이트
-            likeCounts[index].textContent = count;  
-        });
-    });
-});
-
-async function handleLike(postId, iconElement, path) {
-    try {
-        let likes = parseInt(localStorage.getItem(`likes_${postId}`) || 0);
-        const isLiked = localStorage.getItem(`liked_${postId}`) === 'true';
-
-        if (!isLiked) {
-            likes++;
-            localStorage.setItem(`liked_${postId}`, 'true');
-            iconElement.src = `${path}/resources/static/images/heart-filled.svg`;
-        } else {
-            likes--;
-            localStorage.setItem(`liked_${postId}`, 'false');
-            iconElement.src = `${path}/resources/static/images/heart.svg`;
+    // AJAX 요청을 보내서 좋아요 수 증가시키기
+    fetch(`/hike/community/like?cm_board_id=${cm_board_id}`, {  // 백틱을 사용해 cm_board_id를 동적으로 삽입
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
         }
-        
-        localStorage.setItem(`likes_${postId}`, likes);
-        updateLikeUI(postId, likes);
-    } catch (error) {
-        console.error('좋아요 처리 중 오류 발생:', error);
-    }
-}*/
+    })
+    .then(response => response.json())
+    .then(data => {
+        // 서버에서 좋아요 수를 받은 후 화면에 반영
+        document.getElementById('like-count').textContent = data.likeCount;
+    })
+    .catch(error => console.error('Error:', error));  // 에러 처리
+});
 
 //----------삭제 알림창 띄우기
 function confirmDelete() {
@@ -169,3 +146,13 @@ function confirmDelete() {
             });
         }
     }
+    
+document.querySelector('.edit-post').addEventListener('click', function() {
+    // content-container 안의 내용을 textarea에 복사
+    var contentText = document.getElementById('content-container').innerHTML;
+    document.getElementById('content').value = contentText;
+    
+    // value가 올바르게 설정됐는지 확인
+    console.log(document.getElementById('content').value);
+});
+    

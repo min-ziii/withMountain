@@ -1,6 +1,5 @@
 package com.test.hike.dto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
@@ -19,11 +18,10 @@ public class CommunityBoardDTO {
 	private String image;
 	
 	//해시태그
-	private int board_tagging_id;
-	private ArrayList<String> name;
+	private List<String> hashtags;
 	
 	//좋아요
-	private int board_like_id;
+	private int likeCount;
 	
 	//댓글
 	private List<CommentsDTO> comments;

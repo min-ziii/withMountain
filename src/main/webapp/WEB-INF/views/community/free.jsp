@@ -43,7 +43,7 @@
         <div class="free-post">
             <!-- 게시물 제목 -->
             <div class="free-title">
-                <a href="${path}/community/view?board=${board.cm_board_id}">
+                <a href="${path}/community/view?cm_board_id=${board.cm_board_id}">
                     ${board.title}
                 </a>
             </div>
@@ -64,12 +64,12 @@
             <div class="post-action">
                 <div class="icon-item">
                     <img src="${path}/resources/static/images/heart.svg" alt="좋아요" class="like-icon">
-                    <span class="like-count">${board.likeCount}</span> <!-- 좋아요 수 -->
+                    <span class="like-count">${likeCount}</span> <!-- 좋아요 수 -->
                 </div>
                 
                 <div class="icon-item">
                     <img src="${path}/resources/static/images/comment.svg" alt="댓글" class="comment-icon">
-                    <span class="comment-count">${board.commentCount}</span> <!-- 댓글 수 -->
+                    <span class="comment-count">${comments.size()}</span> <!-- 댓글 수 -->
                 </div>
             </div>
         </div>

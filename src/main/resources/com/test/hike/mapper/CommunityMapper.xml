@@ -8,28 +8,78 @@
 	<!-- MyBatis가 DB의 컬럼명과 DTO의 필드명을 잘 매핑할 수 있게 resultMap 명시. -->
 	<!-- 글 목록 -->
 	<select id="boardList" resultType="CommunityBoardDTO">
-		select * from CommunityBoard order by cm_board_id desc
+		select * from CommunityBoard where type = #{boardType} order by cm_board_id desc
 	</select>
 	
 	<!-- 글 상세 -->
 	<select id="boardView" resultType="com.test.hike.dto.CommunityBoardDTO">
-        select 
-            cm.cm_board_id,
-            cm.user_id,
-            cm.create_time,
-            cm.title,
-            cm.content,
-            cm.type,
-            cm.image,
-            cm.board_like_id,
-            c.comment_id,
-            c.cm_board_id,
-            c.user_id AS comment_user_id,
-            c.content AS comment_content,
-            c.create_time AS comment_create_time
-        from community_board cm
-        left JOIN comments c on cm.cm_board_id = c.cm_board_id
-        where cm.cm_board_id = #{cm_board_id}
+    	SELECT 
+        	cm.cm_board_id,
+        	cm.user_id,
+        	cm.create_time,
+        	cm.title,
+       	 	cm.content,
+        	cm.type,
+        	cm.image,
+        	COUNT(bl.board_like_id) AS like_count,  -- 좋아요 수 계산
+        	c.comment_id,
+        	c.cm_board_id,
+        	c.user_id AS comment_user_id,
+        	c.content AS comment_content,
+        	c.create_time AS comment_create_time
+    	FROM 
+        	CommunityBoard cm
+    	LEFT JOIN 
+        	comments c ON cm.cm_board_id = c.cm_board_id
+    	LEFT JOIN 
+        	BoardLike bl ON cm.cm_board_id = bl.cm_board_id
+    	WHERE 
+        	cm.cm_board_id = #{cm_board_id}
+    	GROUP BY
+        	cm.cm_board_id, 
+        	cm.user_id, 
+        	cm.create_time, 
+        	cm.title, 
+        	cm.content, 
+        	cm.type, 
+        	cm.image,
+        	c.comment_id, 
+        	c.cm_board_id, 
+        	c.user_id, 
+        	c.content, 
+        	c.create_time
+	</select>
+	
+    
+    <!-- 댓글 리스트 조회 -->
+    <select id="commentsList" parameterType="int" resultType="com.test.hike.dto.CommentsDTO">
+        select * from comments where cm_board_id = #{cm_board_id} order by create_time desc
     </select>
+    
+    <!-- 좋아요 조회 -->
+    <select id="boardLikes" resultType="int">
+    	SELECT COUNT(*) FROM BoardLike WHERE cm_board_id = #{cm_board_id}
+	</select>
+    
+
+    <!-- 글 추가 -->
+    <insert id="boardAdd" parameterType="com.test.hike.dto.CommunityBoardDTO">
+    	insert into CommunityBoard (user_id, title, content, create_time, type, image)
+    	values (#{user_id}, #{title}, #{content}, sysdate, #{type, jdbcType=VARCHAR}, #{image, jdbcType=VARCHAR})
+	</insert>
+	
+
+
+    <!-- 글 수정 -->
+    <update id="boardEdit" parameterType="com.test.hike.dto.CommunityBoardDTO">
+        update CommunityBoard
+        set title = #{title}, content = #{content}, type = #{type}, image = #{image}
+        where cm_board_id = #{cm_board_id}
+    </update>
+
+    <!-- 글 삭제 -->
+    <delete id="boardDel" parameterType="int">
+        delete from CommunityBoard WHERE cm_board_id = #{cm_board_id}
+    </delete>    
 
 </mapper>

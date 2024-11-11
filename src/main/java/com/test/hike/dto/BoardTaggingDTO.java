@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class BoardTaggingDTO {
-	private int boardTaggingId;
-	private int boardTagId;
-	private int cmBoardId;
+	private int board_tagging_id;
+	private int board_tag_id;
+	private int cm_board_id;
 }

@@ -42,12 +42,12 @@
         <div class="qna-post">
             <div class="qna-title">
                 <!-- 게시물 제목 -->
-                <a href="${path}/community/view?board=${board.cm_board_id}">
+                <a href="${path}/community/view?cm_board_id=${board.cm_board_id}">
                     <span class="q">Q</span> ${board.title}
                 </a>
             </div>
-            <div class="qna-content">
                 <!-- 게시물 내용 -->
+            <div class="qna-content">
                 ${board.content}
             </div>
             <div class="qna-profile">
@@ -60,11 +60,12 @@
             <div class="post-action">
                 <div class="icon-item">
                     <img src="${path}/resources/static/images/comment.svg" alt="댓글" class="comment-icon">
-                    <span class="comment-count">${board.commentCount}</span> <!-- 댓글 수 -->
+                    <span class="comment-count">${comments.size()}</span> <!-- 댓글 수 -->
                 </div>
             </div>
         </div>
     </c:forEach>
+    
 <!-- qna 게시판 view -->
 <div class="qna-post">
     <div class="qna-title">

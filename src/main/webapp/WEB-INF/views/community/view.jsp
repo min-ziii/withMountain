@@ -16,7 +16,7 @@
 			<button class="del" onclick="confirmDelete()">삭제하기</button>
 		</div>
 		<div class="edit-container">
-        	<button class="edit" onclick="location.href='${path}/community/edit'">수정하기</button>
+        	<button class="edit" onclick="location.href='${path}/community/edit?cm_board_id=${communityBoard.cm_board_id}'">수정하기</button>
     	</div>
     </div>
 </div>
@@ -53,11 +53,11 @@
         <div class="p-post-action">
             <div class="icon-item">
                 <img src="${path}/resources/static/images/heart.svg" alt="좋아요" class="like-icon">
-                <span class="like-count">${communityBoard.likeCount}</span> <!-- 좋아요 수 -->
+                <span class="like-count">${likeCount}</span> <!-- 좋아요 수 -->
             </div>
             <div class="icon-item">
                 <img src="${path}/resources/static/images/comment.svg" alt="댓글" class="comment-icon">
-                <span class="comment-count">${communityBoard.commentCount}</span> <!-- 댓글 수 -->
+                <span class="comment-count">${comments.size()}</span> <!-- 댓글 수 -->
             </div>
         </div>
 
@@ -66,7 +66,7 @@
     <div class="comments">
         <!-- 댓글 개수 표시 -->
         <div class="comments-count">
-            <span id="comment-count">댓글 총 ${comments.size()}개</span>
+            <span id="comment-count">댓글 총 0개</span>
         </div>
 
         <!-- 댓글 반복 -->
@@ -91,7 +91,7 @@
             <button id="submit-comment" onclick="submitComment()">등록</button>
         </div>
     </div>
-    
+   </div>
 
 <%-- <div class="total">
 
