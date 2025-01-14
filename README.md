@@ -27,10 +27,11 @@
 
 
 ## 개발 환경 및 언어
-- **언어**: Java
-- **개발 환경**: Windows 11, Java (JDK 11), SQL Developer, Oracle Database 11c
-- **설계 도구**: 설계도구: ERDCloud, draw.io, Figma
-- **기타**: Spring Framework
+- **언어**: Java (JDK 11)
+- **개발 환경**: Windows 11, Spring Framework
+- **데이터베이스**: Oracle Database 11c, SQL Developer
+- **설계 도구**: ERDCloud, draw.io, Figma
+- **기타**: Git
 
 
 ## 기타 사항
